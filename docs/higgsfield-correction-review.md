@@ -1,6 +1,6 @@
 # Higgsfield hero correction review
 
-Status: provider generation complete; candidate only. The active hero is unchanged.
+Historical review before repository consolidation. The active media selection has since changed to the reviewed Higgsfield output following the owner request to push the complete files. See docs/higgsfield-integration.md for current status; the final-angle limitation below remains unresolved.
 
 ## Source and delivery
 

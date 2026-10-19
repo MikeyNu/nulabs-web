@@ -208,3 +208,19 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
   .cinema-craft .cinema-still {object-position:22% 50%}
   .cinema-possibility .cinema-still {object-position:18% 50%}
 }
+
+/* Overlay fit for the inspected Higgsfield plate. */
+.cinema-enhanced .cinema-title span:first-child {font-size:9.2vw}
+.cinema-enhanced .cinema-title span:last-child {font-size:11.2vw}
+.cinema-enhanced .cinema-craft .cinema-copy {width:42%;padding:38px 44px;background:#f7f7f2;clip-path:polygon(0 0,100% 0,100% 100%,32px 100%,0 calc(100% - 32px))}
+.cinema-enhanced .cinema-craft .cinema-copy h2 {font-size:5.8vw}
+.cinema-enhanced .cinema-craft .cinema-copy em {color:#474941}
+@media(max-height:780px) and (min-width:1000px) {
+ .cinema-enhanced .cinema-craft .cinema-copy {padding:26px 30px}
+ .cinema-enhanced .cinema-craft .cinema-copy h2 {font-size:5.3vw}
+}
+@media(max-width:767px) {
+ .cinema-arrival .cinema-still {height:320px}
+ .cinema-arrival .cinema-title span:last-child {margin-top:390px}
+ .cinema-arrival {min-height:800px}
+}

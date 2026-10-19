@@ -1,0 +1,30 @@
+{
+  "provider": "Higgsfield",
+  "model": "Seedance 2.5",
+  "source": "journey-master.mp4",
+  "sourceSha256": "bac0c8765c7e3f82c6a27f5e9af00ee1bdea466c070595583c238786588574b6",
+  "sourceBytes": 6012331,
+  "sourceCodec": "HEVC Main10",
+  "color": "BT.709 SDR",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "frames": 289,
+  "durationSeconds": 12.041666666666666,
+  "audio": false,
+  "webVideo": "../../public/assets/video/journey-higgsfield.mp4",
+  "webSha256": "c70cc04f928975c97c3af2a5e6bce77fdc7529362c7931919b5cd3bda02d0bc2",
+  "chapterTimes": [
+    0,
+    4.5,
+    8.25,
+    11.75
+  ],
+  "chapterFrameIndices": [
+    0,
+    108,
+    198,
+    282
+  ],
+  "verification": "../../docs/higgsfield-integration.md"
+}

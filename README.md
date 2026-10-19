@@ -1,92 +1,80 @@
 # Nu Labs
 
-A monochrome design and software studio site. The revised home page moves through four camera compositions, turns into a bounded horizontal work gallery, and returns to a bright editorial studio section.
+A monochrome design and software studio website with a Higgsfield camera journey, live HTML overlays, a bounded horizontal work gallery and a bright editorial studio section.
 
-## Local preview
+## Build and preview
 
-Node 20 or later. No runtime dependencies or install step.
+Node 20 or later. The site has no runtime dependencies and needs no install step.
 
-```powershell
+~~~powershell
 npm run build
 npx serve dist
-```
+~~~
 
-Open http://localhost:3000. Rebuild after changing source files. Each route is its own directory with an index.html, so use a static server instead of opening files directly.
+Open http://localhost:3000. Rebuild after editing source files. Each route has its own index.html, so use a static server instead of opening HTML directly.
 
-```powershell
+~~~powershell
 npm test
 npm run check
-```
+~~~
 
-## Revision two
+All assets required by the build, including the Higgsfield video, eight chapter posters, fonts and logos, are tracked in this repository. A clean checkout does not depend on a temporary preview folder. The generated dist directory is excluded from Git.
 
-- Transparent, edge-to-edge opening navigation becomes solid after scrolling.
-- Four distinct camera landings at 0, 4, 8 and 12 seconds.
-- Flat semantic HTML overlays appear only over their matching presented video frames.
-- A black gallery carries one introductory panel and three project panels horizontally, then releases into the studio section.
-- Native vertical scrolling remains the sole scroll owner. No wheel interception or smooth-scroll engine.
+## Current experience
+
+- Navigation stays transparent throughout the pinned video journey. Its solid background appears when the pinned stage releases into the next section and disappears on reverse scrolling.
+- Four HTML chapters use inspected video times 0, 4.5, 8.25 and 11.75 seconds.
+- Copy appears over the corresponding presented frame, with space cleared during the main camera moves.
+- The work gallery carries an introductory panel and three project panels horizontally, then returns to normal vertical flow.
+- Native scrolling is the sole scroll owner. No wheel interception or smooth-scroll engine.
 - Narrow, portrait, short and reduced-motion layouts use complete normal-flow chapters.
-- Static content remains available when JavaScript or video fails.
-- Existing Work, Studio, Services, Contact and three project-detail routes remain available.
-- The contact form prepares an enquiry locally. No email or live submission endpoint is configured.
+- Work, Studio, Services, Contact and three project-detail routes remain available.
+- The contact form prepares an enquiry locally. Live delivery is not configured.
 
-The camera sequence is authored locally in Blender from the supplied symbol. Revision two uses no additional paid generation credits. Existing generated studio/application imagery remains labelled as illustrative concept work.
+The active background is the reviewed 1080p Seedance 2.5 output generated through Higgsfield from the original approved starting plate. The clip delivers three distinct viewpoint families and a return toward the opening view. Its final camera angle does not match the proposed reverse-side shot. This limitation is retained in the media review status; repository publication does not certify full storyboard compliance.
 
 ## Source map
 
 | File | Purpose |
 | --- | --- |
-| src/content/site.json | Brand, service and project copy |
-| src/content/media.json | Active camera media and verification status |
-| scripts/build.mjs | Shared components and interior-page templates |
-| scripts/home-v2.mjs | Four chapters, horizontal work and editorial home composition |
-| src/styles/site.css | Shared typography and interior layouts |
-| src/styles/home-v2.css | Revised home art direction and responsive treatments |
-| src/scripts/site.mjs | Navigation, editorial entrance, filters and enquiry builder |
-| src/scripts/journey-v2.mjs | Four-chapter media conductor and bounded horizontal travel |
-| src/scripts/journey.mjs | Shared seek helpers and retained first-version implementation |
-| docs/cinematic-storyboard-v2.json | Camera, reading-space and fallback contract |
-| docs/v2-review-contract.md | Independent experience acceptance criteria |
-| art/construction.py | Reproducible Blender scene and camera path |
-| art/nu-labs-journey-v2.blend | Editable scene |
-| art/README.md | Rendering, finishing and media evidence |
+| src/content/site.json | Brand, services and project copy |
+| src/content/media.json | Active video, chapter posters and inspected times |
+| scripts/build.mjs | Shared components and interior templates |
+| scripts/home-v2.mjs | Four chapters, horizontal work and home composition |
+| src/styles/home-v2.css | Home art direction and Higgsfield overlay placement |
+| src/scripts/site.mjs | Navigation handoff, menus, filters and enquiry builder |
+| src/scripts/journey-v2.mjs | Presented-frame coordination and horizontal travel |
+| public/assets/video/journey-higgsfield.mp4 | Browser-ready H.264 video |
+| public/assets/manifest.json | Active asset metadata |
+| art/higgsfield/journey-master.mp4 | Original provider master |
+| art/higgsfield/media-verification.json | Source and delivery hashes and measurements |
+| docs/higgsfield-integration.md | Current verification and known limits |
 
-All headings and navigation remain real text. Concept projects do not imply clients or measured business outcomes.
+Earlier Blender authoring sources and video versions remain available as historical material. They are not selected by the current media configuration. All headings and navigation remain real HTML text. Concept projects do not imply clients or measured business outcomes.
 
 ## Browser QA
 
-Use the existing Edge executable and Playwright Core module on the authorized desktop. No browser download or application dependency is required. The current harness is scripts/browser-qa-v2.mjs; scripts/browser-qa.mjs records the earlier two-chapter design and is retained as historical coverage.
+The optional browser harness uses Playwright Core and an existing browser supplied through environment variables. These are QA tools, not website runtime dependencies.
 
-The v2 review contract requires observing actual forward, reverse and interrupted camera movement, four settled compositions, horizontal traversal and release, responsive fallbacks, keyboard focus and navigation. Unit tests alone do not certify the art direction.
+~~~powershell
+$env:NU_QA_PLAYWRIGHT = 'C:\path\to\playwright-core\index.mjs'
+$env:NU_QA_BROWSER_PATH = 'C:\path\to\msedge.exe'
+$env:NU_QA_URL = 'http://localhost:3000'
+npm run qa:browser
+~~~
 
-Earlier reports in docs/verification.md and docs/browser-qa-summary.json describe the first implementation. Refer to the v2 report for the revised site's evidence and limitations.
+NU_QA_OUTPUT and NU_QA_CASES optionally choose an evidence folder and scenario subset. The harness checks actual presented frames; its pass does not independently certify visual art direction. See docs/higgsfield-integration.md for the executed scope.
 
-## Release
+## Release limits
 
-```powershell
+~~~powershell
 node scripts/check.mjs --release
-```
+~~~
 
-Live enquiry delivery remains unconfigured. The existing private hosted preview is the earlier design until explicitly refreshed; localhost contains the working revision.
+The strict release gate remains blocked by the documented media review status and the unconfigured enquiry destination. A repository push is not a hosted deployment or evidence that those requirements have been completed.
 
-For a repository subpath, set BASE_PATH consistently for build and check. Eight routes plus a 404 document are generated. No custom router is used.
+For a repository subpath, set BASE_PATH consistently for build and check. Eight routes plus a 404 document are generated.
 
 ## Attribution
 
-Instrument Sans is distributed under the SIL Open Font License in public/assets/OFL-InstrumentSans.txt. Nu Labs identity and supplied brand assets remain the company's material. Generated images are illustrative and concept studies are labelled. The repository's original MIT licence remains unchanged.
-
-### Run the current browser review on this desktop
-
-With the local static server running:
-
-```powershell
-$env:NU_QA_PLAYWRIGHT = 'C:\Users\USER\AppData\Local\Temp\nulabs-web-qa-20261019\node_modules\playwright-core\index.mjs'
-$env:NU_QA_BROWSER_PATH = 'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
-npm run qa:browser
-```
-
-Optional variables are NU_QA_URL, NU_QA_OUTPUT and NU_QA_CASES. The script records actual presented frames and writes screenshots plus a machine-readable report. Its success means the scenarios ran successfully; the separate visual judgment is recorded in docs/v2-verification.md.
-
-## Revision two verification
-
-The local Windows Edge review covers 64 passing unit tests and 14 browser scenarios, including actual presented-frame checks, four camera compositions, forward/reverse/interrupted scrubbing, horizontal travel and release, mobile/tablet/short layouts, reduced motion, media failure, no JavaScript, keyboard focus, history, navigation and the local enquiry builder. The final targeted rerun cleared the navigation diagnostic found in the first run. See docs/v2-verification.md for the visual judgment and exact run scope. Physical mobile devices, Safari and Firefox were not tested.
+Instrument Sans uses the SIL Open Font License included in public/assets/OFL-InstrumentSans.txt. Nu Labs identity and supplied brand assets remain the company's material. Generated people and project imagery are labelled as illustrative concepts. The original MIT licence remains unchanged.
