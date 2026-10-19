@@ -19,6 +19,7 @@ if (cinema || horizontal) import('./journey-v2.mjs').then(({CINEMA_TIMELINE,init
 }).catch(() => { /* Complete normal-flow content remains available. */ });
 const header = document.querySelector('.site-header');
 const cinemaStage = cinema?.querySelector('[data-cinema-stage]');
+const horizontalStage = horizontal?.querySelector('[data-horizontal-stage]');
 let headerFrame = 0;
 function updateHeader() {
   headerFrame = 0;
@@ -28,7 +29,14 @@ function updateHeader() {
   const showBackground = hasPinnedJourney
     ? cinema.getBoundingClientRect().bottom <= cinemaStage.getBoundingClientRect().height
     : scrollY > 40;
+  // Match the solutions canvas only while its enhanced section is under the
+  // whole header, including the short release before the next section arrives.
+  const railBounds = horizontal?.classList.contains('horizontal-enhanced')
+    ? horizontal.getBoundingClientRect() : null;
+  const onSolutions = Boolean(railBounds && header && railBounds.top <= 0
+    && railBounds.bottom >= header.getBoundingClientRect().bottom);
   header?.classList.toggle('is-scrolled', showBackground);
+  header?.classList.toggle('is-on-solutions', onSolutions);
 }
 function scheduleHeader() {
   if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader);
@@ -36,12 +44,13 @@ function scheduleHeader() {
 addEventListener('scroll', scheduleHeader, {passive:true});
 addEventListener('resize', scheduleHeader, {passive:true});
 addEventListener('pageshow', scheduleHeader);
-if (cinemaStage && 'ResizeObserver' in window) {
+if ((cinemaStage || horizontalStage) && 'ResizeObserver' in window) {
   // Enhancement, pause, media failure and reduced motion can change the
   // journey's size without a scroll event. Measure again after that layout.
   const headerLayoutObserver = new ResizeObserver(scheduleHeader);
-  headerLayoutObserver.observe(cinema);
-  headerLayoutObserver.observe(cinemaStage);
+  for (const element of [cinema, cinemaStage, horizontal, horizontalStage]) {
+    if (element) headerLayoutObserver.observe(element);
+  }
 }
 updateHeader();
 

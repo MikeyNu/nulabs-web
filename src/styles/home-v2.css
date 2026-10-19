@@ -7,6 +7,14 @@ body[data-page="home"] .site-header.is-scrolled,
 body[data-page="home"] .site-header:has(.menu-toggle[aria-expanded="true"]) {
   background:var(--paper);border-bottom-color:var(--line);
 }
+/* A solid paint layer switches with the foreground instantly at the rail's
+   boundaries, without fading through a mismatched background colour. */
+body[data-page="home"] .site-header.is-on-solutions {
+  background-image:linear-gradient(var(--ink),var(--ink));color:var(--paper);
+  border-bottom:0;box-shadow:none;
+}
+body[data-page="home"] .site-header.is-on-solutions .brand img {filter:invert(1)}
+body[data-page="home"] .site-header.is-on-solutions :focus-visible {outline-color:var(--paper)}
 body[data-page="home"] .no-js-nav {position:relative;padding-top:100px}
 .cinema {background:#f2f2ef}
 .cinema-stage {position:relative}
