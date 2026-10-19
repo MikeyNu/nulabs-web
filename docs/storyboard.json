@@ -1,28 +1,28 @@
 {
   "version": 1,
-  "status": "planned",
+  "status": "integrated-awaiting-browser-qa",
   "renderer": "video",
   "title": "Nu Labs / Ideas made real",
   "evidence": {
     "approved_reference": "../landing-generation/attempt-01.png",
     "motion": "original proposal from approved still; not recovered motion",
-    "generation": "not submitted by researcher",
-    "safe_areas": "targets pending inspection of delivered video",
-    "browser_qa": "blocked if required control-browser skill remains unavailable"
+    "generation": "Three approved outputs completed and installed; no paid retries.",
+    "safe_areas": "Inspected 32 frames sampled at 4 fps, plus full-resolution frames 0, 96 and 192. The final sculpture ends around 52% of frame width, leaving the right 48% quiet. Browser cropping and readability remain unverified.",
+    "browser_qa": "Blocked: the required control-browser skill is unavailable. No alternative browser route was used."
   },
   "media": {
     "id": "nu-architecture-journey",
     "fps": 24,
-    "frames": 192,
-    "duration_seconds": 8,
+    "frames": 193,
+    "duration_seconds": 8.041666666666666,
     "dimensions": [
       1920,
       1080
     ],
-    "poster": "/media/journey-poster.webp",
-    "source": "/media/journey-scrub.mp4",
+    "poster": "/assets/images/journey-poster-1920.webp",
+    "source": "/assets/video/journey-scrub.mp4",
     "source_master": "private production master outside public bundle",
-    "status": "planned encoding target; probe actual generation before finalizing",
+    "status": "Delivered and decoded; sampled frames inspected. Normal-speed playback remains unverified.",
     "audio": false,
     "baked_ui": false,
     "rights": "original generation from user-approved Nu Labs concept; generated imagery, no third-party reference assets"
@@ -31,7 +31,7 @@
     "mode": "bounded sticky",
     "shared_media_count": 1,
     "height": "100svh",
-    "wrapper_target": "400svh including 100svh stage, subject to content-fit QA",
+    "wrapper_target": "360svh, including the 100svh stage",
     "release": "after progress 1, normal flow resumes",
     "progress": "clamp((scrollY-sectionStart)/max(1,sectionHeight-stageHeight),0,1)",
     "scroll_owner": "native document",
@@ -78,7 +78,7 @@
     }
   ],
   "encoding": {
-    "planned": "H.264 yuv420p, silent, faststart",
+    "planned": "Delivered H.264/yuv420p, silent, faststart, with 193 frames at 24 fps and a duration of 8.041667 seconds.",
     "trial_gop_frames": 6,
     "last_time": "min(plannedTime,duration-1/fps); update with actual last clean frame",
     "verification": [
@@ -86,7 +86,9 @@
       "compare forward and reverse seek latency",
       "bytes and first poster load",
       "actual browser presented frame not target time only"
-    ]
+    ],
+    "actual_bytes": 3553215,
+    "keyframe_interval_seconds": 0.25
   },
   "runtime": {
     "seek_policy": "latest target only, one seek in flight, reconcile on seeked",
@@ -113,7 +115,7 @@
       "links": [
         {
           "label": "Skip introduction",
-          "href": "/#selected-work"
+          "href": "/#built"
         }
       ],
       "safe_rect": [
@@ -159,19 +161,19 @@
       "start": 0.68,
       "end": 1,
       "background": "shared-media",
-      "content": "Good questions. Bold answers. We connect strategy, design and development to turn complex ideas into useful digital experiences. Strategy / Design / Development.",
+      "content": "Clear thought. Working form. We bring design and software together to turn a business need into a clear, useful experience.",
       "content_source": "proposed original copy; offering grounded in approved brand brief",
       "links": [
         {
-          "label": "Explore our capabilities",
-          "href": "/services"
+          "label": "Explore our approach",
+          "href": "/services/"
         }
       ],
       "safe_rect": [
-        0.57,
-        0.23,
-        0.36,
-        0.5
+        0.56,
+        0.19,
+        0.39,
+        0.65
       ],
       "entry_range": [
         0.68,
@@ -183,7 +185,7 @@
       ],
       "camera_time": 7.9,
       "camera_composition": "rightward truck and shallow clockwise arc with gentle pullback bring the complete sculptural assembly into the left half, opening calm white wall/floor at right; geometry and light unchanged",
-      "overlay": "large two-line heading; short supporting copy; three compact service lines; flat custom-cut panel only if actual frame contrast requires it",
+      "overlay": "Flat white custom-cut panel, 46% content width, 660px maximum. Never bake typography into the source video.",
       "mobile": "representative final still then capability text in normal flow; no clipping of copy to sculptural shape",
       "reduced": "final still in normal flow with complete capability content",
       "forward": "background settles before copy enters; retain final clean frame through the reading hold, then release into ordinary document flow",
@@ -236,13 +238,13 @@
     }
   ],
   "fallbacks": {
-    "mobile": "below proposed 800px width or 600px height use complete normal flow with opening and final stills",
+    "mobile": "Width <= 767px, height <= 600px or aspect ratio <= 5/4 uses complete normal flow. Narrow and portrait viewports use separate, uncropped opening and final stills.",
     "reduced_motion": "remove pinning/camera/parallax/large translations; respond to live changes; two static media chapters then normal-flow handoff",
     "no_js": "semantic content and links remain visible in normal flow",
     "media_error": "static full-content composition, no endless preloader"
   },
   "verification": {
-    "status": "not run against implementation",
+    "status": "PASS: 26 runtime unit tests, build checks for nine HTML documents including 404, source decoding and sampled frame inspection. BLOCKED: browser and temporal interaction QA. NOT RUN: normal-speed playback. Final independent source review completed; the identified mobile control visibility defect was corrected.",
     "required": [
       "actual frame inspection including reading holds and transitions",
       "forward/reverse and fast jumps",

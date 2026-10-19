@@ -209,7 +209,7 @@ test('missing markup is a safe static lifecycle handle', () => {
 
 // These event/DOM doubles exercise lifecycle decisions, not browser rendering.
 // A real browser remains necessary to verify frame delivery and visual motion.
-function lifecycleHarness({ source = true, reduced = false, narrow = false, short = false, frameAPI = true } = {}) {
+function lifecycleHarness({ source = true, reduced = false, narrow = false, short = false, compact = false, frameAPI = true } = {}) {
   class Element extends EventTarget {
     constructor(tagName = 'DIV') {
       super();
@@ -267,6 +267,7 @@ function lifecycleHarness({ source = true, reduced = false, narrow = false, shor
     ['(prefers-reduced-motion: reduce)', reduced],
     ['(max-width: 767px)', narrow],
     ['(max-height: 600px)', short],
+    ['(max-aspect-ratio: 5/4)', compact],
   ]) {
     const target = new EventTarget();
     target.matches = matches;
@@ -355,7 +356,7 @@ function lifecycleHarness({ source = true, reduced = false, narrow = false, shor
 }
 
 test('normal-flow fallbacks make no video request and preserve every chapter', () => {
-  for (const options of [{ source: false }, { frameAPI: false }, { reduced: true }, { narrow: true }, { short: true }]) {
+  for (const options of [{ source: false }, { frameAPI: false }, { reduced: true }, { narrow: true }, { short: true }, { compact: true }]) {
     const h = lifecycleHarness(options);
     const journey = initJourney(h.root);
     assert.equal(journey.getState().state, 'static');
@@ -459,4 +460,107 @@ test('destroy restores original markup, live mute state, controls and all pendin
   h.video.dispatchEvent(new Event('error'));
   h.preference('(prefers-reduced-motion: reduce)', true);
   assert.deepEqual(journey.getState(), state);
+});
+
+test('portrait tablet ratio disables enhancement and restores readable normal flow live', () => {
+  const h = lifecycleHarness();
+  const journey = initJourney(h.root);
+  h.metadata();
+  h.present();
+  h.flushFrames();
+  assert.equal(journey.getState().state, 'enhanced');
+  h.preference('(max-aspect-ratio: 5/4)', true);
+  assert.equal(journey.getState().reason, 'compact-aspect');
+  assert.equal(h.root.classList.contains('journey-enhanced'), false);
+  assert.equal(h.chapters.some((chapter) => chapter.hidden), false);
+  assert.equal(h.control.hidden, true);
+  journey.destroy();
+});
+
+test('seeked without a matching presented frame cannot leave the journey empty indefinitely', () => {
+  const h = lifecycleHarness();
+  const journey = initJourney(h.root);
+  h.metadata();
+  h.present();
+  h.flushFrames();
+  h.win.scrollY = 2000;
+  h.win.dispatchEvent(new Event('scroll'));
+  h.flushFrames();
+  assert.equal(journey.getState().targetTime, 7.9);
+  h.video.dispatchEvent(new Event('seeked'));
+  h.flushFrames();
+  assert.equal(h.pendingTimers, 1, 'presentation must still have a bounded deadline');
+  assert.equal(h.chapters[1].hidden, true);
+  h.fireTimers();
+  assert.equal(journey.getState().mediaStatus, 'error');
+  assert.equal(h.chapters.some((chapter) => chapter.hidden), false);
+  assert.equal(h.root.classList.contains('journey-enhanced'), false);
+  journey.destroy();
+});
+
+test('stale frame callbacks keep waiting for the latest actual composition', () => {
+  const h = lifecycleHarness();
+  const journey = initJourney(h.root);
+  h.metadata();
+  h.present();
+  h.flushFrames();
+  h.win.scrollY = 2000;
+  h.win.dispatchEvent(new Event('scroll'));
+  h.flushFrames();
+  h.video.dispatchEvent(new Event('seeked'));
+  h.present(2);
+  h.flushFrames();
+  assert.equal(h.chapters[1].hidden, true);
+  assert.equal(journey.getState().pendingPresentationTime, 7.9);
+  h.present(7.9);
+  h.flushFrames();
+  assert.equal(journey.getState().pendingPresentationTime, null);
+  assert.equal(h.chapters[1].hidden, false);
+  assert.equal(h.pendingTimers, 0);
+  journey.destroy();
+});
+
+test('barely visible panels cannot receive Tab focus during a settled partial fade', () => {
+  const h = lifecycleHarness();
+  const journey = initJourney(h.root);
+  h.metadata();
+  h.present();
+  h.flushFrames();
+  h.win.scrollY = 2100 * 0.6801;
+  h.win.dispatchEvent(new Event('scroll'));
+  h.flushFrames();
+  h.video.dispatchEvent(new Event('seeked'));
+  h.present(7.9);
+  h.flushFrames();
+  assert.equal(h.chapters[1].hidden, false, 'the panel may be visually fading in');
+  assert.notEqual(h.chapters[1].getAttribute('inert'), null, 'it is not yet an interactive reading state');
+  assert.equal(h.chapters[1].getAttribute('aria-hidden'), 'true');
+  h.win.scrollY = 2100 * 0.73;
+  h.win.dispatchEvent(new Event('scroll'));
+  h.flushFrames();
+  assert.equal(h.chapters[1].getAttribute('inert'), null);
+  assert.equal(h.chapters[1].getAttribute('aria-hidden'), 'false');
+  journey.destroy();
+});
+
+test('a live failure preserves the focused motion control until the user leaves it', async () => {
+  const h = lifecycleHarness();
+  const journey = initJourney(h.root);
+  h.metadata();
+  h.present();
+  h.flushFrames();
+  h.doc.activeElement = h.control;
+  h.video.dispatchEvent(new Event('error'));
+  assert.equal(h.doc.activeElement, h.control);
+  assert.equal(h.control.hidden, false);
+  assert.equal(h.control.disabled, false);
+  assert.equal(h.control.getAttribute('aria-disabled'), 'true');
+  h.control.dispatchEvent(new Event('click'));
+  assert.equal(h.control.getAttribute('aria-pressed'), 'false', 'unavailable activation is ignored');
+  h.doc.activeElement = null;
+  h.control.dispatchEvent(new Event('blur'));
+  await Promise.resolve();
+  assert.equal(h.control.hidden, true);
+  assert.equal(h.control.disabled, true);
+  journey.destroy();
 });

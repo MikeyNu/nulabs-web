@@ -64,4 +64,4 @@ if(process.argv.includes('--release')) {
 }
 if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}
 else console.log(`PASS: ${htmlFiles.length} HTML routes, local links/fragments, image markup, CSS resources and deployment base.`);
-if(manifest.journey.status!=='verified')console.log(`Media is intentionally pending (${manifest.journey.status}). This check does not certify runtime or appearance.`);
+if(manifest.journey.status!=='verified')console.log(`Media status: ${manifest.journey.status}. This check does not certify runtime or appearance.`);

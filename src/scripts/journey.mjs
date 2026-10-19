@@ -12,6 +12,9 @@
  * loading, so a presented-frame callback can fire. Hide the poster ONLY under
  * `.journey-enhanced.journey-frame-ready`. No-JS, mobile, motion-off and failed
  * media modes must retain a representative poster and both normal-flow chapters.
+ * Desktop enhancement requires width >767px, height >600px and aspect ratio
+ * >5/4. Narrower compositions keep the still separate from text; do not crop the
+ * 16:9 camera route beneath overlapping copy on portrait tablets.
  *
  * Optional video[data-src] delays its network request until enhancement is
  * eligible. Missing media is explicitly reported, never treated as a movie.
@@ -188,6 +191,7 @@ export function initJourney(root, options = {}) {
   const reducedQuery = win.matchMedia('(prefers-reduced-motion: reduce)');
   const narrowQuery = win.matchMedia('(max-width: 767px)');
   const shortQuery = win.matchMedia('(max-height: 600px)');
+  const compactAspectQuery = win.matchMedia('(max-aspect-ratio: 5/4)');
   const source = (options.src || video.getAttribute('data-src')
     || video.getAttribute('src') || video.querySelector('source[src]')?.getAttribute('src') || '').trim();
   const restored = [];
@@ -204,6 +208,7 @@ export function initJourney(root, options = {}) {
   let framePresented = false;
   let displayedTime = null;
   let userPaused = false;
+  let controlsUnavailable = false;
   let focusSafetyHeld = false;
   let visible = root.getBoundingClientRect().bottom > 0
     && root.getBoundingClientRect().top < win.innerHeight;
@@ -211,6 +216,7 @@ export function initJourney(root, options = {}) {
   let presentationFrame = null;
   let readinessTimeout = null;
   let seekTimeout = null;
+  let pendingPresentationTime = null;
   let geometry = { start: 0, height: 1, stageHeight: 1 };
   let progress = 0;
 
@@ -230,7 +236,7 @@ export function initJourney(root, options = {}) {
     restored.push(rememberStyles(element, ['--journey-progress']));
   }
   for (const control of controls) {
-    restored.push(rememberAttributes(control, ['aria-pressed', 'aria-label', 'disabled', 'title', 'hidden']));
+    restored.push(rememberAttributes(control, ['aria-pressed', 'aria-label', 'aria-disabled', 'disabled', 'title', 'hidden']));
     const label = control.querySelector('[data-motion-label]')
       || (control.children.length === 0 ? control : null);
     if (label) {
@@ -271,10 +277,12 @@ export function initJourney(root, options = {}) {
   }
 
   function armSeekTimeout() {
-    if (seekTimeout !== null || !seeker.getState().inFlight || !visible || doc.hidden || staticReason()) return;
+    if (seekTimeout !== null || (!seeker.getState().inFlight && pendingPresentationTime === null)
+      || !visible || doc.hidden || staticReason()) return;
     seekTimeout = win.setTimeout(() => {
       seekTimeout = null;
-      if (seeker.getState().inFlight && visible && !doc.hidden && !staticReason()) failMedia();
+      if ((seeker.getState().inFlight || pendingPresentationTime !== null)
+        && visible && !doc.hidden && !staticReason()) failMedia();
     }, options.seekTimeoutMs ?? 8000);
   }
 
@@ -294,6 +302,7 @@ export function initJourney(root, options = {}) {
     if (reducedQuery.matches) return 'reduced-motion';
     if (narrowQuery.matches) return 'mobile';
     if (shortQuery.matches) return 'short-viewport';
+    if (compactAspectQuery.matches) return 'compact-aspect';
     if (userPaused) return 'paused';
     if (focusSafetyHeld) return 'keyboard-focus';
     if (isChapterAnchor()) return 'chapter-anchor';
@@ -302,15 +311,22 @@ export function initJourney(root, options = {}) {
 
   function updateControls() {
     const unavailable = !source || mediaStatus === 'error' || reducedQuery.matches || narrowQuery.matches || shortQuery.matches
+      || compactAspectQuery.matches
       || typeof video.requestVideoFrameCallback !== 'function';
+    controlsUnavailable = unavailable;
     for (const control of controls) {
       const label = control.querySelector('[data-motion-label]')
         || (control.children.length === 0 ? control : null);
       let message = userPaused ? 'Enable motion' : 'Pause motion';
       if (!source || mediaStatus === 'error' || typeof video.requestVideoFrameCallback !== 'function') message = 'Motion unavailable';
-      else if (reducedQuery.matches || narrowQuery.matches || shortQuery.matches) message = 'Motion off';
-      control.disabled = unavailable;
-      control.hidden = unavailable;
+      else if (reducedQuery.matches || narrowQuery.matches || shortQuery.matches || compactAspectQuery.matches) message = 'Motion off';
+      // Live policy or media failures must not remove the keyboard's current
+      // focus target. Keep that one control visible but inert to activation
+      // until its native blur; no unexpected focus transfer is necessary.
+      const focused = control === doc.activeElement;
+      control.disabled = unavailable && !focused;
+      control.hidden = unavailable && !focused;
+      control.setAttribute('aria-disabled', String(unavailable));
       control.setAttribute('aria-pressed', String(userPaused));
       control.setAttribute('aria-label', message);
       control.setAttribute('title', message);
@@ -375,13 +391,14 @@ export function initJourney(root, options = {}) {
 
     root.style.setProperty('--journey-progress', String(progress));
     for (const [chapter, presentation] of presentations) {
+      const interactive = presentation.visible && presentation.opacity >= 0.99;
       chapter.style.opacity = String(presentation.opacity);
       chapter.style.transform = `translate3d(0, ${presentation.translateY}px, 0)`;
       chapter.style.visibility = presentation.visible ? 'visible' : 'hidden';
-      chapter.style.pointerEvents = presentation.visible ? '' : 'none';
+      chapter.style.pointerEvents = interactive ? '' : 'none';
       chapter.hidden = !presentation.visible;
-      chapter.toggleAttribute('inert', !presentation.visible);
-      chapter.setAttribute('aria-hidden', String(!presentation.visible));
+      chapter.toggleAttribute('inert', !interactive);
+      chapter.setAttribute('aria-hidden', String(!interactive));
     }
     for (const element of progressElements) {
       element.style.setProperty('--journey-progress', String(progress));
@@ -411,7 +428,18 @@ export function initJourney(root, options = {}) {
   function onPresented(_now, metadata) {
     presentationFrame = null;
     if (disposed || mediaStatus === 'error') return;
-    displayedTime = Number.isFinite(metadata?.mediaTime) ? metadata.mediaTime : video.currentTime;
+    // currentTime can already contain a newer requested seek. Only the frame
+    // callback's mediaTime establishes which composition is actually on screen.
+    if (!Number.isFinite(metadata?.mediaTime)) {
+      failMedia();
+      return;
+    }
+    displayedTime = metadata.mediaTime;
+    if (pendingPresentationTime !== null
+      && Math.abs(displayedTime - pendingPresentationTime) <= JOURNEY_TIMELINE.frameTolerance * 2) {
+      pendingPresentationTime = null;
+    }
+    if (pendingPresentationTime === null && !seeker.getState().inFlight) clearSeekTimeout();
     if (!framePresented) {
       framePresented = true;
       mediaStatus = 'ready';
@@ -419,6 +447,9 @@ export function initJourney(root, options = {}) {
       clearReadinessTimeout();
       reconcilePolicy();
     }
+    // An older decode may arrive after a newer seek has started. Keep exactly
+    // one frame callback outstanding until the current target is presented.
+    if (pendingPresentationTime !== null) armPresentation();
     scheduleDOM();
   }
 
@@ -432,6 +463,9 @@ export function initJourney(root, options = {}) {
   function failMedia() {
     if (disposed) return;
     mediaStatus = 'error';
+    pendingPresentationTime = null;
+    if (presentationFrame !== null && video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(presentationFrame);
+    presentationFrame = null;
     clearReadinessTimeout();
     clearSeekTimeout();
     root.classList.remove('journey-frame-ready');
@@ -443,6 +477,7 @@ export function initJourney(root, options = {}) {
     isReady: () => video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0,
     isSeeking: () => video.seeking,
     seek: (time) => {
+      pendingPresentationTime = time;
       armPresentation();
       clearSeekTimeout();
       armSeekTimeout();
@@ -508,13 +543,20 @@ export function initJourney(root, options = {}) {
   listenPreference(reducedQuery);
   listenPreference(narrowQuery);
   listenPreference(shortQuery);
+  listenPreference(compactAspectQuery);
   listen(video, 'error', failMedia);
   listen(video, 'loadedmetadata', () => {
     if (!Number.isFinite(video.duration) || video.duration <= 0) failMedia();
     else seeker.wake();
   });
   listen(video, 'loadeddata', () => { armPresentation(); seeker.wake(); });
-  listen(video, 'seeked', () => { clearSeekTimeout(); armPresentation(); seeker.onSeeked(); });
+  listen(video, 'seeked', () => {
+    seeker.onSeeked();
+    if (pendingPresentationTime !== null) {
+      armPresentation();
+      armSeekTimeout();
+    } else clearSeekTimeout();
+  });
   listen(video, 'canplay', () => { armPresentation(); seeker.wake(); });
   listen(root, 'focusout', () => {
     // Wait for the browser's native focus transfer before reassessing the hold.
@@ -526,11 +568,15 @@ export function initJourney(root, options = {}) {
       }
     });
   });
+  listen(root, 'focusin', scheduleDOM);
   for (const control of controls) {
     listen(control, 'click', () => {
-      if (control.disabled) return;
+      if (controlsUnavailable || control.disabled) return;
       userPaused = !userPaused;
       reconcilePolicy();
+    });
+    listen(control, 'blur', () => {
+      Promise.resolve().then(() => { if (!disposed) updateControls(); });
     });
   }
 
@@ -565,7 +611,8 @@ export function initJourney(root, options = {}) {
 
   return {
     refresh,
-    getState: () => ({ state, reason, mediaStatus, progress, targetTime: seeker.getState().targetTime, displayedTime }),
+    getState: () => ({ state, reason, mediaStatus, progress, targetTime: seeker.getState().targetTime,
+      displayedTime, pendingPresentationTime }),
     destroy() {
       if (disposed) return;
       disposed = true;
