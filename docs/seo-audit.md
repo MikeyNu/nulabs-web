@@ -19,9 +19,10 @@ Audit date: 19 October 2026. Baseline: commit `21475d6`, public site `https://ww
 | Hero loading | Mobile also fetched the 69,104-byte desktop arrival poster | Both poster elements use the same responsive candidates, eliminating that extra desktop request at the tested mobile viewport |
 | Interior loading | Every page imported both motion modules | Motion runtime imported only when a cinema/gallery exists; homepage preloads its module dependencies |
 | Image selection | Shared 70vw size hint even for half-width cards or full-width covers | Half-width default; full-width/eager primary solution covers; existing WebP photography retained |
+| Retired URLs | Live check found the three configured wildcard redirects still returned 404 | Replaced with explicit trailing-slash rules for the three actual retired pages; unrelated unknown URLs remain 404 |
 | Regressions | Build check covered markup/resources, not SEO | Build now checks actual emitted metadata, schema, robots, sitemap, previews and social-file dimensions |
 
-The site already had useful foundations: static semantic HTML, a single main heading per page, normal anchor links, HTTPS, real HTTP 404 responses, local fonts with font-display:swap, image dimensions and responsive WebP variants. These were preserved. The subsequent main-branch change `0798eec` restoring the hero intro to “A meeting point for design and technology.” was also retained. The cinematic hero remains a decorative background with real HTML text, not a purported indexable video article.
+The site already had useful foundations: static semantic HTML, a single main heading per page, normal anchor links, HTTPS, real HTTP 404 responses, local fonts with font-display:swap, image dimensions and responsive WebP variants. These were preserved. The subsequent main-branch change restoring the hero intro to “A meeting point for design and technology.” was also retained. The cinematic hero remains a decorative background with real HTML text, not a purported indexable video article.
 
 ## Page intent
 
@@ -72,6 +73,17 @@ No fictional timestamps, crawl-frequency promises, ratings, prices, customer dep
 Eight existing interaction scenarios were exercised: desktop cinema, mobile, reduced motion, blocked video, routes/filter, mobile menu, local enquiry and anchors/history. Seven passed initially; routes/filter stopped on its obsolete .back-link selector after the new breadcrumb replaced that control. The selector now targets the accessible Breadcrumb > Solutions link. The isolated routes/filter rerun passed. These checks preserve the video/overlay behavior and navigation-background handoff; the hero video was not regenerated.
 
 Google Rich Results Test and Search Console URL Inspection were not run. JSON-LD syntax, known property usage and agreement with visible content were checked locally, which does not certify a Google rich-result presentation.
+
+## Live completion
+
+The SEO code was published to main and verified at https://www.nulabs.co.za. A concurrent Git history rewrite preserved the exact SEO source tree (confirmed by an empty tree diff); the SEO implementation is now commit `0e15b4f`. The trailing-slash redirect repair is `25db602`. The final correction was made in an isolated Windows worktree to avoid changing the other local Git operation.
+
+- Vercel production deployment for `25db602` reported READY and served the www domain.
+- Fifteen live HTTP checks passed: apex-to-www redirect preserves the solution path; robots and sitemap return 200; unknown page returns 404 with noindex; all three retired concept-page URLs return 308; seven social PNGs and the organization logo return 200 with the expected dimensions.
+- Live browser crawl passed all eleven pages with JavaScript disabled. Canonicals, search descriptions, schema, response indexability, internal reachability and mobile viewport bounds passed. Eight desktop/mobile views and image/runtime-request checks also passed.
+- Final mobile Lighthouse: **performance 100, accessibility 100, SEO 100; LCP 1.6 s, FCP 1.1 s, CLS 0, TBT 0 ms**. Before: performance 98, LCP 2.2 s, FCP 1.3 s. These are two individual lab runs, not field percentiles or a controlled causal measurement. The unchanged SEO score of 100 must not obscure the substantive crawl/metadata repairs.
+- The remaining Lighthouse suggestions are small JavaScript minification savings (about 3 KiB) and render-blocking/dependency diagnostics. No dependency or risky runtime rewrite was added merely to eliminate these low-impact diagnostics.
+- Final hosted evidence is in `C:\Users\USER\AppData\Local\Temp\nulabs-seo-final-20261019\qa-output\seo-live\`. Earlier local evidence remains in the desktop repository's qa-output folders. Visual review covered the delivered social cards, mobile breadcrumb/long-title layouts, desktop/mobile service links and solution content. Automated screenshot capture alone is not treated as a visual pass.
 
 ## Remaining business and search work
 
