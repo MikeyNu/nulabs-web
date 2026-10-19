@@ -68,7 +68,7 @@ The runtime adds the tall sticky stage only after a frame is presented. Narrow s
 node scripts/check.mjs --release
 ```
 
-This intentionally fails until required media, verification status and a real contact destination exist. It supplements, rather than replaces, visual and temporal browser QA. The private review is deployed at https://nu-labs-cinematic.mikeynu.chatgpt.site, with success confirmed by the hosting service. [GitHub PR #1](https://github.com/MikeyNu/nulabs-web/pull/1) remains a draft until browser QA and live enquiry delivery are completed.
+This intentionally fails until required media, verification status and a real contact destination exist. It supplements, rather than replaces, visual and temporal browser QA. The private review is deployed at https://nu-labs-cinematic.mikeynu.chatgpt.site, with success confirmed by the hosting service. [GitHub PR #2](https://github.com/MikeyNu/nulabs-web/pull/2) remains a draft until browser QA and live enquiry delivery are completed.
 
 ## Attribution
 

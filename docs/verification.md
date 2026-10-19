@@ -22,7 +22,7 @@ Status: production media integrated; browser and temporal interaction QA blocked
 - Normal-speed video playback has not been inspected.
 - The required managed preview browser skill is not available in this session. Desktop/mobile screenshots, actual animation timing, frame presentation, touch and keyboard behaviour, reduced-motion rendering, overflow and real browser performance are unverified. The managed preview instructions prohibit substituting another browser automation route.
 - No live form endpoint or verified email address is configured. The local brief builder prepares information on the visitor's device and explicitly states that nothing is sent.
-- The owner-private Site deployed successfully at https://nu-labs-cinematic.mikeynu.chatgpt.site. Deployment success was confirmed by the native hosting result. GitHub PR #1 remains a draft because browser and live enquiry checks are outstanding.
+- The owner-private Site deployed successfully at https://nu-labs-cinematic.mikeynu.chatgpt.site. Deployment success was confirmed by the native hosting result. GitHub PR #2 remains a draft because browser and live enquiry checks are outstanding.
 - The source checks do not prove visual fidelity, video continuity, accessibility conformance or performance.
 
 ## Remaining release checks
