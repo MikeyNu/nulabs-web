@@ -1,19 +1,18 @@
-import { CINEMA_TIMELINE, initCinema, initHorizontal } from './journey-v2.mjs';
-
 document.documentElement.classList.add('js');
 
 const cinema = document.querySelector('[data-cinema]');
-if (cinema) {
-  // Media configuration is emitted into the static HTML by the build. Invalid
-  // configuration deliberately reaches the runtime's complete static fallback.
-  let landings = null;
-  try { landings = JSON.parse(cinema.dataset.cinemaLandings || 'null'); } catch { /* Static fallback. */ }
-  initCinema(cinema, {
-    timeline: { ...CINEMA_TIMELINE, landings, fps: Number(cinema.dataset.cinemaFps) },
-  });
-}
 const horizontal = document.querySelector('[data-horizontal]');
-if (horizontal) initHorizontal(horizontal);
+// Interior routes do not download the cinema runtime. The homepage preloads its
+// modules; ordinary HTML remains usable if enhancement cannot be loaded.
+if (cinema || horizontal) import('./journey-v2.mjs').then(({CINEMA_TIMELINE,initCinema,initHorizontal}) => {
+  if (cinema) {
+    let landings = null;
+    try { landings = JSON.parse(cinema.dataset.cinemaLandings || 'null'); } catch { /* Static fallback. */ }
+    initCinema(cinema, {timeline:{...CINEMA_TIMELINE,landings,fps:Number(cinema.dataset.cinemaFps)}});
+  }
+  if (horizontal) initHorizontal(horizontal);
+  scheduleHeader();
+}).catch(() => { /* Complete normal-flow content remains available. */ });
 const header = document.querySelector('.site-header');
 const cinemaStage = cinema?.querySelector('[data-cinema-stage]');
 let headerFrame = 0;

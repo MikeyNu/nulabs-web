@@ -199,7 +199,7 @@ try{
   assert.equal(await visible.count(),1);assert.match(await page.locator('.filter-announcement').textContent(),/1 project shown/);
   await page.locator('[data-filter="All"]').click();assert.equal(await visible.count(),total);
   const links=await page.locator('.project-art').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')));
-  for(const href of links){await page.locator('.project-art[href="'+href+'"]').click();await page.waitForURL(base+href);assert(await page.locator('h1').isVisible());await capture(page,item,'project-'+href.split('/').filter(Boolean).at(-1));await page.locator('.back-link').click();await page.waitForURL('**/work/');}
+  for(const href of links){await page.locator('.project-art[href="'+href+'"]').click();await page.waitForURL(base+href);assert(await page.locator('h1').isVisible());await capture(page,item,'project-'+href.split('/').filter(Boolean).at(-1));await page.getByRole('navigation',{name:'Breadcrumb'}).getByRole('link',{name:'Solutions',exact:true}).click();await page.waitForURL('**/work/');}
  });
  await scenario('mobile-menu',{viewport:{width:390,height:844},hasTouch:true},async(page,item)=>{
   const toggle=page.locator('.menu-toggle');

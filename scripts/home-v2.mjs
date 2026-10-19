@@ -14,7 +14,7 @@ export function renderHomeV2({ url, escape, link, image, projectArt, content, co
   const cinema = `<div class="cinema" data-cinema data-cinema-landings="${escape(JSON.stringify(m.chapterTimes))}" data-cinema-fps="${escape(m.fps)}">
     <div class="cinema-stage" data-cinema-stage>
       <div class="cinema-media" aria-hidden="true">
-        <img data-cinema-poster src="${url(m.poster)}" width="1920" height="1080" alt="" fetchpriority="high">
+        <img data-cinema-poster src="${url(m.poster)}" srcset="${url(m.mobilePoster)} 960w, ${url(m.poster)} 1920w" sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high">
         <video data-cinema-video data-src="${url(m.video)}" muted playsinline preload="none" tabindex="-1" aria-hidden="true"></video>
       </div>
       <section class="cinema-chapter cinema-arrival" id="arrival" data-cinema-chapter="0" aria-labelledby="hero-title">

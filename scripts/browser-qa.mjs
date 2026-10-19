@@ -285,7 +285,7 @@ try {
     assert.match(await page.locator('.filter-announcement').textContent(), /1 project shown/);
     await page.locator('[data-filter="All"]').click(); assert.equal(await page.locator('[data-project-category]:visible').count(), total);
     const projectLinks = await page.locator('.project-art').evaluateAll(links => links.map(a => a.getAttribute('href')));
-    for (const href of projectLinks) { await page.locator(`.project-art[href="${href}"]`).click(); await page.waitForURL(base + href); assert(await page.locator('h1').isVisible()); await checkOverflow(page); await page.locator('.back-link').click(); await page.waitForURL('**/work/'); }
+    for (const href of projectLinks) { await page.locator(`.project-art[href="${href}"]`).click(); await page.waitForURL(base + href); assert(await page.locator('h1').isVisible()); await checkOverflow(page); await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('link', { name: 'Solutions', exact: true }).click(); await page.waitForURL('**/work/'); }
     const response = await page.goto(base + '/not-a-real-page/', { waitUntil: 'domcontentloaded' }); assert.equal(response.status(), 404);
     assert(await page.locator('h1').isVisible()); await page.locator('main a').click(); await page.waitForURL(base + '/');
   });

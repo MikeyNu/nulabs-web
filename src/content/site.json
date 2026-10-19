@@ -4,7 +4,7 @@
   "brand": "Nu Labs",
   "locale": "en-ZA",
   "site": {
-    "title": "Nu Labs | Software built around your business.",
+    "title": "Custom Software Development & Business Systems | Nu Labs",
     "description": "Nu Labs develops ERP, CRM, POS, AI and cybersecurity solutions, alongside custom web software and native Android and iOS applications.",
     "nav": [
       {
@@ -39,7 +39,7 @@
     }
   },
   "home": {
-    "meta_title": "Nu Labs | Software built around your business.",
+    "meta_title": "Custom Software Development & Business Systems | Nu Labs",
     "hero": {
       "headline": "Ideas made real.",
       "headline_segments": [
@@ -111,10 +111,11 @@
         "label": "Start a conversation",
         "href": "/contact"
       }
-    }
+    },
+    "meta_description": "Nu Labs builds custom software, ERP, CRM and POS systems, native Android and iOS apps, AI assistants and cybersecurity applications for business."
   },
   "work": {
-    "meta_title": "Software solutions | Nu Labs",
+    "meta_title": "ERP, CRM, POS, AI & Mobile Software Solutions | Nu Labs",
     "label": "Solutions / What we build",
     "headline": "Software for\nthe work ahead.",
     "intro": "We develop in-house software solutions and custom applications for business. Explore ERP, CRM, POS, AI, cybersecurity and native mobile development.",
@@ -149,7 +150,16 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "ERP Software Development & Integration | Nu Labs",
+        "meta_description": "Connect inventory, purchasing, orders and approvals with ERP software from Nu Labs. Explore an illustrative operations interface and development scope.",
+        "service_name": "ERP software development",
+        "overview": "Nu Labs develops enterprise resource planning (ERP) systems that connect operational records and workflows. We scope the modules, permissions and integrations around how your organisation buys, manages stock and fulfils orders.",
+        "service_id": "business-systems",
+        "related": [
+          "crm",
+          "pos"
+        ]
       },
       {
         "id": "crm",
@@ -173,7 +183,16 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "CRM Software Development & Customer Workflows | Nu Labs",
+        "service_name": "CRM software development",
+        "overview": "Nu Labs develops customer relationship management (CRM) software for shared customer records, sales activity and follow-up. We work with your team to define the stages, responsibilities and connections each relationship needs.",
+        "service_id": "business-systems",
+        "related": [
+          "erp",
+          "ai"
+        ],
+        "meta_description": "Build clearer customer workflows with Nu Labs CRM development: contacts, sales pipelines, activity history and integrations shaped around your team."
       },
       {
         "id": "pos",
@@ -197,7 +216,16 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "POS Software Development & Retail Systems | Nu Labs",
+        "meta_description": "Explore point-of-sale software development from Nu Labs, covering product catalogues, checkout workflows, stock integration and retail system requirements.",
+        "service_name": "Point-of-sale software development",
+        "overview": "Nu Labs develops point-of-sale (POS) applications for the work at the counter and the records behind it. We define product, basket, stock and reporting requirements together, then assess the relevant device and payment integrations.",
+        "service_id": "business-systems",
+        "related": [
+          "erp",
+          "mobile"
+        ]
       },
       {
         "id": "mobile",
@@ -221,7 +249,16 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "Native Android & iOS App Development | Nu Labs",
+        "meta_description": "Nu Labs develops native Android and iOS apps with considered mobile UX, API integrations and release preparation. Explore a field-work interface concept.",
+        "service_name": "Native Android and iOS application development",
+        "overview": "Nu Labs designs and develops native Android and iOS applications. We plan the core journeys, data connections and platform requirements around the person using the app, whether they are at a desk, on site or moving between tasks.",
+        "service_id": "mobile",
+        "related": [
+          "erp",
+          "ai"
+        ]
       },
       {
         "id": "ai",
@@ -245,7 +282,16 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "AI Chatbots, Assistants & Business Automation | Nu Labs",
+        "meta_description": "Develop business chatbots, knowledge assistants and workflow automation with Nu Labs. Define data access, evaluation and human handoff around the task.",
+        "service_name": "AI chatbot and business automation development",
+        "overview": "Nu Labs builds AI chatbots, knowledge assistants and workflow automation for defined business tasks. We plan which information the system can use, how answers are evaluated and when a person needs to review or take over.",
+        "service_id": "ai",
+        "related": [
+          "crm",
+          "cybersecurity"
+        ]
       },
       {
         "id": "cybersecurity",
@@ -269,17 +315,27 @@
         "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
         "cta": "Explore the solution",
         "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
-        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+        "outcome": "A tailored solution scope, agreed against the actual business requirements.",
+        "meta_title": "Cybersecurity Software & Security Workflows | Nu Labs",
+        "meta_description": "Nu Labs develops cybersecurity applications for incident triage, investigation, access visibility and reporting. Explore an illustrative security workspace.",
+        "service_name": "Cybersecurity application development",
+        "overview": "Nu Labs develops cybersecurity applications and interfaces that help teams organise security information. We design incident triage, investigation and activity workflows around the signals, responsibilities and integrations the application needs.",
+        "service_id": "security",
+        "related": [
+          "ai",
+          "mobile"
+        ]
       }
     ],
     "closing_headline": "What does your\nbusiness need next?",
     "closing_link": {
       "label": "Talk about a project",
       "href": "/contact"
-    }
+    },
+    "meta_description": "Explore the software Nu Labs develops: ERP, CRM, POS, native mobile apps, AI and cybersecurity. View illustrative interfaces and potential project scope."
   },
   "studio": {
-    "meta_title": "Software engineering and design | Nu Labs",
+    "meta_title": "About Nu Labs | Software Engineering & UI/UX Design",
     "label": "Nu Labs / How we work",
     "headline": "Understand the work.\nBuild the right system.",
     "intro": "We are software engineers and UI/UX designers. We develop in-house solutions and custom software that connects business needs with a considered user experience.",
@@ -312,10 +368,11 @@
         "label": "Start a conversation",
         "href": "/contact"
       }
-    }
+    },
+    "meta_description": "Learn how Nu Labs combines software engineering and UI/UX design, from understanding your operation to building, testing and refining useful applications."
   },
   "services": {
-    "meta_title": "Software development services | Nu Labs",
+    "meta_title": "Custom Software, App Development & UI/UX Services | Nu Labs",
     "label": "Services / Design, engineering and integration",
     "headline": "From business need\nto working software.",
     "intro": "Custom development and in-house solutions, shaped around your operation. We connect software engineering, UI/UX and the systems your team depends on.",
@@ -332,7 +389,12 @@
           "Point-of-sale applications",
           "System integration and reporting"
         ],
-        "outcome": "A scope shaped around your processes and existing systems."
+        "outcome": "A scope shaped around your processes and existing systems.",
+        "solution_ids": [
+          "erp",
+          "crm",
+          "pos"
+        ]
       },
       {
         "number": "02",
@@ -346,7 +408,10 @@
           "Mobile UI/UX design",
           "API integration and release preparation"
         ],
-        "outcome": "A mobile experience with clear actions and considered platform behaviour."
+        "outcome": "A mobile experience with clear actions and considered platform behaviour.",
+        "solution_ids": [
+          "mobile"
+        ]
       },
       {
         "number": "03",
@@ -360,7 +425,10 @@
           "Process automation",
           "Evaluation and human review"
         ],
-        "outcome": "A defined use case with explicit boundaries and measurable acceptance criteria."
+        "outcome": "A defined use case with explicit boundaries and measurable acceptance criteria.",
+        "solution_ids": [
+          "ai"
+        ]
       },
       {
         "number": "04",
@@ -374,7 +442,10 @@
           "Access and activity views",
           "Security tooling integrations"
         ],
-        "outcome": "A practical workflow whose capabilities and limits are agreed during scoping."
+        "outcome": "A practical workflow whose capabilities and limits are agreed during scoping.",
+        "solution_ids": [
+          "cybersecurity"
+        ]
       },
       {
         "number": "05",
@@ -388,7 +459,11 @@
           "Responsive and native application design",
           "Usability and accessibility reviews"
         ],
-        "outcome": "A clear product direction that can be tested before and during development."
+        "outcome": "A clear product direction that can be tested before and during development.",
+        "solution_ids": [
+          "mobile",
+          "crm"
+        ]
       },
       {
         "number": "06",
@@ -402,7 +477,11 @@
           "Existing-system integration",
           "Testing, maintenance and refinement"
         ],
-        "outcome": "Software shaped around the agreed requirements, delivery stages and support needs."
+        "outcome": "Software shaped around the agreed requirements, delivery stages and support needs.",
+        "solution_ids": [
+          "erp",
+          "ai"
+        ]
       }
     ],
     "process": {
@@ -454,10 +533,11 @@
         "label": "Talk about your project",
         "href": "/contact"
       }
-    }
+    },
+    "meta_description": "Explore Nu Labs software development services: business systems, native apps, AI, cybersecurity software, UI/UX design and integrations. See how we work."
   },
   "contact": {
-    "meta_title": "Contact | Nu Labs",
+    "meta_title": "Plan Your Software Project | Contact Nu Labs",
     "label": "Contact / Start a conversation",
     "headline": "Tell us what\nyou have in mind.",
     "intro": "A business system, an AI workflow or a native application. Tell us what needs to work better.",
@@ -520,7 +600,8 @@
       }
     },
     "secondary_statement": "The first step\nis a conversation.",
-    "contact_details_status": "No verified email, telephone number, street address or booking URL supplied. Do not invent them."
+    "contact_details_status": "No verified email, telephone number, street address or booking URL supplied. Do not invent them.",
+    "meta_description": "Outline your software project, business needs and integrations with the Nu Labs brief builder. Prepare and download your enquiry locally, ready to share."
   },
   "claims_register": [
     {

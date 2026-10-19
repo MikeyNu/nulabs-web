@@ -70,6 +70,16 @@ npm run qa:browser
 
 NU_QA_OUTPUT and NU_QA_CASES optionally choose an evidence folder and scenario subset. The harness checks actual presented frames; its pass does not independently certify visual art direction. See docs/higgsfield-integration.md for the executed scope.
 
+## Search and sharing
+
+The production origin is `https://www.nulabs.co.za`, verified against the connected Vercel project. Each page has unique search copy, a canonical URL, Open Graph/Twitter metadata and truthful structured data. The build generates robots.txt and sitemap.xml. Vercel previews and custom review environments emit noindex; a production build remains indexable.
+
+Edit `meta_title` and `meta_description` in `src/content/site.json`. The optional `SITE_URL` override must be an HTTPS origin. Use `SEO_NOINDEX=1` for a non-Vercel staging build; leave `BASE_PATH` unset on Vercel. Keep Vercel system environment variables enabled. Search Console sitemap submission is a separate owner/account step.
+
+`npm run check` now checks generated SEO output as well as local resources. `npm run qa:seo` uses the existing NU_QA_PLAYWRIGHT, NU_QA_BROWSER_PATH, NU_QA_URL and NU_QA_OUTPUT settings to crawl all pages without JavaScript and inspect desktop/mobile rendering. See [the audit and maintenance guide](docs/seo-audit.md) for findings, evidence and remaining business requirements.
+
+The seven social PNG previews are generated from editable layouts in `art/social/render.mjs`; rendering them is an optional authoring operation, not a build dependency. Webpage photography remains WebP and the interface studies remain editable SVG.
+
 ## Release limits
 
 ~~~powershell

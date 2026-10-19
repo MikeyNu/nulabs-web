@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { checkSeo } from './check-seo.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const base = '/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '');
@@ -57,11 +58,13 @@ for(const file of files.filter(f=>f.endsWith('.css'))) {
   }
 }
 const manifest=JSON.parse(await fs.readFile(path.join(root,'src/content/media.json'),'utf8'));
+const content=JSON.parse(await fs.readFile(path.join(root,'src/content/site.json'),'utf8'));
+errors.push(...await checkSeo(dist,content,manifest));
 if(process.argv.includes('--release')) {
   for(const field of ['video','poster','mobilePoster'])if(!manifest.journey[field])errors.push(`Release gate: journey.${field} has not been delivered`);
   if(manifest.journey.status!=='verified')errors.push('Release gate: actual temporal, responsive and reduced-motion QA remains required');
   if(!manifest.contact.endpoint&&!manifest.contact.email)errors.push('Release gate: real enquiry delivery/contact destination has not been configured');
 }
 if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}
-else console.log(`PASS: ${htmlFiles.length} HTML routes, local links/fragments, image markup, CSS resources and deployment base.`);
+else console.log(`PASS: ${htmlFiles.length} HTML routes, links/fragments, images, CSS, canonical metadata, unique search copy, schema, sitemap, indexing policy and social assets.`);
 if(manifest.journey.status!=='verified')console.log(`Media status: ${manifest.journey.status}. This check does not certify runtime or appearance.`);

@@ -842,6 +842,15 @@ a:hover .arrow,button:hover .arrow {
   padding-top:75px;
   padding-bottom:90px
 }
+.breadcrumb {font-size:14px;line-height:1.5;margin-bottom:32px}
+.breadcrumb ol {display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.breadcrumb li {display:flex;gap:10px;align-items:baseline}
+.breadcrumb li+li::before {content:'/';color:var(--muted)}
+.breadcrumb a {text-decoration:underline;text-underline-offset:4px}
+.breadcrumb [aria-current] {color:var(--muted)}
+.case-masthead .breadcrumb {margin-bottom:70px}
+.solution-links {list-style:none;padding:0;margin:26px 0;display:grid;gap:16px}
+.solution-links .text-link {font-size:16px;line-height:1.5;max-width:100%}
 .page-masthead h1 {
   font-size:clamp(70px,9.5vw,156px);
   line-height:.96;
