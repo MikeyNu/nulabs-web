@@ -11,3 +11,6 @@ qa-output/
 art/renders/
 art/*.blend1
 art/*.blend2
+
+# Local Vercel project and environment metadata
+.vercel/

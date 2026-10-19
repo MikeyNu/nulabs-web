@@ -1,0 +1,9 @@
+art/
+docs/
+qa-output/
+private/
+coverage/
+node_modules/
+dist/
+.env
+.env.*

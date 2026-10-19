@@ -78,3 +78,7 @@ For a repository subpath, set BASE_PATH consistently for build and check. Eight 
 ## Attribution
 
 Instrument Sans uses the SIL Open Font License included in public/assets/OFL-InstrumentSans.txt. Nu Labs identity and supplied brand assets remain the company's material. Generated people and project imagery are labelled as illustrative concepts. The original MIT licence remains unchanged.
+
+## Vercel
+
+Import this repository with Framework Preset **Other** and repository root as Root Directory. `vercel.json` skips installation, runs tests/build/output checks, and serves `dist` with folder-based routes. Select Node.js 24.x and leave BASE_PATH unset. See [Vercel deployment](docs/vercel-deployment.md) for import settings, hosted verification and the existing launch limitations. No Vercel deployment is created by these configuration files alone.
