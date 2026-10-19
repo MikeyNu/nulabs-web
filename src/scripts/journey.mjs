@@ -31,6 +31,7 @@ export const JOURNEY_TIMELINE = Object.freeze({
   endTime: 7.9,
   frameTolerance: 1 / 30,
 });
+const HISTORY_KEY = '__nuLabsJourney';
 
 export function clamp(value, min = 0, max = 1) {
   return Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : min;
@@ -192,6 +193,7 @@ export function initJourney(root, options = {}) {
   const narrowQuery = win.matchMedia('(max-width: 767px)');
   const shortQuery = win.matchMedia('(max-height: 600px)');
   const compactAspectQuery = win.matchMedia('(max-aspect-ratio: 5/4)');
+  const navigationType = win.performance?.getEntriesByType?.('navigation')?.[0]?.type;
   const source = (options.src || video.getAttribute('data-src')
     || video.getAttribute('src') || video.querySelector('source[src]')?.getAttribute('src') || '').trim();
   const restored = [];
@@ -213,12 +215,95 @@ export function initJourney(root, options = {}) {
   let visible = root.getBoundingClientRect().bottom > 0
     && root.getBoundingClientRect().top < win.innerHeight;
   let domFrame = null;
+  let anchorFrame = null;
+  let restorationFrame = null;
+  let scrollSettleTimeout = null;
   let presentationFrame = null;
   let readinessTimeout = null;
   let seekTimeout = null;
   let pendingPresentationTime = null;
   let geometry = { start: 0, height: 1, stageHeight: 1 };
   let progress = 0;
+  let restoration = readRestoration();
+
+  function readRestoration() {
+    // A fresh navigation must never inherit another visit's position. BFcache
+    // restores this existing instance and its enhanced DOM without this path.
+    if (!['reload', 'back_forward'].includes(navigationType) || win.location.hash) return null;
+    try {
+      const saved = win.history?.state?.[HISTORY_KEY];
+      return saved?.version === 1 && saved.href === win.location.href
+        && Number.isFinite(saved.progress) && saved.progress >= 0 && saved.progress <= 1 ? saved : null;
+    } catch { return null; }
+  }
+
+  function saveRestoration() {
+    // Native restoration may emit scrollend while our temporary layout is
+    // still loading. Do not replace the saved intent with that placeholder.
+    if (disposed || restoration || !win.history?.replaceState) return;
+    try {
+      const current = win.history.state;
+      if (current !== null && Object.prototype.toString.call(current) !== '[object Object]') return;
+      const next = { ...current };
+      measure();
+      const travel = Math.max(1, geometry.height - geometry.stageHeight);
+      if (state === 'enhanced' && !win.location.hash && win.scrollY >= geometry.start
+        && win.scrollY <= geometry.start + travel) {
+        const position = getScrollProgress(win.scrollY, geometry.start, geometry.height, geometry.stageHeight);
+        if (next[HISTORY_KEY]?.version === 1 && next[HISTORY_KEY].href === win.location.href
+          && Math.abs(next[HISTORY_KEY].progress - position) < 0.00001) return;
+        next[HISTORY_KEY] = { version: 1, href: win.location.href, progress: position };
+      } else if (next[HISTORY_KEY]) delete next[HISTORY_KEY];
+      else return;
+      win.history.replaceState(next, '');
+    } catch { /* Restricted history access must not break navigation. */ }
+  }
+
+  function saveSettledPosition() {
+    if (scrollSettleTimeout !== null) win.clearTimeout(scrollSettleTimeout);
+    scrollSettleTimeout = null;
+    saveRestoration();
+  }
+
+  function scheduleSettledPosition() {
+    // Older browsers lack scrollend. One trailing deadline saves the final
+    // position of a gesture, never each animation frame or intermediate scroll.
+    if (scrollSettleTimeout !== null) win.clearTimeout(scrollSettleTimeout);
+    scrollSettleTimeout = win.setTimeout(saveSettledPosition, 150);
+  }
+
+  function cancelRestoration() {
+    if (restorationFrame !== null) win.cancelAnimationFrame(restorationFrame);
+    restorationFrame = null;
+    restoration = null;
+  }
+
+  function restoreReadingPosition() {
+    if (disposed || !restoration || restorationFrame !== null) return;
+    const saved = restoration;
+    restorationFrame = win.requestAnimationFrame(() => {
+      restorationFrame = win.requestAnimationFrame(() => {
+        restorationFrame = null;
+        if (disposed || restoration !== saved || win.location.href !== saved.href) return;
+        restoration = null;
+        if (state === 'enhanced') {
+          measure();
+          const top = geometry.start + saved.progress * Math.max(1, geometry.height - geometry.stageHeight);
+          win.scrollTo({ top, behavior: 'instant' });
+        } else {
+          // A changed device/preference or unavailable video still restores
+          // the reading destination rather than a meaningless tall-pin offset.
+          const index = saved.progress >= JOURNEY_TIMELINE.travelEnd ? '1' : '0';
+          chapters.find(chapter => chapter.dataset.chapter === index)
+            ?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' });
+        }
+        const rect = root.getBoundingClientRect();
+        visible = rect.bottom > 0 && rect.top < win.innerHeight;
+        refresh();
+        suspendRenderer();
+      });
+    });
+  }
 
   restored.push(rememberAttributes(root, ['data-journey-state', 'data-journey-reason', 'data-media-status']));
   restored.push(rememberStyles(root, ['--journey-progress']));
@@ -269,10 +354,10 @@ export function initJourney(root, options = {}) {
   }
 
   function armReadinessTimeout() {
-    if (readinessTimeout !== null || framePresented || !sourceAttached || !visible || doc.hidden || staticReason()) return;
+    if (readinessTimeout !== null || framePresented || !sourceAttached || (!visible && !restoration) || doc.hidden || staticReason()) return;
     readinessTimeout = win.setTimeout(() => {
       readinessTimeout = null;
-      if (!framePresented && visible && !doc.hidden && !staticReason()) failMedia();
+      if (!framePresented && (visible || restoration) && !doc.hidden && !staticReason()) failMedia();
     }, options.readinessTimeoutMs ?? 15000);
   }
 
@@ -286,13 +371,49 @@ export function initJourney(root, options = {}) {
     }, options.seekTimeoutMs ?? 8000);
   }
 
-  function isChapterAnchor() {
-    const hash = win.location.hash;
-    if (!hash) return false;
+  function chapterAnchorTarget(hash = win.location.hash) {
+    if (!hash) return null;
     let id;
-    try { id = decodeURIComponent(hash.slice(1)); } catch { return false; }
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return null; }
     const target = doc.getElementById(id);
-    return Boolean(target && chapters.some((chapter) => chapter === target || chapter.contains(target)));
+    return target && chapters.some((chapter) => chapter === target || chapter.contains(target)) ? target : null;
+  }
+
+  function cancelAnchorAlignment() {
+    if (anchorFrame !== null) win.cancelAnimationFrame(anchorFrame);
+    anchorFrame = null;
+  }
+
+  function alignChapterAnchor(hash = win.location.hash, activation = null) {
+    cancelAnchorAlignment();
+    const target = chapterAnchorTarget(hash);
+    if (disposed || !target) return;
+    // Native fragment scrolling can run against the previous pinned geometry.
+    // Let normal-flow layout and the browser's own navigation settle first.
+    // scrollIntoView retains CSS scroll-padding/margin and never changes focus.
+    anchorFrame = win.requestAnimationFrame(() => {
+      anchorFrame = win.requestAnimationFrame(() => {
+        anchorFrame = null;
+        if (disposed || activation?.defaultPrevented || win.location.hash !== hash
+          || state === 'enhanced' || chapterAnchorTarget(hash) !== target) return;
+        target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'instant' });
+      });
+    });
+  }
+
+  function onChapterLink(event) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target?.closest?.('a[href]');
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+    let destination;
+    try { destination = new URL(link.getAttribute('href'), win.location.href); } catch { return; }
+    if (destination.origin !== win.location.origin || destination.pathname !== win.location.pathname
+      || destination.search !== win.location.search || !chapterAnchorTarget(destination.hash)) return;
+    cancelRestoration();
+    // Do not preventDefault or rewrite history. This also covers reactivating
+    // the current fragment, for which browsers do not emit another hashchange.
+    showNormalFlow('chapter-anchor');
+    alignChapterAnchor(destination.hash, event);
   }
 
   function staticReason() {
@@ -305,7 +426,7 @@ export function initJourney(root, options = {}) {
     if (compactAspectQuery.matches) return 'compact-aspect';
     if (userPaused) return 'paused';
     if (focusSafetyHeld) return 'keyboard-focus';
-    if (isChapterAnchor()) return 'chapter-anchor';
+    if (chapterAnchorTarget()) return 'chapter-anchor';
     return null;
   }
 
@@ -343,7 +464,7 @@ export function initJourney(root, options = {}) {
 
   function suspendRenderer() {
     seeker.setSuspended(state !== 'enhanced' || !visible || doc.hidden);
-    if (!visible || doc.hidden || staticReason()) {
+    if ((!visible && !restoration) || doc.hidden || staticReason()) {
       clearReadinessTimeout();
       clearSeekTimeout();
       return;
@@ -470,6 +591,7 @@ export function initJourney(root, options = {}) {
     clearSeekTimeout();
     root.classList.remove('journey-frame-ready');
     showNormalFlow('media-error');
+    restoreReadingPosition();
   }
 
   const seeker = createLatestSeekController({
@@ -509,9 +631,10 @@ export function initJourney(root, options = {}) {
     const why = staticReason();
     if (why) {
       showNormalFlow(why);
+      restoreReadingPosition();
       return;
     }
-    if (!sourceAttached && visible && !doc.hidden) beginLoading();
+    if (!sourceAttached && (visible || restoration) && !doc.hidden) beginLoading();
     if (!framePresented) {
       showNormalFlow(sourceAttached ? 'awaiting-frame' : 'offscreen', sourceAttached ? 'loading' : 'static');
       return;
@@ -523,13 +646,32 @@ export function initJourney(root, options = {}) {
     measure();
     suspendRenderer();
     scheduleDOM();
+    restoreReadingPosition();
   }
 
   listen(win, 'scroll', scheduleDOM, { passive: true });
   listen(win, 'resize', refresh, { passive: true });
   listen(win, 'orientationchange', refresh, { passive: true });
-  listen(win, 'pageshow', () => { reconcilePolicy(); refresh(); });
-  listen(win, 'hashchange', reconcilePolicy);
+  listen(win, 'pageshow', event => {
+    reconcilePolicy(); refresh();
+    // BFcache already retains the real document and its native viewport, which
+    // may have moved well beyond the fragment since it was first followed.
+    if (!event.persisted && !['reload', 'back_forward'].includes(navigationType)) alignChapterAnchor();
+  });
+  // Reload may snapshot history before pagehide changes are retained. Save at
+  // the end of native scrolling, keeping pagehide only as a final best effort.
+  if ('onscrollend' in win) listen(win, 'scrollend', saveSettledPosition);
+  else listen(win, 'scroll', scheduleSettledPosition, { passive: true });
+  listen(win, 'pagehide', saveSettledPosition);
+  listen(win, 'hashchange', () => { cancelRestoration(); reconcilePolicy(); alignChapterAnchor(); });
+  listen(doc, 'click', onChapterLink);
+  // A queued correction must yield to a new user gesture. These listeners only
+  // cancel our one-shot alignment; native wheel, touch and keys stay untouched.
+  const cancelDeferredNavigation = () => { cancelAnchorAlignment(); cancelRestoration(); };
+  listen(win, 'wheel', cancelDeferredNavigation, { passive: true });
+  listen(win, 'touchstart', cancelDeferredNavigation, { passive: true });
+  listen(win, 'pointerdown', cancelDeferredNavigation, { passive: true });
+  listen(win, 'keydown', cancelDeferredNavigation);
   listen(doc, 'visibilitychange', () => {
     if (doc.hidden) {
       if (domFrame !== null) win.cancelAnimationFrame(domFrame);
@@ -608,6 +750,7 @@ export function initJourney(root, options = {}) {
   if (doc.fonts?.ready) doc.fonts.ready.then(() => { if (!disposed) refresh(); });
 
   reconcilePolicy();
+  if (!['reload', 'back_forward'].includes(navigationType)) alignChapterAnchor();
 
   return {
     refresh,
@@ -618,6 +761,9 @@ export function initJourney(root, options = {}) {
       disposed = true;
       seeker.destroy();
       if (domFrame !== null) win.cancelAnimationFrame(domFrame);
+      cancelAnchorAlignment();
+      cancelRestoration();
+      if (scrollSettleTimeout !== null) win.clearTimeout(scrollSettleTimeout);
       if (presentationFrame !== null && video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(presentationFrame);
       clearReadinessTimeout();
       clearSeekTimeout();
