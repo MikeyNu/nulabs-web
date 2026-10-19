@@ -20,7 +20,7 @@ export function renderHomeV2({ url, escape, link, image, projectArt, content, co
       <section class="cinema-chapter cinema-arrival" id="arrival" data-cinema-chapter="0" aria-labelledby="hero-title">
         ${still(chapters[0])}
         <h1 id="hero-title" class="cinema-title"><span>Ideas</span><span>made real.</span></h1>
-        <p class="cinema-intro">Software systems and native apps,<br>built around your business.</p>
+        <p class="cinema-intro">A meeting point for<br>design and technology.</p>
         <p class="cinema-services"><span>Software.</span><span>Systems.</span><span>Native apps.</span></p>
         <a class="cinema-explore" href="#clarity">Explore what we build <span aria-hidden="true">↓</span></a>
       </section>
