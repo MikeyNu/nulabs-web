@@ -1,0 +1,54 @@
+{
+  "startedAt": "2026-10-19T00:56:34.336Z",
+  "finishedAt": "2026-10-19T00:56:59.694Z",
+  "environment": {
+    "os": "Windows",
+    "browser": "Microsoft Edge",
+    "browserVersion": "155.0.4283.62",
+    "automation": "Playwright Core 1.64.1",
+    "headless": true,
+    "browserInstalledByThisTask": false
+  },
+  "unitTests": {
+    "passed": 42,
+    "failed": 0
+  },
+  "browserScenarios": {
+    "passed": 17,
+    "failed": 0,
+    "names": [
+      "desktop-1440-motion",
+      "desktop-1920",
+      "isolated-video-playback-decode",
+      "mobile-390",
+      "tablet-768",
+      "short-desktop",
+      "reduced-motion",
+      "no-js-desktop",
+      "no-js-mobile",
+      "live-reduced-motion",
+      "blocked-video",
+      "routes-navigation-and-filter",
+      "mobile-menu-and-focus",
+      "local-enquiry",
+      "anchors-history",
+      "journey-reload",
+      "below-fold-layouts"
+    ]
+  },
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "durationSeconds": 8.041667,
+    "totalVideoFrames": 193,
+    "droppedVideoFrames": 4,
+    "presentedFrameCallbacks": 189,
+    "http206RangeResponses": 7
+  },
+  "javascriptPageErrors": 0,
+  "sourceSha256": {
+    "src/scripts/journey.mjs": "c1144bdf8122d4e96600bd3bb74b9070c071d8a0ceca8a2f0076b2597d688231",
+    "scripts/browser-qa.mjs": "ccc17cafc372c045799c1ccf5363d1c0f57f9331744c611a2182ef9b0e3e5702"
+  },
+  "scope": "Automated temporal and interaction checks plus reviewed rendered screenshots. No Safari, Firefox, physical-device, comprehensive accessibility, or live contact-delivery verification."
+}

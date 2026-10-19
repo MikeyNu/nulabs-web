@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "status": "integrated-awaiting-browser-qa",
+  "status": "verified",
   "renderer": "video",
   "title": "Nu Labs / Ideas made real",
   "evidence": {
     "approved_reference": "../landing-generation/attempt-01.png",
     "motion": "original proposal from approved still; not recovered motion",
     "generation": "Three approved outputs completed and installed; no paid retries.",
-    "safe_areas": "Inspected 32 frames sampled at 4 fps, plus full-resolution frames 0, 96 and 192. The final sculpture ends around 52% of frame width, leaving the right 48% quiet. Browser cropping and readability remain unverified.",
-    "browser_qa": "Blocked: the required control-browser skill is unavailable. No alternative browser route was used."
+    "safe_areas": "Inspected 32 frames sampled at 4 fps, plus full-resolution frames 0, 96 and 192. The final sculpture ends around 52% of frame width, leaving the right 48% quiet. Actual opening and chapter-two screenshots were reviewed on desktop and mobile, along with secondary routes and the decoded desktop studio crop.",
+    "browser_qa": "The user authorized Desktop Commander testing on Windows. All 17 final cases passed using existing Edge 155.0.4283.62 and temporary Playwright Core 1.64.1 in an isolated headless session. No browser was installed. Evidence is scoped to this configuration."
   },
   "media": {
     "id": "nu-architecture-journey",
@@ -22,7 +22,7 @@
     "poster": "/assets/images/journey-poster-1920.webp",
     "source": "/assets/video/journey-scrub.mp4",
     "source_master": "private production master outside public bundle",
-    "status": "Delivered and decoded; sampled frames inspected. Normal-speed playback remains unverified.",
+    "status": "Delivered and decoded; sampled frames inspected. Final automated full-clip Edge playback reported 193 total frames, four dropped frames and 189 presented-frame callbacks. Visual review did not cover continuous normal-speed playback.",
     "audio": false,
     "baked_ui": false,
     "rights": "original generation from user-approved Nu Labs concept; generated imagery, no third-party reference assets"
@@ -244,7 +244,25 @@
     "media_error": "static full-content composition, no endless preloader"
   },
   "verification": {
-    "status": "PASS: 26 runtime unit tests, build checks for nine HTML documents including 404, source decoding and sampled frame inspection. BLOCKED: browser and temporal interaction QA. NOT RUN: normal-speed playback. Final independent source review completed; the identified mobile control visibility defect was corrected.",
+    "status": "PASS: all 42 unit tests on Windows and Linux, build checks for nine HTML documents including 404, source decoding, sampled frame inspection and all 17 final Windows Edge browser cases. Media integration is verified within this scope. Live contact delivery remains the only release-gate failure.",
+    "browser_scope": "Existing Windows Edge 155.0.4283.62, isolated headless session, desktop widths 1440px and 1920px, phone width 390px, tablet width 768px and short height 600px. No Safari, Firefox, real-device or comprehensive accessibility verification.",
+    "observed_browser_checks": [
+      "forward, reverse and fast video scrubbing with actual frame gating",
+      "seven native HTTP 206 media range responses",
+      "automated full-clip playback: 193 total frames, four dropped frames, 189 presented-frame callbacks",
+      "no-JavaScript, reduced motion, live preference changes and blocked video",
+      "menu focus, navigation, project filters, local brief generation and download",
+      "desktop and mobile opening/chapter-two screenshots, secondary routes and decoded below-fold studio imagery",
+      "anchor click, Back and hash refresh after the positioning fix",
+      "separate journey-reload case and exact footer Back/reload scroll restoration"
+    ],
+    "final_run": {
+      "started_at": "2026-10-19T00:56:34.336Z",
+      "ended_at": "2026-10-19T00:56:59.694Z",
+      "passed": 17,
+      "failed": 0,
+      "summary": "docs/browser-qa-summary.json"
+    },
     "required": [
       "actual frame inspection including reading holds and transitions",
       "forward/reverse and fast jumps",
