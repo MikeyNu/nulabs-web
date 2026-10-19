@@ -31,17 +31,17 @@
   ],
   "redirects": [
     {
-      "source": "/work/nu-labs-identity/:path*",
+      "source": "/work/nu-labs-identity/",
       "destination": "/work/",
       "permanent": true
     },
     {
-      "source": "/work/studio-index/:path*",
+      "source": "/work/studio-index/",
       "destination": "/work/",
       "permanent": true
     },
     {
-      "source": "/work/open-house/:path*",
+      "source": "/work/open-house/",
       "destination": "/work/",
       "permanent": true
     }
