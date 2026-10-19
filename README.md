@@ -29,7 +29,8 @@ All assets required by the build, including the Higgsfield video, eight chapter 
 - Copy appears over the corresponding presented frame, with space cleared during the main camera moves.
 - The work gallery carries an introductory panel and three project panels horizontally, then returns to normal vertical flow.
 - Native scrolling is the sole scroll owner. No wheel interception or smooth-scroll engine.
-- Narrow, portrait, short and reduced-motion layouts use complete normal-flow chapters.
+- Phones and tablets scrub the same Higgsfield camera journey using a 960 × 540 H.264 derivative. Rotation preserves the chapter position.
+- Reduced motion, unavailable media and no JavaScript retain complete normal-flow chapters. The mobile work gallery remains in normal flow.
 - Solutions, Studio, Services, Contact and six solution-detail routes are available.
 - The contact form prepares an enquiry locally. Live delivery is not configured.
 
@@ -67,6 +68,8 @@ $env:NU_QA_BROWSER_PATH = 'C:\path\to\msedge.exe'
 $env:NU_QA_URL = 'http://localhost:3000'
 npm run qa:browser
 ~~~
+
+Run `node scripts/mobile-scrub-qa.mjs` with the same environment variables for touch, rotation, presented frames and mobile fallbacks. Set `NU_QA_ENGINE=webkit` for WebKit checks. See [mobile scrubbing verification](docs/mobile-scrub-qa.md) for the scope and physical-device limitation.
 
 NU_QA_OUTPUT and NU_QA_CASES optionally choose an evidence folder and scenario subset. The harness checks actual presented frames; its pass does not independently certify visual art direction. See docs/higgsfield-integration.md for the executed scope.
 

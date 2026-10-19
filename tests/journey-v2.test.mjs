@@ -63,7 +63,7 @@ test('incomplete markup returns safe disposable handles', () => {
 
 // Minimal event/DOM doubles check lifecycle behavior. Actual presentation and
 // visual readability are separately checked in the real Windows browser.
-function harness({ reduced = false, compact = false, api = true, media = true, horizontal = false, hash = '', navigationType = 'navigate', historyState = null, timeline = CINEMA_TIMELINE, readyState = 2, duration = DURATION } = {}) {
+function harness({ reduced = false, compact = false, api = true, codec = true, media = true, horizontal = false, hash = '', navigationType = 'navigate', historyState = null, timeline = CINEMA_TIMELINE, readyState = 2, duration = DURATION } = {}) {
   const raf = new Map(), timers = new Map(), videoCallbacks = new Map();
   let serial = 0;
   class Element extends EventTarget {
@@ -114,6 +114,7 @@ function harness({ reduced = false, compact = false, api = true, media = true, h
   win.cancelAnimationFrame = id => raf.delete(id);
   win.setTimeout = fn => { const id = ++serial; timers.set(id, fn); return id; };
   win.clearTimeout = id => timers.delete(id);
+  video.canPlayType = () => codec ? 'probably' : '';
   video.pause = () => { video.paused = true; };
   video.load = () => { video.loads = (video.loads || 0) + 1; };
   video.readyState = readyState; video.duration = duration; video.currentTime = 0; video.seeking = false; video.muted = false;
@@ -141,8 +142,8 @@ test('cinema does not pin or reveal video before an actual presented frame', () 
   assert.equal(h.chapters[1].hasAttribute('inert'), true);
   h.instance.destroy();
 });
-test('reduced motion, compact screens and unsupported video remain complete without a media request', () => {
-  for (const config of [{ reduced: true }, { compact: true }, { api: false }, { media: false }]) {
+test('reduced motion and unsupported video remain complete without a media request', () => {
+  for (const config of [{ reduced: true }, { codec: false }, { media: false }]) {
     const h = harness(config);
     assert.equal(h.instance.getState().state, 'static');
     assert.equal(h.video.getAttribute('src'), null);
@@ -314,4 +315,44 @@ test('nonuniform configuration drives the real lifecycle seek and waits for the 
   h.present(6.125); h.flush();
   assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'false');
   h.instance.destroy();
+});
+
+
+test('compact screens request media and scrub while their work rail stays in normal flow', () => {
+  const h = harness({ compact: true });
+  assert.equal(h.instance.getState().state, 'loading');
+  assert.ok(h.video.getAttribute('src'));
+  h.present(0); h.flush();
+  h.win.scrollY = 2700; h.emit('scroll'); h.flush(); h.flush();
+  assert.equal(h.instance.getState().targetTime, 8);
+  h.present(8); h.emit('seeked', h.video); h.flush();
+  assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'false');
+  h.win.scrollY = 0; h.emit('scroll'); h.flush(); h.flush();
+  h.present(0); h.flush();
+  assert.equal(h.chapters[0].getAttribute('aria-hidden'), 'false');
+  h.preference(true);
+  assert.equal(h.instance.getState().reason, 'reduced-motion');
+  h.instance.destroy();
+  const rail = harness({ compact: true, horizontal: true });
+  assert.equal(rail.instance.getState().state, 'static');
+  assert.equal(rail.instance.getState().reason, 'compact-viewport');
+  rail.instance.destroy();
+});
+
+
+test('video without frame callbacks waits for decoded data and completed seeks', () => {
+  const h = harness({ compact: true, api: false, readyState: 1 });
+  h.flush(); h.flush();
+  assert.equal(h.instance.getState().state, 'loading');
+  h.video.readyState = 2; h.emit('loadeddata', h.video);
+  h.flush(); h.flush(); h.flush();
+  assert.equal(h.instance.getState().state, 'enhanced');
+  h.win.scrollY = 2700; h.emit('scroll'); h.flush(); h.flush();
+  h.video.seeking = true; h.flush(); h.flush();
+  assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'true');
+  h.video.seeking = false; h.emit('seeked', h.video);
+  h.flush(); h.flush(); h.flush();
+  assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'false');
+  h.instance.destroy();
+  assert.equal(h.raf.size, 0);
 });

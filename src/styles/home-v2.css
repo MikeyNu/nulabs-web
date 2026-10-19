@@ -249,3 +249,71 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
   .work-panel-art,.work-grid .project-card:last-child .project-art {aspect-ratio:3/2}
   .case-title h1.case-title-long {font-size:clamp(42px,13.5vw,82px)}
 }
+
+/* The camera journey also belongs on touch screens. Keep the full composition
+   above the reading area instead of cropping a landscape scene to phone width.
+   svh keeps the timeline stable as mobile browser controls expand/collapse. */
+@media(max-width:999px),(max-aspect-ratio:5/4) {
+  .cinema-enhanced {height:600svh}
+  .cinema-enhanced .cinema-chapter {padding:0;min-height:0}
+  .cinema-enhanced .cinema-media img,
+  .cinema-enhanced .cinema-media video {top:12%;height:45%;object-fit:contain}
+  .cinema-enhanced .cinema-title {inset:105px 22px 190px}
+  .cinema-enhanced .cinema-title span:first-child {font-size:clamp(76px,21vw,160px)}
+  .cinema-enhanced .cinema-title span:last-child {font-size:clamp(54px,16.5vw,130px);margin:0}
+  .cinema-enhanced .cinema-intro {top:auto;bottom:132px;right:22px;font-size:12px;max-width:145px}
+  .cinema-enhanced .cinema-services {left:22px;bottom:132px;font-size:12px}
+  .cinema-enhanced .cinema-explore {left:22px;bottom:78px;font-size:14px;min-height:44px}
+  .cinema-enhanced .cinema-copy,
+  .cinema-enhanced .cinema-clarity .cinema-copy,
+  .cinema-enhanced .cinema-craft .cinema-copy,
+  .cinema-enhanced .cinema-possibility .cinema-copy {
+    top:auto;bottom:78px;left:22px;right:22px;transform:none;
+    width:auto;max-width:640px;margin:0 auto;padding:20px 24px;
+    background:#f7f7f2;clip-path:polygon(0 0,100% 0,100% 100%,24px 100%,0 calc(100% - 24px));
+  }
+  .cinema-enhanced .cinema-copy h2,
+  .cinema-enhanced .cinema-craft .cinema-copy h2 {font-size:clamp(38px,12vw,64px);line-height:.98}
+  .cinema-enhanced .cinema-copy .eyeline {font-size:10px;line-height:1.4;margin-bottom:12px}
+  .cinema-enhanced .cinema-copy p {font-size:15px;line-height:1.45;max-width:42ch;margin:14px 0 4px}
+  .cinema-enhanced .cinema-copy .text-link {font-size:14px;min-height:44px}
+  .cinema-enhanced .cinema-disciplines {gap:24px;margin-top:8px;font-size:14px}
+  .cinema-enhanced .cinema-disciplines a {gap:16px;padding:12px 0;min-height:44px}
+  .cinema-enhanced .cinema-possibility .cinema-cut {background:var(--ink);color:var(--paper)}
+  .cinema-enhanced .cinema-side-note {display:none}
+  .cinema-enhanced .cinema-controls {left:22px;right:22px;bottom:10px;gap:16px;font-size:11px}
+  .cinema-enhanced .cinema-meter {flex:1;max-width:100px;min-width:16px;width:auto}
+  .cinema-enhanced .cinema-controls button {margin-left:0;white-space:nowrap}
+  .cinema-enhanced .cinema-controls a {white-space:nowrap}
+}
+/* A short landscape viewport needs side-by-side media and copy. */
+@media(max-height:649px) and (min-aspect-ratio:5/4) {
+  body[data-page="home"] .site-header {height:70px}
+  .cinema-enhanced {height:700svh}
+  .cinema-enhanced .cinema-chapter {padding:0;min-height:0}
+  .cinema-enhanced .cinema-media img,
+  .cinema-enhanced .cinema-media video {inset:72px auto 55px 0;width:52%;height:calc(100% - 127px);object-fit:contain}
+  .cinema-enhanced .cinema-copy,
+  .cinema-enhanced .cinema-clarity .cinema-copy,
+  .cinema-enhanced .cinema-craft .cinema-copy,
+  .cinema-enhanced .cinema-possibility .cinema-copy {
+    top:50%;bottom:auto;left:auto;right:22px;transform:translateY(-40%);
+    width:44%;max-width:640px;padding:14px 18px;background:#f7f7f2;
+  }
+  .cinema-enhanced .cinema-copy h2,
+  .cinema-enhanced .cinema-craft .cinema-copy h2 {font-size:clamp(30px,7.5svh,46px);line-height:.98}
+  .cinema-enhanced .cinema-copy .eyeline {font-size:10px;margin-bottom:8px}
+  .cinema-enhanced .cinema-copy p {font-size:13px;line-height:1.4;margin:10px 0 0;max-width:48ch}
+  .cinema-enhanced .cinema-copy .text-link,.cinema-enhanced .cinema-disciplines {font-size:13px}
+  .cinema-enhanced .cinema-disciplines {margin-top:0;gap:24px}
+  .cinema-enhanced .cinema-disciplines a {padding:12px 0;min-height:44px}
+  .cinema-enhanced .cinema-title {inset:88px 22px 80px}
+  .cinema-enhanced .cinema-title span:first-child {font-size:15svh}
+  .cinema-enhanced .cinema-title span:last-child {font-size:18svh;margin:0}
+  .cinema-enhanced .cinema-intro {top:86px;right:22px;bottom:auto;font-size:12px}
+  .cinema-enhanced .cinema-services {left:22px;bottom:98px;font-size:11px}
+  .cinema-enhanced .cinema-explore {left:22px;bottom:54px;min-height:44px;font-size:13px}
+  .cinema-enhanced .cinema-side-note {display:none}
+  .cinema-enhanced .cinema-controls {bottom:4px;left:22px;right:22px;font-size:11px}
+  .cinema-enhanced .cinema-possibility .cinema-cut {background:var(--ink);color:var(--paper)}
+}

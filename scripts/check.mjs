@@ -28,7 +28,7 @@ for(const file of htmlFiles) {
     if(!/\balt="/.test(match[2]))errors.push(`${label}: image lacks alt`);
     if(!/\bwidth="\d+"/.test(match[2])||!/\bheight="\d+"/.test(match[2]))errors.push(`${label}: image lacks dimensions`);
   }
-  for(const match of source.matchAll(/\b(?:href|src|data-src)="([^"]+)"/g)) {
+  for(const match of source.matchAll(/\b(?:href|src|data-src|data-mobile-src)="([^"]+)"/g)) {
     let target=match[1].replaceAll('&amp;','&');
     if(/^(https?:|mailto:|tel:|data:|blob:)/.test(target))continue;
     const [pathname,hash]=target.split('#');

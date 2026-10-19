@@ -154,8 +154,10 @@ try{
  });
  for(const [name,viewport] of [['mobile',{width:390,height:844}],['tablet',{width:768,height:1024}],['short',{width:1440,height:600}]]){
   await scenario(name,{viewport},async(page,item)=>{
-   await capture(page,item,'opening');
-   for(const id of ['clarity','craft','possibility']){await page.locator('#'+id).scrollIntoViewIfNeeded();await capture(page,item,id);}
+   await page.waitForFunction(()=>document.querySelector('[data-cinema]')?.dataset.cinemaState==='enhanced',null,{timeout:25000});
+   for(const [p,label] of [[0,'opening'],[.34,'clarity'],[.6,'craft'],[.9,'possibility'],[.34,'reverse']]){
+    await scrollToProgress(page,'[data-cinema]',p);await settleVideo(page,item,p);await capture(page,item,label);
+   }
    const panels=page.locator('[data-horizontal-panel]');for(let i=0;i<await panels.count();i++){await panels.nth(i).scrollIntoViewIfNeeded();await capture(page,item,'project-'+i);}
    await page.locator('.studio-v2').scrollIntoViewIfNeeded();await capture(page,item,'studio');
   });

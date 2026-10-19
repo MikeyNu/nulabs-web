@@ -24,7 +24,7 @@ let headerFrame = 0;
 function updateHeader() {
   headerFrame = 0;
   // Keep the header on the shared video until its pinned stage releases.
-  // Static/mobile layouts retain their normal scrolling navigation treatment.
+  // Static fallbacks retain their normal scrolling navigation treatment.
   const hasPinnedJourney = cinemaStage && cinema.classList.contains('cinema-enhanced');
   const showBackground = hasPinnedJourney
     ? cinema.getBoundingClientRect().bottom <= cinemaStage.getBoundingClientRect().height

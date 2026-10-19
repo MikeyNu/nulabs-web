@@ -106,8 +106,8 @@ function lifecycle(win) {
       removers.push(() => target.removeEventListener(name, fn, options));
     },
     cleanup() { removers.splice(0).forEach(remove => remove()); },
-    preferences(callback) {
-      const queries = ['(prefers-reduced-motion: reduce)', '(max-width: 999px)', '(max-height: 649px)', '(max-aspect-ratio: 5/4)'].map(query => win.matchMedia(query));
+    preferences(callback, { compact = true } = {}) {
+      const queries = ['(prefers-reduced-motion: reduce)', ...(compact ? ['(max-width: 999px)', '(max-height: 649px)', '(max-aspect-ratio: 5/4)'] : [])].map(query => win.matchMedia(query));
       for (const query of queries) {
         if (query.addEventListener) this.listen(query, 'change', callback);
         else { query.addListener(callback); removers.push(() => query.removeListener(callback)); }
@@ -137,7 +137,10 @@ export function initCinema(root, options = {}) {
   const events = lifecycle(win);
   const timeline = options.timeline || CINEMA_TIMELINE;
   let timelineError = validateCinemaTimeline(timeline);
-  const source = options.src || video.getAttribute('data-src') || video.getAttribute('src') || '';
+  // Choose once before attaching media. Rotation must not download a second clip.
+  const compactMedia = win.matchMedia('(max-width: 999px), (max-aspect-ratio: 5/4)').matches;
+  const source = options.src || (compactMedia && video.getAttribute('data-mobile-src'))
+    || video.getAttribute('data-src') || video.getAttribute('src') || '';
   const controls = [...doc.querySelectorAll('[data-cinema-toggle]')];
   const indicators = [...root.querySelectorAll('[data-cinema-index]')];
   const progressElements = [...root.querySelectorAll('[data-cinema-progress]')];
@@ -146,6 +149,8 @@ export function initCinema(root, options = {}) {
   const panelRestore = chapters.map(chapter => remember(chapter, ['inert', 'aria-hidden', 'hidden'],
     ['--chapter-opacity', '--chapter-x', '--chapter-y', '--chapter-blur']));
   const originalMuted = video.muted;
+  const hasVideoFrameCallback = typeof video.requestVideoFrameCallback === 'function';
+  const canDecodeVideo = !video.canPlayType || Boolean(video.canPlayType('video/mp4'));
   for (const control of controls) {
     restores.push(remember(control, ['hidden', 'disabled', 'aria-disabled', 'aria-pressed', 'aria-label']));
     const label = control.querySelector('[data-cinema-label]') || (!control.children.length ? control : null);
@@ -158,6 +163,7 @@ export function initCinema(root, options = {}) {
   let progress = 0, userPaused = false, focusHeld = false, visible = true;
   let frame = null, videoFrame = null, timer = null, seekTimer = null, saveTimer = null, navigationFrame = null;
   let geometry = { top: 0, height: 1, stage: 1 };
+  let viewportWidth = win.innerWidth;
   const navigationType = win.performance?.getEntriesByType?.('navigation')?.[0]?.type;
   let restoration = null;
   if (['reload', 'back_forward'].includes(navigationType) && !win.location.hash) {
@@ -169,7 +175,8 @@ export function initCinema(root, options = {}) {
   let pendingHash = win.location.hash;
   let pendingFocus = null;
   const focusRestores = new Map();
-  const policyReason = events.preferences(reconcile);
+  // Mobile keeps the camera journey; the independent work rail still stacks.
+  const policyReason = events.preferences(reconcile, { compact: false });
 
   function measure() {
     const rect = root.getBoundingClientRect();
@@ -184,7 +191,7 @@ export function initCinema(root, options = {}) {
   }
   function staticReason() {
     return timelineError || (!source ? 'missing-video' : mediaStatus === 'error' ? 'media-error'
-      : typeof video.requestVideoFrameCallback !== 'function' ? 'unsupported-video'
+      : !canDecodeVideo ? 'unsupported-video'
         : policyReason() || (userPaused ? 'paused' : focusHeld ? 'keyboard-focus' : null));
   }
   function clearTimer(kind) {
@@ -194,7 +201,7 @@ export function initCinema(root, options = {}) {
   }
   function publish() {
     root.dataset.cinemaState = state; root.dataset.cinemaReason = reason; root.dataset.mediaStatus = mediaStatus;
-    const unavailable = Boolean(timelineError || policyReason() || !source || mediaStatus === 'error' || typeof video.requestVideoFrameCallback !== 'function');
+    const unavailable = Boolean(timelineError || policyReason() || !source || mediaStatus === 'error' || !canDecodeVideo);
     for (const control of controls) {
       const focused = doc.activeElement === control;
       control.hidden = unavailable && !focused;
@@ -326,7 +333,7 @@ export function initCinema(root, options = {}) {
   }
   function armFrame() {
     if (disposed || videoFrame !== null || mediaStatus === 'error') return;
-    videoFrame = video.requestVideoFrameCallback((_now, metadata) => {
+    const onPresented = (_now, metadata) => {
       videoFrame = null;
       if (disposed) return;
       if (!Number.isFinite(metadata?.mediaTime)) { fail(); return; }
@@ -340,19 +347,37 @@ export function initCinema(root, options = {}) {
       }
       if (pendingTime !== null) armFrame();
       schedule();
-    });
+    };
+    if (hasVideoFrameCallback) videoFrame = video.requestVideoFrameCallback(onPresented);
+    else {
+      // Older/WebKit media implementations expose decoded frames through
+      // loadeddata + seeked. Allow two paint turns after decoding, never mark
+      // a frame ready from metadata or from currentTime assignment alone.
+      videoFrame = win.requestAnimationFrame(() => {
+        videoFrame = win.requestAnimationFrame(now => {
+          videoFrame = null;
+          if (disposed || video.readyState < 2 || video.seeking) return;
+          onPresented(now, { mediaTime: video.currentTime });
+        });
+      });
+    }
+  }
+  function cancelPresentation() {
+    if (videoFrame === null) return;
+    if (hasVideoFrameCallback) video.cancelVideoFrameCallback?.(videoFrame);
+    else win.cancelAnimationFrame(videoFrame);
+    videoFrame = null;
   }
   function fail() {
     if (disposed) return;
     mediaStatus = 'error'; pendingTime = null;
     clearTimer('readiness'); clearTimer('seek');
-    if (videoFrame !== null) video.cancelVideoFrameCallback?.(videoFrame);
-    videoFrame = null; root.classList.remove('cinema-frame-ready');
+    cancelPresentation(); root.classList.remove('cinema-frame-ready');
     normal('media-error'); restorePosition();
   }
   const seeker = createLatestSeekController({
     readTime: () => video.currentTime,
-    isReady: () => video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0,
+    isReady: () => video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0,
     isSeeking: () => video.seeking,
     seek(time) { pendingTime = time; armFrame(); video.currentTime = time; syncActivity(); },
     requestFrame: callback => win.requestAnimationFrame(callback),
@@ -392,7 +417,18 @@ export function initCinema(root, options = {}) {
     if (saveTimer !== null) win.clearTimeout(saveTimer);
     saveTimer = win.setTimeout(savePosition, 150);
   }, { passive: true });
-  events.listen(win, 'resize', refresh, { passive: true });
+  events.listen(win, 'resize', () => {
+    // Rotation changes the length of the pinned section. Keep the reading
+    // position, while ordinary mobile toolbar height changes remain native.
+    const savedProgress = state === 'enhanced' && visible && progress < 1
+      && win.innerWidth !== viewportWidth ? progress : null;
+    viewportWidth = win.innerWidth;
+    refresh();
+    if (savedProgress !== null && state === 'enhanced') alignAfterLayout(() => {
+      measure();
+      win.scrollTo({ top: geometry.top + savedProgress * Math.max(1, geometry.height - geometry.stage), behavior: 'instant' });
+    });
+  }, { passive: true });
   events.listen(win, 'orientationchange', refresh, { passive: true });
   events.listen(win, 'pagehide', savePosition);
   events.listen(win, 'pageshow', event => { if (!event.persisted) pendingHash = win.location.hash; refresh(); });
@@ -453,7 +489,7 @@ export function initCinema(root, options = {}) {
       if (disposed) return;
       disposed = true; events.cleanup(); observer?.disconnect(); seeker.destroy();
       if (frame !== null) win.cancelAnimationFrame(frame);
-      if (videoFrame !== null) video.cancelVideoFrameCallback?.(videoFrame);
+      cancelPresentation();
       cancelDeferred(); clearTimer('readiness'); clearTimer('seek');
       if (saveTimer !== null) win.clearTimeout(saveTimer);
       video.pause(); panelRestore.forEach(restore => restore()); focusRestores.forEach(restore => restore()); restores.reverse().forEach(restore => restore());

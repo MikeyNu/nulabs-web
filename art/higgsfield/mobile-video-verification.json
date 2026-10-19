@@ -1,0 +1,19 @@
+{
+  "source": "art\\higgsfield\\journey-master.mp4",
+  "sourceSha256": "bac0c8765c7e3f82c6a27f5e9af00ee1bdea466c070595583c238786588574b6",
+  "output": "public\\assets\\video\\journey-higgsfield-mobile.mp4",
+  "sha256": "e1c24b76519f533cc8a215a8f7058f2ab7ea16c7d5bf22b4bbb09b5df14ca537",
+  "bytes": 2327794,
+  "width": 960,
+  "height": 540,
+  "codec": "h264",
+  "pixelFormat": "yuv420p",
+  "fps": 24,
+  "framesFullyDecoded": 289,
+  "timestampsEqualToMaster": true,
+  "durationSeconds": 12.041666666666666,
+  "maximumGop": 6,
+  "audioStreams": 0,
+  "faststart": true,
+  "crf": 20
+}

@@ -1,0 +1,259 @@
+{
+  "baselineCommit": "0f9c23092d578cc2d89f800d4bbf7f76fb59d9e6",
+  "unitTests": 81,
+  "media": {
+    "source": "art\\higgsfield\\journey-master.mp4",
+    "sourceSha256": "bac0c8765c7e3f82c6a27f5e9af00ee1bdea466c070595583c238786588574b6",
+    "output": "public\\assets\\video\\journey-higgsfield-mobile.mp4",
+    "sha256": "e1c24b76519f533cc8a215a8f7058f2ab7ea16c7d5bf22b4bbb09b5df14ca537",
+    "bytes": 2327794,
+    "width": 960,
+    "height": 540,
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "fps": 24,
+    "framesFullyDecoded": 289,
+    "timestampsEqualToMaster": true,
+    "durationSeconds": 12.041666666666666,
+    "maximumGop": 6,
+    "audioStreams": 0,
+    "faststart": true,
+    "crf": 20
+  },
+  "runs": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "url": "http://localhost:3004",
+      "physicalDevice": false,
+      "passed": 10,
+      "failed": 0,
+      "scenarios": [
+        {
+          "name": "small-phone",
+          "status": "PASS",
+          "viewport": {
+            "width": 360,
+            "height": 640
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "phone",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 13,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "large-phone",
+          "status": "PASS",
+          "viewport": {
+            "width": 430,
+            "height": 932
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "tablet",
+          "status": "PASS",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "landscape",
+          "status": "PASS",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "desktop",
+          "status": "PASS",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "short-desktop",
+          "status": "PASS",
+          "viewport": {
+            "width": 1280,
+            "height": 600
+          },
+          "samples": 10,
+          "uniquePixelHashes": 7,
+          "errors": []
+        },
+        {
+          "name": "reduced",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        },
+        {
+          "name": "no-js",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        },
+        {
+          "name": "blocked",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "url": "http://localhost:3004",
+      "physicalDevice": false,
+      "passed": 5,
+      "failed": 0,
+      "scenarios": [
+        {
+          "name": "phone",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 12,
+          "uniquePixelHashes": 8,
+          "errors": [],
+          "mediaNetwork": "WebKit native media requests are not exposed; source changes and decoded pixels verified"
+        },
+        {
+          "name": "landscape",
+          "status": "PASS",
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "samples": 10,
+          "uniquePixelHashes": 8,
+          "errors": [],
+          "mediaNetwork": "WebKit native media requests are not exposed; source changes and decoded pixels verified"
+        },
+        {
+          "name": "reduced",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        },
+        {
+          "name": "no-js",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        },
+        {
+          "name": "blocked",
+          "status": "PASS",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "samples": 2,
+          "uniquePixelHashes": 0,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "existingBrowser": {
+    "version": "155.0.4283.62",
+    "scenarios": [
+      {
+        "name": "desktop",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "mobile",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "tablet",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "short",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "mobile-menu",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "anchors-history",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "name": "horizontal-focus",
+        "status": "COMPLETED",
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  }
+}

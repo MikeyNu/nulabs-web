@@ -50,7 +50,8 @@
       }
     ],
     "model": "Seedance 2.5",
-    "artDirectionStatus": "Three distinct viewpoints and a return; fourth reverse-side shot remains a documented deviation."
+    "artDirectionStatus": "Three distinct viewpoints and a return; fourth reverse-side shot remains a documented deviation.",
+    "mobileVideo": "/assets/video/journey-higgsfield-mobile.mp4"
   },
   "contact": {
     "email": null,
