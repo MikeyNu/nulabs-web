@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "status": "PASS for local review",
+  "clientApproval": "NOT RUN",
+  "date": "2026-10-19",
+  "environment": {
+    "browser": "Microsoft Edge 155.0.4283.62",
+    "url": "http://localhost:3000",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1440,
+        600
+      ]
+    ],
+    "sourceBase": "92f15476b58ef130b2a68b392aab157eb52f6293",
+    "branch": "revision/cinematic-journey-v2",
+    "sourceState": "uncommitted v2 working tree during review"
+  },
+  "sources": {
+    "src/scripts/journey-v2.mjs": "FE37EF6D29E6981F50365628D8255C7D6EA7E484AB9707C6E72C7E2A75F5E019",
+    "src/styles/home-v2.css": "1E0D93C53FA282D11476AFF3AF98EB69825168545843AF530FD8FBE374CA647F",
+    "scripts/home-v2.mjs": "421E36601AF3CFA90AB8137777DCB396FCB14AEC1D3C36B91C69ECACB0F2FE0C"
+  },
+  "runs": [
+    {
+      "id": "v2-integrated-01",
+      "started": "2026-10-19T01:49:55.014Z",
+      "finished": "2026-10-19T01:50:25.315Z",
+      "total": 14,
+      "passed": 11,
+      "failed": 3,
+      "captures": 98,
+      "failedCases": [
+        "routes-and-filter",
+        "mobile-menu",
+        "anchors-history"
+      ],
+      "cause": "Cross-document ViewTransition opt-in mismatch produced browser diagnostics after otherwise successful interaction checks."
+    },
+    {
+      "id": "v2-integrated-02",
+      "started": "2026-10-19T01:53:16.987Z",
+      "finished": "2026-10-19T01:53:34.795Z",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "captures": 51,
+      "cases": [
+        "desktop",
+        "routes-and-filter",
+        "mobile-menu",
+        "anchors-history"
+      ],
+      "change": "Removed optional cross-document ViewTransition rules.",
+      "unexpectedConsoleErrors": 0,
+      "videoTimingWarnings": 0
+    }
+  ],
+  "outcome": {
+    "uniqueScenarios": 14,
+    "uniquePassingScenariosAfterTargetedRecheck": 14,
+    "openProductDefects": [],
+    "scope": "Initial full suite plus targeted rerun, not two full-suite passes."
+  },
+  "media": {
+    "decodedWidth": 1920,
+    "decodedHeight": 1080,
+    "durationSeconds": 12.041667,
+    "presentedHoldSeconds": [
+      0,
+      4,
+      8,
+      12
+    ],
+    "desktopRerunFrameCallbacks": 49,
+    "actualPresentationConfirmed": true
+  },
+  "visualReview": {
+    "status": "PASS",
+    "method": "Independent inspection of actual screenshot samples, decoded media contact sheets and temporal presentation logs.",
+    "observed": [
+      "Four distinct front, side, elevated and reverse viewpoints with changed object overlap and negative space.",
+      "Flat readable HTML holds, copy cleared during principal sweeps.",
+      "Transparent edge-to-edge opening header and solid scrolled header.",
+      "Bounded horizontal project travel and release into bright studio.",
+      "Complete static mobile and tablet compositions; reduced-motion, media failure and no-JS reading flow."
+    ],
+    "limits": [
+      "AI-assisted visual review is not client approval or user research.",
+      "Physical mobile devices, Firefox and Safari not tested in this review.",
+      "No claim of full WCAG conformance or production enquiry delivery."
+    ]
+  },
+  "investigation": {
+    "status": "CLOSED without app change",
+    "issue": "Some inline PNG tool previews appeared to omit fixed navigation.",
+    "resolution": "Converting the exact existing PNG file to JPEG revealed the complete header without a new browser capture. Fresh JPEG captures also showed the header with and without compositor promotion. Evidence supports a preview artifact, not a demonstrated site defect."
+  },
+  "evidenceLocation": "Windows temp nulabs-web-qa-20261019/v2-integrated-01 and v2-integrated-02; machine-specific paths intentionally omitted from repository summary."
+}

@@ -8,7 +8,8 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "test": "node --test tests/*.test.mjs",
-    "qa:browser": "node scripts/browser-qa.mjs"
+    "qa:browser": "node scripts/browser-qa-v2.mjs",
+    "qa:browser:legacy": "node scripts/browser-qa.mjs"
   },
   "engines": {
     "node": ">=20"

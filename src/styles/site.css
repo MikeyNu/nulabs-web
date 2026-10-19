@@ -1922,3 +1922,5 @@ a:hover .arrow,button:hover .arrow {
   }
   .journey:not(.journey-enhanced) .chapter-copy { width:100%; max-width:none; padding:36px 26px; }
 }
+
+.page-top {position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none}

@@ -7,3 +7,7 @@ node_modules/
 coverage/
 private/
 qa-output/
+
+art/renders/
+art/*.blend1
+art/*.blend2

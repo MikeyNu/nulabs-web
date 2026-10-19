@@ -1,0 +1,44 @@
+{
+  "camera_samples_checked": 289,
+  "minimum_surface_clearance_metres": {
+    "distance": 4.609999585265926,
+    "object": "Continuous gallery floor",
+    "frame": 97
+  },
+  "sculpture_screen_bounds": [
+    {
+      "frame": 1,
+      "left": 0.31078407168388367,
+      "top": 0.24007129669189453,
+      "right": 0.688493549823761,
+      "bottom": 0.7242599725723267,
+      "closest_depth": 18.117809295654297
+    },
+    {
+      "frame": 97,
+      "left": 0.6537967920303345,
+      "top": 0.22582846879959106,
+      "right": 0.8974433541297913,
+      "bottom": 0.962925560772419,
+      "closest_depth": 10.69261646270752
+    },
+    {
+      "frame": 193,
+      "left": 0.11975567042827606,
+      "top": 0.23066049814224243,
+      "right": 0.4659034311771393,
+      "bottom": 0.7808161973953247,
+      "closest_depth": 15.00662899017334
+    },
+    {
+      "frame": 289,
+      "left": 0.07531936466693878,
+      "top": 0.18802839517593384,
+      "right": 0.5148980617523193,
+      "bottom": 0.8421520292758942,
+      "closest_depth": 12.119455337524414
+    }
+  ],
+  "static_mesh_objects": 16,
+  "ui": "Screen-space HTML, absent throughout media."
+}

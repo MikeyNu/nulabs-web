@@ -1,15 +1,24 @@
 {
   "journey": {
     "status": "verified",
-    "video": "/assets/video/journey-scrub.mp4",
-    "poster": "/assets/images/journey-poster-1920.webp",
-    "mobilePoster": "/assets/images/journey-poster-960.webp",
-    "durationSeconds": 8.041666666666666,
-    "chapters": 2,
-    "endPoster": "/assets/images/journey-ending-1920.webp",
+    "video": "/assets/video/journey-v2.mp4",
+    "poster": "/assets/images/journey-v2-arrival.webp",
+    "mobilePoster": "/assets/images/journey-v2-arrival-960.webp",
+    "durationSeconds": 12.041666666666666,
+    "chapters": 4,
+    "endPoster": "/assets/images/journey-v2-possibility.webp",
     "fps": 24,
-    "frames": 193,
-    "bytes": 3553215
+    "frames": 289,
+    "bytes": 3015277,
+    "renderer": "Blender 5.1.2",
+    "chapterTimes": [
+      0,
+      4,
+      8,
+      12
+    ],
+    "sha256": "1af24841f475f27336d9016f8904415a59fa3e6b318cab0cf69849145d8f846e",
+    "verification": "docs/v2-verification.md"
   },
   "contact": {
     "email": null,

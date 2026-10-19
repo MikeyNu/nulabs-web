@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "renderer": "video",
+  "media": {
+    "fps": 24,
+    "frames": 289,
+    "poster": "/assets/images/journey-v2-arrival.webp",
+    "source": "/assets/video/journey-v2.mp4"
+  },
+  "direction": "Four-shot spatial prologue, black horizontal work gallery, bright human studio",
+  "alternatives": [
+    {
+      "name": "Continuous all-page 3D",
+      "rejected": "Too much sustained motion and too few reading pauses"
+    },
+    {
+      "name": "Separate animated posters",
+      "rejected": "Does not fulfill the continuous camera journey"
+    }
+  ],
+  "constraints": {
+    "palette": "Black, warm white, graphite",
+    "logo": "Exact extrusion of supplied SVG, never a replacement mark",
+    "motion": "Native vertical scroll only; flat semantic HTML overlays; no UI in rendered scene",
+    "budget": "Local Blender rendering; no new paid generations"
+  },
+  "chapters": [
+    {
+      "id": "arrival",
+      "start": 0,
+      "end": 0.21,
+      "content": "Ideas made real. Split large typography, services lower left, proposition upper right.",
+      "background": "shared-media",
+      "safe_rect": [
+        0.03,
+        0.15,
+        0.94,
+        0.7
+      ],
+      "mobile": "Opening still with split headline and normal flow services",
+      "reduced": "Same static composition, no pinned scroll",
+      "reading": [
+        0,
+        0.14
+      ],
+      "camera_time": 0,
+      "camera": "Front wide, centered sculptural mark"
+    },
+    {
+      "id": "clarity",
+      "start": 0.21,
+      "end": 0.47,
+      "content": "Clarity before code. Strategy and a concise supporting sentence left.",
+      "background": "shared-media",
+      "safe_rect": [
+        0.04,
+        0.2,
+        0.43,
+        0.65
+      ],
+      "mobile": "Side-shot still followed by copy",
+      "reduced": "Normal-flow still and copy",
+      "reading": [
+        0.28,
+        0.4
+      ],
+      "camera_time": 4,
+      "camera": "Fast lateral orbit with sculpture on right, left negative space"
+    },
+    {
+      "id": "craft",
+      "start": 0.47,
+      "end": 0.73,
+      "content": "Built to move you. Design and development on right.",
+      "background": "shared-media",
+      "safe_rect": [
+        0.56,
+        0.2,
+        0.4,
+        0.65
+      ],
+      "mobile": "Elevated still followed by copy",
+      "reduced": "Normal-flow still and copy",
+      "reading": [
+        0.54,
+        0.66
+      ],
+      "camera_time": 8,
+      "camera": "Rising diagonal sweep, sculpture left, right negative space"
+    },
+    {
+      "id": "possibility",
+      "start": 0.73,
+      "end": 1,
+      "content": "Make room for more. Black chamfered panel right leading to work.",
+      "background": "shared-media",
+      "safe_rect": [
+        0.48,
+        0.2,
+        0.48,
+        0.66
+      ],
+      "mobile": "Reverse-angle still and black panel in flow",
+      "reduced": "Normal-flow still and copy",
+      "reading": [
+        0.8,
+        1
+      ],
+      "camera_time": 12,
+      "camera": "Close pass to reverse-wide view, substantial new perspective"
+    }
+  ],
+  "horizontal": {
+    "panels": 4,
+    "travel": "track.scrollWidth minus stage.clientWidth",
+    "input": "Native vertical progress maps to translateX",
+    "release": "After final panel",
+    "mobile": "Vertical stack",
+    "reduced": "Vertical stack"
+  },
+  "quality": {
+    "study": "Seven rendered camera views reviewed before full rendering",
+    "acceptance": "docs/v2-review-contract.md",
+    "video": "1080p24 H264, faststart, six-frame keyframes, silent",
+    "qa": [
+      "forward",
+      "reverse",
+      "fast scroll",
+      "interruption",
+      "resize",
+      "keyboard",
+      "direct anchors",
+      "history",
+      "mobile",
+      "reduced motion",
+      "no JS",
+      "blocked media"
+    ]
+  }
+}

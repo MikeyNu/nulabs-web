@@ -1,9 +1,17 @@
-import { initJourney } from './journey.mjs';
+import { initCinema, initHorizontal } from './journey-v2.mjs';
 
 document.documentElement.classList.add('js');
 
-const journey = document.querySelector('[data-journey]');
-if (journey) initJourney(journey);
+const cinema = document.querySelector('[data-cinema]');
+if (cinema) initCinema(cinema);
+const horizontal = document.querySelector('[data-horizontal]');
+if (horizontal) initHorizontal(horizontal);
+const header = document.querySelector('.site-header');
+let headerFrame = 0;
+function updateHeader() { headerFrame = 0; header?.classList.toggle('is-scrolled', scrollY > 40); }
+addEventListener('scroll', () => { if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader); }, {passive:true});
+addEventListener('pageshow', updateHeader);
+updateHeader();
 
 const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.mobile-menu');
@@ -87,5 +95,28 @@ if (form) {
     const a = document.createElement('a');a.href = objectUrl;a.download = 'Nu-Labs-project-brief.txt';a.click();
     setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
     status.textContent = 'Brief download requested. Nothing has been sent.';
+  });
+}
+
+
+// Editorial rhythm after the cinematic stage: a short image wipe and a sideways type entrance.
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+const studio = document.querySelector('.studio-v2');
+if (studio && !motionPreference.matches && 'IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    if (!motionPreference.matches) {
+      studio.querySelector('.studio-v2-heading em')?.animate(
+        [{transform:'translateX(50px)',opacity:0},{transform:'translateX(0)',opacity:1}],
+        {duration:650,easing:'cubic-bezier(.22,1,.36,1)'});
+      studio.querySelector('.studio-v2-visual')?.animate(
+        [{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)'}],
+        {duration:800,easing:'cubic-bezier(.22,1,.36,1)'});
+    }
+    observer.disconnect();
+  }, {threshold:.14});
+  observer.observe(studio);
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) studio.getAnimations({subtree:true}).forEach(animation => animation.finish());
   });
 }
