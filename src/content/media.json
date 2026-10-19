@@ -1,0 +1,12 @@
+{
+  "journey": {
+    "status": "awaiting-generation-budget",
+    "video": null,
+    "poster": null,
+    "mobilePoster": null,
+    "durationSeconds": 8,
+    "chapters": 2
+  },
+  "contact": { "email": null, "endpoint": null },
+  "siteUrl": null
+}

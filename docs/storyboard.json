@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "status": "planned",
+  "renderer": "video",
+  "title": "Nu Labs / Ideas made real",
+  "evidence": {
+    "approved_reference": "../landing-generation/attempt-01.png",
+    "motion": "original proposal from approved still; not recovered motion",
+    "generation": "not submitted by researcher",
+    "safe_areas": "targets pending inspection of delivered video",
+    "browser_qa": "blocked if required control-browser skill remains unavailable"
+  },
+  "media": {
+    "id": "nu-architecture-journey",
+    "fps": 24,
+    "frames": 192,
+    "duration_seconds": 8,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "poster": "/media/journey-poster.webp",
+    "source": "/media/journey-scrub.mp4",
+    "source_master": "private production master outside public bundle",
+    "status": "planned encoding target; probe actual generation before finalizing",
+    "audio": false,
+    "baked_ui": false,
+    "rights": "original generation from user-approved Nu Labs concept; generated imagery, no third-party reference assets"
+  },
+  "stage": {
+    "mode": "bounded sticky",
+    "shared_media_count": 1,
+    "height": "100svh",
+    "wrapper_target": "400svh including 100svh stage, subject to content-fit QA",
+    "release": "after progress 1, normal flow resumes",
+    "progress": "clamp((scrollY-sectionStart)/max(1,sectionHeight-stageHeight),0,1)",
+    "scroll_owner": "native document",
+    "stable_anchors": [
+      "SVG brand lockup",
+      "main navigation",
+      "chapter progress rail",
+      "skip introduction link"
+    ],
+    "moving_elements": [
+      "3D video camera only",
+      "flat 2D chapter panels during bounded entry/exit"
+    ],
+    "media_pointer_events": "none",
+    "anchors_target_reading_holds": true
+  },
+  "camera": {
+    "coordinate_system": "relative conceptual staging only; image-to-video model does not consume a calibrated 3D scene",
+    "construction": "three immobile satin-black architectural fins; retain geometry, thickness, spacing and coherent soft shadows",
+    "environment": "bright white gallery with consistent broad upper-left skylight",
+    "lens": "fixed approximately 40mm equivalent, no focal-length pumping",
+    "origin": "opening low three-quarter view matching approved clean plate",
+    "path": "one slow rightward truck and shallow clockwise arc with gentle pullback; sculpture shifts progressively left; no reversal, cuts, morphing, roll, dolly zoom or subject deformation",
+    "target": "sculptural assembly with progressively offset framing opening the right side; never reverse the composition direction",
+    "clearance": "never cross through a surface or clip the sculpture; verify complete shot",
+    "timing": "0-1s settle, 1-6s move, 6-8s settle; these are generation targets and must be visually inspected"
+  },
+  "time_map": [
+    {
+      "p": 0,
+      "t": 0
+    },
+    {
+      "p": 0.18,
+      "t": 0
+    },
+    {
+      "p": 0.68,
+      "t": 7.9
+    },
+    {
+      "p": 1,
+      "t": 7.9
+    }
+  ],
+  "encoding": {
+    "planned": "H.264 yuv420p, silent, faststart",
+    "trial_gop_frames": 6,
+    "last_time": "min(plannedTime,duration-1/fps); update with actual last clean frame",
+    "verification": [
+      "ffprobe codec/dimensions/fps/frames/duration",
+      "compare forward and reverse seek latency",
+      "bytes and first poster load",
+      "actual browser presented frame not target time only"
+    ]
+  },
+  "runtime": {
+    "seek_policy": "latest target only, one seek in flight, reconcile on seeked",
+    "poster_policy": "retain until first frame is actually submitted for presentation; fail to static complete content",
+    "pause_work": [
+      "settled",
+      "offscreen",
+      "document hidden",
+      "unmounted"
+    ],
+    "focus": "hidden panels inert; preserve currently focused controls; clean up on mode change",
+    "failure": "complete normal-flow chapters and stills; no loading trap",
+    "resize": "remeasure after fonts and meaningful layout change; preserve normalized progress when appropriate",
+    "history": "real URLs, direct anchors and Back/Forward; no second router solely for transitions"
+  },
+  "chapters": [
+    {
+      "id": "ideas",
+      "start": 0,
+      "end": 0.68,
+      "background": "shared-media",
+      "content": "Ideas made real. Strategy / Design / Development. Scroll to explore.",
+      "content_source": "approved Nu Labs concept and brand services",
+      "links": [
+        {
+          "label": "Skip introduction",
+          "href": "/#selected-work"
+        }
+      ],
+      "safe_rect": [
+        0.04,
+        0.19,
+        0.23,
+        0.22
+      ],
+      "additional_safe_rects": [
+        [
+          0.65,
+          0.77,
+          0.31,
+          0.16
+        ],
+        [
+          0.04,
+          0.78,
+          0.18,
+          0.13
+        ]
+      ],
+      "reading_hold": [
+        0,
+        0.14
+      ],
+      "exit_range": [
+        0.14,
+        0.18
+      ],
+      "camera_time": 0,
+      "camera_composition": "approved low three-quarter view; largest fin in centre-left; headline uses upper-left and lower-right pockets",
+      "overlay": "one semantic h1 with two flat spans; preserve readable DOM order; never place text in the source video",
+      "mobile": "static opening crop above/behind split title only when safe; services follow in normal flow; no pin",
+      "reduced": "static opening poster in normal flow; all text visible; no camera motion",
+      "forward": "exit copy then start camera move",
+      "reverse": "same progress restores headline and first frame",
+      "fast_scroll": "jump to newest target, never queue intermediate seeks",
+      "focus": "skip link always available; navigation never hidden"
+    },
+    {
+      "id": "clarity",
+      "start": 0.68,
+      "end": 1,
+      "background": "shared-media",
+      "content": "Good questions. Bold answers. We connect strategy, design and development to turn complex ideas into useful digital experiences. Strategy / Design / Development.",
+      "content_source": "proposed original copy; offering grounded in approved brand brief",
+      "links": [
+        {
+          "label": "Explore our capabilities",
+          "href": "/services"
+        }
+      ],
+      "safe_rect": [
+        0.57,
+        0.23,
+        0.36,
+        0.5
+      ],
+      "entry_range": [
+        0.68,
+        0.72
+      ],
+      "reading_hold": [
+        0.72,
+        1
+      ],
+      "camera_time": 7.9,
+      "camera_composition": "rightward truck and shallow clockwise arc with gentle pullback bring the complete sculptural assembly into the left half, opening calm white wall/floor at right; geometry and light unchanged",
+      "overlay": "large two-line heading; short supporting copy; three compact service lines; flat custom-cut panel only if actual frame contrast requires it",
+      "mobile": "representative final still then capability text in normal flow; no clipping of copy to sculptural shape",
+      "reduced": "final still in normal flow with complete capability content",
+      "forward": "background settles before copy enters; retain final clean frame through the reading hold, then release into ordinary document flow",
+      "reverse": "re-enter the same final hold without reset; entry reverses from exact progress; camera retraces exact seek states",
+      "fast_scroll": "latest target only; final relevant panel state; no queued intermediate seeks",
+      "focus": "outgoing panel cannot retain hidden tabbable links"
+    }
+  ],
+  "after_stage": [
+    {
+      "id": "built-to-be-used",
+      "flow": "normal",
+      "background": "flat warm-white",
+      "purpose": "handoff from cinematic proposition to actual capability and useful outcomes",
+      "content": "Built to be used. Distinctive on the surface. Thoughtful underneath. We bring strategy, design and development together around the people who will use what we make.",
+      "href": "/services",
+      "motion": "static editorial type with deliberate size contrast; no third video chapter"
+    },
+    {
+      "id": "selected-work",
+      "flow": "normal",
+      "background": "flat warm-white",
+      "purpose": "inspect project work or clearly labelled concept explorations",
+      "href": "/work",
+      "motion": "small hover/focus media response; no new pinned world"
+    },
+    {
+      "id": "capabilities",
+      "flow": "normal",
+      "background": "flat near-black on limited section",
+      "purpose": "scan Strategy / Design / Development in irregular bento",
+      "href": "/services",
+      "motion": "feedback only for disclosures and links"
+    },
+    {
+      "id": "studio",
+      "flow": "normal",
+      "background": "original office still with safe text area",
+      "purpose": "show approach and South African creative perspective",
+      "href": "/studio",
+      "motion": "restrained media reveal only if useful; no named synthetic employee claims"
+    },
+    {
+      "id": "contact",
+      "flow": "normal",
+      "background": "flat warm-white",
+      "purpose": "real enquiry task",
+      "href": "/contact",
+      "motion": "validation and disclosure feedback only"
+    }
+  ],
+  "fallbacks": {
+    "mobile": "below proposed 800px width or 600px height use complete normal flow with opening and final stills",
+    "reduced_motion": "remove pinning/camera/parallax/large translations; respond to live changes; two static media chapters then normal-flow handoff",
+    "no_js": "semantic content and links remain visible in normal flow",
+    "media_error": "static full-content composition, no endless preloader"
+  },
+  "verification": {
+    "status": "not run against implementation",
+    "required": [
+      "actual frame inspection including reading holds and transitions",
+      "forward/reverse and fast jumps",
+      "midpoint entry and refresh",
+      "desktop/mobile/tablet/short windows",
+      "live reduced-motion toggle",
+      "blocked media and no-JS",
+      "keyboard focus and all links",
+      "stage release and footer reachability",
+      "direct routes and Back/Forward",
+      "cleanup on route or mode change",
+      "source build/typecheck",
+      "media bytes and seek behavior"
+    ],
+    "evidence_language": [
+      "PASS only observed",
+      "FAIL if checked and failed",
+      "BLOCKED if required runtime access unavailable",
+      "NOT RUN if unexecuted"
+    ]
+  }
+}

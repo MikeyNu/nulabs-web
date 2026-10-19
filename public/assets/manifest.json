@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "images": {
+    "cards": {
+      "src": "/assets/images/cards-1600.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcSet": "/assets/images/cards-800.webp 800w, /assets/images/cards-1600.webp 1536w",
+      "alt": "Nu Labs black and white business card concept on textured stone blocks.",
+      "focalPosition": "50% 50%",
+      "variants": [
+        {
+          "src": "/assets/images/cards-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 56498
+        },
+        {
+          "src": "/assets/images/cards-1600.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 193056
+        }
+      ]
+    },
+    "studio": {
+      "src": "/assets/images/studio-1600.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcSet": "/assets/images/studio-800.webp 800w, /assets/images/studio-1600.webp 1536w",
+      "alt": "Illustrative creative team reviewing design sketches around a shared desk.",
+      "focalPosition": "50% 48%",
+      "variants": [
+        {
+          "src": "/assets/images/studio-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 60808
+        },
+        {
+          "src": "/assets/images/studio-1600.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 137840
+        }
+      ]
+    },
+    "apparel": {
+      "src": "/assets/images/apparel-1600.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcSet": "/assets/images/apparel-800.webp 800w, /assets/images/apparel-1600.webp 1536w",
+      "alt": "Nu Labs black T-shirt and white polo concept worn by two illustrative models.",
+      "focalPosition": "63% 45%",
+      "variants": [
+        {
+          "src": "/assets/images/apparel-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 42964
+        },
+        {
+          "src": "/assets/images/apparel-1600.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 101250
+        }
+      ]
+    },
+    "reception": {
+      "src": "/assets/images/reception-1600.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcSet": "/assets/images/reception-800.webp 800w, /assets/images/reception-1600.webp 1536w",
+      "alt": "Nu Labs reception concept with a black wall identity and natural stone desk.",
+      "focalPosition": "53% 46%",
+      "variants": [
+        {
+          "src": "/assets/images/reception-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 65010
+        },
+        {
+          "src": "/assets/images/reception-1600.webp",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 232264
+        }
+      ]
+    }
+  },
+  "logos": {
+    "symbol": "/assets/logo-symbol.svg",
+    "wordmark": "/assets/logo-wordmark.svg"
+  },
+  "font": {
+    "family": "Instrument Sans",
+    "src": "/assets/font-instrument-sans.woff2",
+    "format": "woff2",
+    "weight": "400 700",
+    "stretch": "75% 100%",
+    "license": "/assets/OFL-InstrumentSans.txt"
+  }
+}
