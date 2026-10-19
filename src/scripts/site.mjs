@@ -15,10 +15,31 @@ if (cinema) {
 const horizontal = document.querySelector('[data-horizontal]');
 if (horizontal) initHorizontal(horizontal);
 const header = document.querySelector('.site-header');
+const cinemaStage = cinema?.querySelector('[data-cinema-stage]');
 let headerFrame = 0;
-function updateHeader() { headerFrame = 0; header?.classList.toggle('is-scrolled', scrollY > 40); }
-addEventListener('scroll', () => { if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader); }, {passive:true});
-addEventListener('pageshow', updateHeader);
+function updateHeader() {
+  headerFrame = 0;
+  // Keep the header on the shared video until its pinned stage releases.
+  // Static/mobile layouts retain their normal scrolling navigation treatment.
+  const hasPinnedJourney = cinemaStage && cinema.classList.contains('cinema-enhanced');
+  const showBackground = hasPinnedJourney
+    ? cinema.getBoundingClientRect().bottom <= cinemaStage.getBoundingClientRect().height
+    : scrollY > 40;
+  header?.classList.toggle('is-scrolled', showBackground);
+}
+function scheduleHeader() {
+  if (!headerFrame) headerFrame = requestAnimationFrame(updateHeader);
+}
+addEventListener('scroll', scheduleHeader, {passive:true});
+addEventListener('resize', scheduleHeader, {passive:true});
+addEventListener('pageshow', scheduleHeader);
+if (cinemaStage && 'ResizeObserver' in window) {
+  // Enhancement, pause, media failure and reduced motion can change the
+  // journey's size without a scroll event. Measure again after that layout.
+  const headerLayoutObserver = new ResizeObserver(scheduleHeader);
+  headerLayoutObserver.observe(cinema);
+  headerLayoutObserver.observe(cinemaStage);
+}
 updateHeader();
 
 const menuButton = document.querySelector('.menu-toggle');

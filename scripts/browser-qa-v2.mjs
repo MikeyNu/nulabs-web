@@ -132,8 +132,8 @@ try{
   assert(opening.header.rect.y===0&&opening.header.rect.x===0,'Header must meet the viewport edges');
   assert(Math.abs(opening.stage.y)<2,'Hero stage must begin behind the header');
   assert(/rgba\([^)]*,\s*0\)/.test(opening.header.background),'Opening navigation must be transparent');
-  await page.evaluate(()=>scrollTo(0,64));await delay(300);await capture(page,item,'navigation-scrolled');
-  assert(!/rgba\([^)]*,\s*0\)/.test((await inspect(page)).header.background),'Scrolled navigation needs a solid surface');
+  await page.evaluate(()=>scrollTo(0,64));await delay(300);await capture(page,item,'navigation-within-journey');
+  assert(/rgba\([^)]*,\s*0\)/.test((await inspect(page)).header.background),'Navigation must remain transparent inside the pinned video journey');
   const points=[0,.14,.175,.21,.245,.28,.34,.40,.435,.47,.505,.54,.60,.66,.695,.73,.765,.80,.9,1];
   for(const p of points){await scrollToProgress(page,'[data-cinema]',p);await settleVideo(page,item,p);await capture(page,item,'cinema-'+String(Math.round(p*1000)).padStart(4,'0'));
    const state=await inspect(page);
