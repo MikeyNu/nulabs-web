@@ -1,0 +1,451 @@
+{
+  "version": "1.0",
+  "status": "Implementation-ready copy draft; factual limitations recorded below",
+  "brand": "Nu Labs",
+  "locale": "en-ZA",
+  "site": {
+    "title": "Nu Labs | Ideas made real.",
+    "description": "Nu Labs brings design and software together to turn ideas into clear identities, considered websites and useful digital products.",
+    "nav": [
+      {
+        "label": "Work",
+        "href": "/work"
+      },
+      {
+        "label": "Studio",
+        "href": "/studio"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
+    ],
+    "primary_action": "Start a conversation",
+    "primary_action_href": "/contact",
+    "home_link_label": "Nu Labs home",
+    "menu_open": "Open menu",
+    "menu_close": "Close menu",
+    "skip_link": "Skip to content",
+    "footer": {
+      "statement": "Keep it clear.\nMake it useful.\nMake it Nu.",
+      "descriptor": "Design and software, thoughtfully made.",
+      "copyright": "© 2026 Nu Labs",
+      "back_to_top": "Back to top",
+      "image_credit": "Selected imagery is generated. Concept projects are labelled."
+    }
+  },
+  "home": {
+    "meta_title": "Nu Labs | Ideas made real.",
+    "hero": {
+      "headline": "Ideas made real.",
+      "headline_segments": [
+        "Ideas",
+        "made real."
+      ],
+      "descriptor": "Strategy / Design / Development",
+      "scroll_hint": "Scroll to explore",
+      "chapter": "01 / 02"
+    },
+    "journey": [
+      {
+        "id": "arrival",
+        "chapter": "01 / 02",
+        "label": "An idea",
+        "headline": "Ideas made real.",
+        "body": "",
+        "placement": "Split headline across upper-left and lower-right clear zones; exact approved concept relationship."
+      },
+      {
+        "id": "shape",
+        "chapter": "02 / 02",
+        "label": "A clear direction",
+        "headline": "Clear thought.\nWorking form.",
+        "body": "We bring design and software together to turn a business need into a clear, useful experience.",
+        "placement": "Right reading zone; sculpture shifts left. Exact placement follows inspected video."
+      }
+    ],
+    "work": {
+      "label": "Selected explorations",
+      "headline": "Form. Function.\nRoom to go further.",
+      "body": "Our own identity and a collection of self-initiated concepts. A look at how we think, design and build.",
+      "link": {
+        "label": "Explore the work",
+        "href": "/work"
+      },
+      "project_ids": [
+        "nu-labs-identity",
+        "studio-index",
+        "open-house"
+      ]
+    },
+    "studio": {
+      "label": "The studio",
+      "headline": "Good questions.\nConsidered answers.",
+      "body": "We care about the space between a promising idea and a useful result. That is where clear thinking, close collaboration and careful making belong.",
+      "link": {
+        "label": "Meet the studio",
+        "href": "/studio"
+      },
+      "image_caption": "Creative studio concept. Generated imagery."
+    },
+    "contact": {
+      "headline": "What could we\nmake together?",
+      "body": "Bring a clear brief, a difficult problem or the start of an idea. We can work out the next step.",
+      "link": {
+        "label": "Start a conversation",
+        "href": "/contact"
+      }
+    }
+  },
+  "work": {
+    "meta_title": "Work and concepts | Nu Labs",
+    "label": "Work / Selected explorations",
+    "headline": "A point of view,\nput to work.",
+    "intro": "An internal identity system and two self-initiated concepts, each exploring a different relationship between design and use.",
+    "filters": [
+      "All",
+      "Identity",
+      "Digital product",
+      "Web experience"
+    ],
+    "concept_notice": "Self-initiated concepts demonstrate a direction. They are not presented as commissioned client work or launched products.",
+    "projects": [
+      {
+        "id": "nu-labs-identity",
+        "title": "Nu Labs",
+        "subtitle": "One identity. A useful range.",
+        "discipline": "Brand identity / Art direction",
+        "status": "Internal brand study",
+        "year": "2026",
+        "summary": "A black-and-white identity that moves from quiet clarity to expressive form.",
+        "challenge": "Build a recognisable system around the supplied three-part symbol, with enough range for digital, print and physical applications.",
+        "direction": "Keep the signature fixed. Let scale, material, typography and shaped panels create the variation.",
+        "scope": [
+          "Identity guidelines",
+          "Typography and composition",
+          "Digital applications",
+          "Apparel and stationery concepts"
+        ],
+        "detail": "The system combines Instrument Sans, an exact logo lockup and a restrained neutral palette. A straight cut meeting a soft curve becomes a recurring way to frame content.",
+        "outcome": "An identity system and a set of concept applications.",
+        "image_note": "Application renders are visual concepts, not production samples.",
+        "cta": "Explore the identity",
+        "claim_status": "existing internal work"
+      },
+      {
+        "id": "studio-index",
+        "title": "Studio Index",
+        "subtitle": "Less searching. More making.",
+        "discipline": "Product design / Interface concept",
+        "status": "Self-initiated concept",
+        "year": "2026",
+        "summary": "A proposed workspace for bringing briefs, decisions and project files into one clear view.",
+        "challenge": "Explore how a small creative team could see what matters today without losing the context behind a decision.",
+        "direction": "Give the active project a clear centre. Keep tasks, references and decisions within reach, with quiet visual hierarchy.",
+        "scope": [
+          "Workspace information architecture",
+          "Project overview concept",
+          "Task and decision interface",
+          "Responsive layout study"
+        ],
+        "detail": "The concept uses a compact project index and focused detail panels. It is a design exploration that can be developed into a tested product.",
+        "outcome": "A fictional product direction presented to demonstrate interface thinking.",
+        "image_note": "Concept interface. No client, launch or user results are implied.",
+        "cta": "View the concept",
+        "claim_status": "placeholder concept"
+      },
+      {
+        "id": "open-house",
+        "title": "Open House",
+        "subtitle": "Find a place. Make a plan.",
+        "discipline": "Web experience / Service concept",
+        "status": "Self-initiated concept",
+        "year": "2026",
+        "summary": "A proposed digital experience for discovering creative spaces and planning a visit.",
+        "challenge": "Make place, availability and practical details easy to understand while preserving the character of each space.",
+        "direction": "Pair generous photography with a compact, readable information layer. Let people explore first and make practical decisions with confidence.",
+        "scope": [
+          "Discovery experience",
+          "Space detail concept",
+          "Enquiry flow",
+          "Editorial image direction"
+        ],
+        "detail": "The study connects a visual directory to a useful detail view, bringing location context, amenities and next steps into one reading flow.",
+        "outcome": "A fictional service concept, available for further design and development.",
+        "image_note": "Concept imagery and interface. Spaces and availability are illustrative.",
+        "cta": "View the concept",
+        "claim_status": "placeholder concept"
+      }
+    ],
+    "closing_headline": "Your next chapter\ncould start here.",
+    "closing_link": {
+      "label": "Talk about a project",
+      "href": "/contact"
+    }
+  },
+  "studio": {
+    "meta_title": "Studio | Nu Labs",
+    "label": "Studio / Our perspective",
+    "headline": "Clear thinking.\nHuman perspective.",
+    "intro": "Nu Labs is a meeting point for design and software. We connect the shape of an idea with the way it needs to work.",
+    "statement": "The detail matters.\nSo does the bigger picture.",
+    "body": "A good experience should hold together, from the words that introduce it to the last interaction. We look for a strong central idea, then carry it carefully through the work.",
+    "values": [
+      {
+        "title": "Ask better questions.",
+        "body": "Understand the people, the purpose and the practical limits before choosing a direction."
+      },
+      {
+        "title": "Make decisions visible.",
+        "body": "Use sketches, prototypes and clear conversations to make progress tangible."
+      },
+      {
+        "title": "Care about the ordinary.",
+        "body": "A useful form, a clear label and a well-timed transition deserve as much thought as the first impression."
+      }
+    ],
+    "perspective": {
+      "headline": "Make room\nfor more.",
+      "body": "We believe Black creative and technical excellence deserves to be seen, valued and given room to lead. Our ambition is to make thoughtful work with a perspective of our own.",
+      "status": "Proposed brand belief grounded in the user’s stated goal; not an ownership or certification claim."
+    },
+    "image_caption": "A generated creative studio scene. People and premises are illustrative.",
+    "closing": {
+      "headline": "A good place\nto start.",
+      "body": "Tell us what you are thinking. We will start with the right questions.",
+      "link": {
+        "label": "Start a conversation",
+        "href": "/contact"
+      }
+    }
+  },
+  "services": {
+    "meta_title": "Services | Nu Labs",
+    "label": "Services / From thought to working form",
+    "headline": "Think it through.\nMake it happen.",
+    "intro": "Start with one focused challenge or bring the whole picture. Strategy, design and development work best when the decisions connect.",
+    "services": [
+      {
+        "number": "01",
+        "id": "strategy",
+        "title": "Find the right idea.",
+        "name": "Strategy",
+        "body": "Before making more, get clear on what matters. We shape the brief, the structure and the decisions that give the work direction.",
+        "deliverables": [
+          "Discovery and workshops",
+          "Brand positioning",
+          "Experience planning",
+          "Content and information architecture"
+        ],
+        "outcome": "A clear direction for what comes next."
+      },
+      {
+        "number": "02",
+        "id": "design",
+        "title": "Give it a distinct form.",
+        "name": "Design",
+        "body": "Turn that direction into something people can recognise, understand and enjoy using. Every element has a part to play.",
+        "deliverables": [
+          "Visual identity systems",
+          "Website and interface design",
+          "Digital product design",
+          "Motion and art direction"
+        ],
+        "outcome": "A coherent experience, from first impression to fine detail."
+      },
+      {
+        "number": "03",
+        "id": "development",
+        "title": "Make it work in the world.",
+        "name": "Development",
+        "body": "Bring the design into a working experience, with care for the details people notice and the foundations they rely on.",
+        "deliverables": [
+          "Responsive websites",
+          "Web applications",
+          "Interactive experiences",
+          "Integration and ongoing refinement"
+        ],
+        "outcome": "A working product that can keep moving forward."
+      }
+    ],
+    "process": {
+      "headline": "A clear way forward.",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Understand",
+          "body": "Define the problem, the people and what a useful result would look like."
+        },
+        {
+          "number": "02",
+          "title": "Explore",
+          "body": "Make the options tangible through concepts, prototypes and early decisions."
+        },
+        {
+          "number": "03",
+          "title": "Build",
+          "body": "Bring the chosen direction into a working experience and refine it through use."
+        },
+        {
+          "number": "04",
+          "title": "Refine",
+          "body": "Review what is working, address what is not and plan the next improvement."
+        }
+      ]
+    },
+    "faq": [
+      {
+        "question": "Where should we start?",
+        "answer": "With the problem you want to solve. A short description of the business, the people using the work and the result you want is enough to begin."
+      },
+      {
+        "question": "Can we start with a focused piece of work?",
+        "answer": "Yes. A clear identity, a single website or a product prototype can be a useful first step. The scope should fit the need."
+      },
+      {
+        "question": "What information should a brief include?",
+        "answer": "Share the goal, the audience, any existing material, a preferred timeline and a budget range if you have one. It is fine if some of that is still taking shape."
+      }
+    ],
+    "closing": {
+      "headline": "Let’s make\nthe next move.",
+      "link": {
+        "label": "Talk about your project",
+        "href": "/contact"
+      }
+    }
+  },
+  "contact": {
+    "meta_title": "Contact | Nu Labs",
+    "label": "Contact / Start a conversation",
+    "headline": "Tell us what\nyou have in mind.",
+    "intro": "A new identity, a useful product, a website with a different point of view. Start wherever you are.",
+    "form": {
+      "name": {
+        "label": "Your name",
+        "placeholder": "Name and surname",
+        "autocomplete": "name"
+      },
+      "email": {
+        "label": "Email address",
+        "placeholder": "you@company.com",
+        "autocomplete": "email"
+      },
+      "company": {
+        "label": "Company or project",
+        "placeholder": "Optional",
+        "autocomplete": "organization"
+      },
+      "interest": {
+        "label": "What are you thinking about?",
+        "options": [
+          "Brand and identity",
+          "Website",
+          "Digital product",
+          "Something else"
+        ]
+      },
+      "budget": {
+        "label": "Budget range",
+        "optional": true,
+        "options": [
+          "Still exploring",
+          "Under R25 000",
+          "R25 000–R75 000",
+          "R75 000–R150 000",
+          "R150 000+"
+        ]
+      },
+      "message": {
+        "label": "A little about your project",
+        "placeholder": "What would you like to make, change or solve?"
+      },
+      "privacy_hint": "Please leave out passwords and sensitive personal information.",
+      "submit_live": "Send enquiry",
+      "submit_preview": "Prepare enquiry",
+      "preview_notice": "This preview prepares your enquiry on your device. It does not send it.",
+      "prepared_title": "Your enquiry is ready.",
+      "prepared_body": "Copy the details below and keep them ready to share.",
+      "copy_button": "Copy enquiry",
+      "copied": "Enquiry copied",
+      "live_success_title": "Thank you. Your enquiry has been sent.",
+      "live_success_note": "Use only after the server confirms successful receipt.",
+      "errors": {
+        "name": "Please enter your name.",
+        "email": "Please enter a valid email address.",
+        "message": "Tell us a little about your project.",
+        "send": "Your enquiry could not be sent. Please try again."
+      }
+    },
+    "secondary_statement": "The first step\nis a conversation.",
+    "contact_details_status": "No verified email, telephone number, street address or booking URL supplied. Do not invent them."
+  },
+  "claims_register": [
+    {
+      "claim": "Nu Labs name and supplied logo",
+      "status": "confirmed",
+      "source": "brief + logo",
+      "treatment": "Use exact assets."
+    },
+    {
+      "claim": "Design and software studio offering",
+      "status": "approved working positioning, not independent company fact",
+      "source": "brand_content and current brief",
+      "treatment": "Use as proposed public-facing offer; avoid historical scale or expertise claims."
+    },
+    {
+      "claim": "Black excellence and South African creative representation",
+      "status": "user-directed brand aspiration",
+      "source": "brief",
+      "treatment": "Use as perspective or belief. Do not infer company registration, Black ownership, BBBEE status, team composition or certifications."
+    },
+    {
+      "claim": "Nu Labs brand system project",
+      "status": "existing internal work",
+      "source": "brand_guide",
+      "treatment": "Label Internal brand study. Generated applications are concepts."
+    },
+    {
+      "claim": "Studio Index and Open House projects",
+      "status": "fictional placeholder concepts",
+      "source": "new copy draft",
+      "treatment": "Label Self-initiated concept on cards and detail pages; no client outcomes."
+    },
+    {
+      "claim": "People, office and reception imagery",
+      "status": "generated concepts",
+      "source": "brand_guide + new image generation brief",
+      "treatment": "Do not call them our team or our office. Add a small visible caption where used on Studio."
+    },
+    {
+      "claim": "Client logos, reviews, project metrics, years of experience, team names, awards",
+      "status": "not provided",
+      "source": "none",
+      "treatment": "Omit, do not invent."
+    },
+    {
+      "claim": "Contact details and data processing policy",
+      "status": "not provided",
+      "source": "none",
+      "treatment": "No invented email/domain/phone/address. Keep contact preview honest until an actual endpoint and policy exist."
+    },
+    {
+      "claim": "Budget ranges",
+      "status": "draft enquiry options, not quoted prices",
+      "source": "new copy draft",
+      "treatment": "Optional and clearly client budget ranges; can remove if not needed."
+    }
+  ],
+  "implementation_rules": [
+    "All headings, navigation and reading copy remain semantic flat DOM text, separate from the cinematic background.",
+    "Screen-reader order remains headline, proposition, offer, work, studio and contact, even if display text is split visually.",
+    "Do not give fictional projects false clients, outcomes, awards, testimonials, device statistics or fabricated screenshots with real transactions.",
+    "Do not display live_success copy without confirmed server receipt. A local preview or clipboard action must remain explicit.",
+    "Keep optional budget values as client enquiry ranges, never pricing claims.",
+    "Service offers are a proposed scope from the approved positioning. Do not add regulated specialist services or unsupported certifications."
+  ]
+}
