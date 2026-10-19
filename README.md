@@ -4,17 +4,18 @@ A bright, monochrome studio website built around the approved three-part sculptu
 
 ## Current state
 
-This branch contains an **implementation draft**, not a completed cinematic release.
+This branch contains an **integrated review draft**. Production media is installed; browser verification and live enquiry delivery remain release gates.
 
 - Eight static pages: Home, Work, Studio, Services, Contact, and three project details.
 - Responsive layouts, project filters, mobile navigation, native FAQ disclosures, and a local project-brief builder.
 - A bounded native-scroll video controller with coalesced seeking, reading holds, static fallbacks and motion controls.
 - Exact approved logo vectors, a local variable WOFF2 font and responsive brand application images.
-- Production video, clean background plate and new studio image are awaiting a separately authorized Higgsfield allocation.
+- The approved clean 4K background plate, 4K studio image and 1080p camera shot are generated and integrated. The silent H.264 web video is 3,553,215 bytes, with 193 frames at 24 fps and a keyframe every 0.25 seconds.
+- All three approved generations completed without paid retries. Their fresh quoted prices totalled 136.50 credits, within the approved ceiling.
 - Browser visual, temporal, responsive and accessibility verification is still required. Unit tests do not establish those results.
 - No live enquiry delivery, verified email address or domain has been supplied. The form prepares a brief locally and clearly says that nothing is sent. It never reports a fictitious successful submission.
 
-The fallback layout remains readable while media is absent. No generated screenshot is substituted for the website, and no reference footage from MotionSites is shipped.
+The fallback layout is designed to remain readable when motion is disabled or media is unavailable. No generated screenshot is substituted for the website, and no reference footage from MotionSites is shipped.
 
 ## Build
 
@@ -52,14 +53,14 @@ Most copy is available in the content file. A few short composition-specific hea
 
 ## Media finishing
 
-1. Remove all baked UI from the approved still through the authorized image edit, preserving the architecture.
-2. Inspect that plate, then submit the single approved 8-second Seedance 2.5 1080p camera move.
-3. Inspect the whole clip, geometry, lighting and actual negative space. Set the final timeline and text positions from the result.
-4. Preserve the source master outside the public output. Prepare a seek-friendly H.264/yuv420p derivative with faststart and a measured keyframe interval. Derive static desktop/mobile compositions from inspected frames.
-5. Install the actual files and set their paths in `media.json`. Do not insert guessed output paths or set `verified` before temporal QA.
+1. Completed: the approved clean architectural plate contains no baked interface.
+2. Completed: one Seedance2.5 shot was generated from the inspected clean plate.
+3. Sampled sequence inspection passed: 32 frames at 4 fps, plus full-resolution opening, midpoint and final frames. Normal-speed playback remains unverified.
+4. Completed: silent H.264/yuv420p faststart encoding, 0.25-second keyframe intervals, matching opening and final stills, and responsive WebP studio images.
+5. Completed: actual delivered files and dimensions are registered in the manifests. Status remains `integrated-awaiting-browser-qa`.
 6. Inspect desktop/mobile/short screens, fast and reverse scrolling, focus, route entry, live reduced-motion changes, video failure and no-JavaScript fallback.
 
-The runtime adds the tall sticky stage only after a frame is presented. Narrow screens and reduced-motion users receive a normal-flow sequence. No smooth-scroll engine or wheel interception is used.
+The runtime adds the tall sticky stage only after a frame is presented. Narrow screens, portrait tablets, short windows and reduced-motion users receive a normal-flow sequence. No smooth-scroll engine or wheel interception is used.
 
 ## Release gates
 
@@ -67,7 +68,7 @@ The runtime adds the tall sticky stage only after a frame is presented. Narrow s
 node scripts/check.mjs --release
 ```
 
-This intentionally fails until required media, verification status and a real contact destination exist. It supplements, rather than replaces, visual and temporal browser QA. The draft has not been deployed as a finished public site.
+This intentionally fails until required media, verification status and a real contact destination exist. It supplements, rather than replaces, visual and temporal browser QA. The private review is deployed at https://nu-labs-cinematic.mikeynu.chatgpt.site, with success confirmed by the hosting service. [GitHub PR #2](https://github.com/MikeyNu/nulabs-web/pull/2) remains a draft until browser QA and live enquiry delivery are completed.
 
 ## Attribution
 

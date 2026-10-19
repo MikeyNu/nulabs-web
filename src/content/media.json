@@ -1,12 +1,19 @@
 {
   "journey": {
-    "status": "awaiting-generation-budget",
-    "video": null,
-    "poster": null,
-    "mobilePoster": null,
-    "durationSeconds": 8,
-    "chapters": 2
+    "status": "integrated-awaiting-browser-qa",
+    "video": "/assets/video/journey-scrub.mp4",
+    "poster": "/assets/images/journey-poster-1920.webp",
+    "mobilePoster": "/assets/images/journey-poster-960.webp",
+    "durationSeconds": 8.041666666666666,
+    "chapters": 2,
+    "endPoster": "/assets/images/journey-ending-1920.webp",
+    "fps": 24,
+    "frames": 193,
+    "bytes": 3553215
   },
-  "contact": { "email": null, "endpoint": null },
+  "contact": {
+    "email": null,
+    "endpoint": null
+  },
   "siteUrl": null
 }

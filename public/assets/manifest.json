@@ -25,23 +25,23 @@
     },
     "studio": {
       "src": "/assets/images/studio-1600.webp",
-      "width": 1536,
-      "height": 1024,
-      "srcSet": "/assets/images/studio-800.webp 800w, /assets/images/studio-1600.webp 1536w",
-      "alt": "Illustrative creative team reviewing design sketches around a shared desk.",
-      "focalPosition": "50% 48%",
+      "width": 1600,
+      "height": 900,
+      "srcSet": "/assets/images/studio-800.webp 800w, /assets/images/studio-1600.webp 1600w",
+      "alt": "Illustrative Black creative professionals reviewing a visual system together.",
+      "focalPosition": "100% 50%",
       "variants": [
         {
           "src": "/assets/images/studio-800.webp",
           "width": 800,
-          "height": 533,
-          "bytes": 60808
+          "height": 450,
+          "bytes": 58344
         },
         {
           "src": "/assets/images/studio-1600.webp",
-          "width": 1536,
-          "height": 1024,
-          "bytes": 137840
+          "width": 1600,
+          "height": 900,
+          "bytes": 149804
         }
       ]
     },
@@ -88,6 +88,50 @@
           "bytes": 232264
         }
       ]
+    },
+    "journey-poster": {
+      "src": "/assets/images/journey-poster-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "srcSet": "/assets/images/journey-poster-960.webp 960w, /assets/images/journey-poster-1920.webp 1920w",
+      "alt": "Three black architectural forms in a bright gallery.",
+      "focalPosition": "50% 50%",
+      "variants": [
+        {
+          "src": "/assets/images/journey-poster-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 22370
+        },
+        {
+          "src": "/assets/images/journey-poster-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 57382
+        }
+      ]
+    },
+    "journey-ending": {
+      "src": "/assets/images/journey-ending-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "srcSet": "/assets/images/journey-ending-960.webp 960w, /assets/images/journey-ending-1920.webp 1920w",
+      "alt": "Three black architectural forms in a bright gallery.",
+      "focalPosition": "50% 50%",
+      "variants": [
+        {
+          "src": "/assets/images/journey-ending-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 20056
+        },
+        {
+          "src": "/assets/images/journey-ending-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 49594
+        }
+      ]
     }
   },
   "logos": {
@@ -101,5 +145,19 @@
     "weight": "400 700",
     "stretch": "75% 100%",
     "license": "/assets/OFL-InstrumentSans.txt"
+  },
+  "video": {
+    "src": "/assets/video/journey-scrub.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "frames": 193,
+    "durationSeconds": 8.041666666666666,
+    "codec": "H.264",
+    "pixelFormat": "yuv420p",
+    "audio": false,
+    "bytes": 3553215,
+    "keyframeIntervalSeconds": 0.25,
+    "sha256": "2e2f812e14ca685fce8e83f47dcfd333226ff904c288cd336812b487b5fe1a7d"
   }
 }
