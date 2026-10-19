@@ -225,19 +225,19 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
  .cinema-arrival {min-height:800px}
 }
 
-/* Software showcase: exact interface studies remain uncropped. */
-.solution-visual {display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:5%;background:#e8e9e2}
+/* Website-specific photographs preserve the complete device and exact UI. */
+.solution-visual {display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#e8e9e2}
 .solution-visual img {display:block;width:100%;height:100%;object-fit:contain}
-.solution-mobile {background:#dedfd7;padding:4%}
-.solution-mobile img {width:auto;max-width:100%;height:100%;filter:drop-shadow(0 16px 25px #19211618)}
+.horizontal-enhanced .work-panel {width:max(440px,calc((100svh - 446px)*1.5));max-width:80vw}
+.horizontal-enhanced .solution-visual {background:transparent}
+.work-grid .project-art,.work-grid .project-card:first-child .project-art {aspect-ratio:3/2}
 .work-grid .project-card:last-child {grid-column:auto;width:100%;margin-left:0}
-.work-grid .project-card:last-child .project-art {aspect-ratio:1.42}
-.studio-v2-visual img {aspect-ratio:1.3;object-fit:contain;clip-path:none;background:#e8e9e2;padding:5%}
-.studio-wide img {object-fit:contain;background:#e8e9e2;padding:4%}
+.work-grid .project-card:last-child .project-art {aspect-ratio:3/2}
+.case-cover {height:auto;aspect-ratio:3/2}
+.studio-v2-visual img {aspect-ratio:3/2;object-fit:contain;clip-path:none;background:#e8e9e2}
+.studio-wide img {display:block;max-height:none;aspect-ratio:3/2;object-fit:contain;background:#e8e9e2}
 .service-name h2 {font-size:clamp(38px,4.2vw,66px)}
 @media(max-width:767px){
-  .work-grid .project-card:last-child .project-art {aspect-ratio:1.42}
-  .solution-visual {padding:3%}
-  .solution-mobile {padding:5%}
-  .studio-v2-visual img {aspect-ratio:1.3}
+  .work-panel-art,.work-grid .project-card:last-child .project-art {aspect-ratio:3/2}
+  .case-title h1.case-title-long {font-size:clamp(42px,13.5vw,82px)}
 }

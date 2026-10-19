@@ -1,0 +1,164 @@
+{
+  "erp": {
+    "plate": "art/product-ui/plates/erp.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        1200,
+        397
+      ],
+      [
+        3071,
+        388
+      ],
+      [
+        3068,
+        1535
+      ],
+      [
+        1168,
+        1524
+      ]
+    ],
+    "ui_width": 1600,
+    "corner_radius": 0
+  },
+  "crm": {
+    "plate": "art/product-ui/plates/crm.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        741,
+        289
+      ],
+      [
+        2831,
+        287
+      ],
+      [
+        2834,
+        1502
+      ],
+      [
+        740,
+        1501
+      ]
+    ],
+    "ui_width": 1600,
+    "corner_radius": 0
+  },
+  "pos": {
+    "plate": "art/product-ui/plates/pos.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        867,
+        429
+      ],
+      [
+        2647,
+        426
+      ],
+      [
+        2679,
+        1454
+      ],
+      [
+        829,
+        1451
+      ]
+    ],
+    "ui_width": 1600,
+    "corner_radius": 0
+  },
+  "mobile": {
+    "plate": "art/product-ui/plates/mobile.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        1760,
+        194
+      ],
+      [
+        2658,
+        194
+      ],
+      [
+        2660,
+        1976
+      ],
+      [
+        1768,
+        1976
+      ]
+    ],
+    "ui_width": 768,
+    "corner_radius": 60
+  },
+  "ai": {
+    "plate": "art/product-ui/plates/ai.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        1218,
+        380
+      ],
+      [
+        3027,
+        372
+      ],
+      [
+        3039,
+        1490
+      ],
+      [
+        1216,
+        1492
+      ]
+    ],
+    "ui_width": 1600,
+    "corner_radius": 0
+  },
+  "cyber": {
+    "plate": "art/product-ui/plates/cyber.png",
+    "plate_size": [
+      3504,
+      2336
+    ],
+    "screen_quad": [
+      [
+        563,
+        218
+      ],
+      [
+        2941,
+        218
+      ],
+      [
+        2941,
+        1524
+      ],
+      [
+        563,
+        1524
+      ]
+    ],
+    "ui_width": 1600,
+    "corner_radius": 0
+  }
+}

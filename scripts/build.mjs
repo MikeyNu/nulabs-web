@@ -31,7 +31,7 @@ const masthead = (label, headline, intro) => `<section class="page-masthead sect
 function projectArt(id) {
   const p = content.work.projects.find(p => p.id === id);
   if (!p) throw new Error('Unknown solution: ' + id);
-  return `<div class="solution-visual solution-${p.asset}">${image('solution-'+p.asset, p.title+' illustrative interface, using demo data')}</div>`;
+  return `<div class="solution-visual solution-${p.asset}">${image('solution-'+p.asset, assets.images['solution-'+p.asset].alt)}</div>`;
 }
 function projectCard(p, index) {
   return `<article class="project-card project-${index}" data-project-category="${escape(p.category)}"><a class="project-art" href="${url('/work/' + p.id + '/')}" aria-label="${escape(p.cta + ': ' + p.title)}">${projectArt(p.id)}<span class="project-open" aria-hidden="true">↗</span></a><div class="project-meta"><div><span class="micro">${escape(p.status)}</span><h3><a href="${url('/work/' + p.id + '/')}">${escape(p.title)}</a></h3><p>${escape(p.subtitle)}</p></div><span class="project-year">${escape(p.year)}</span></div></article>`;
@@ -42,7 +42,8 @@ function work() {
   return `${masthead(w.label, w.headline, w.intro)}<section class="work-section section-pad"><div class="filter-bar" role="group" aria-label="Filter work" hidden>${w.filters.map((f,i)=>`<button data-filter="${escape(f)}" aria-pressed="${!i}">${escape(f)}</button>`).join('')}</div><p class="filter-announcement sr-only" aria-live="polite"></p><div class="project-grid work-grid">${w.projects.map(projectCard).join('')}</div><p class="quiet-note">${escape(w.concept_notice)}</p></section>${closing(w.closing_headline)}`;
 }
 function project(p) {
-  return `<section class="case-masthead section-pad"><a class="back-link" href="${url('/work/')}">← All solutions</a><div class="case-title"><div><p class="eyeline">${escape(p.status)} / ${p.year}</p><h1>${escape(p.title)}</h1><p class="page-intro">${escape(p.subtitle)}</p></div><p class="micro">${escape(p.discipline)}</p></div></section><div class="case-cover">${projectArt(p.id)}</div><section class="case-story section-pad"><div><span class="eyeline">The question</span><h2>${escape(p.summary)}</h2></div><div class="case-copy"><p>${escape(p.challenge)}</p><h3>The direction</h3><p>${escape(p.direction)}</p><p>${escape(p.detail)}</p><p><a class="text-link" href="${url('/assets/solutions/'+p.asset+'-ui.svg')}">Inspect the interface study ${arrow}</a></p><h3>Scope</h3><ul class="plain-list">${p.scope.map(s=>`<li>${escape(s)}</li>`).join('')}</ul><p class="quiet-note">${escape(p.image_note)}</p></div></section>${closing('What is your\nnext chapter?')}`;
+  const titleClass = p.title.split(/\s+/).some(word => word.length > 11) ? ' class="case-title-long"' : '';
+  return `<section class="case-masthead section-pad"><a class="back-link" href="${url('/work/')}">← All solutions</a><div class="case-title"><div><p class="eyeline">${escape(p.status)} / ${p.year}</p><h1${titleClass}>${escape(p.title)}</h1><p class="page-intro">${escape(p.subtitle)}</p></div><p class="micro">${escape(p.discipline)}</p></div></section><div class="case-cover">${projectArt(p.id)}</div><section class="case-story section-pad"><div><span class="eyeline">The question</span><h2>${escape(p.summary)}</h2></div><div class="case-copy"><p>${escape(p.challenge)}</p><h3>The direction</h3><p>${escape(p.direction)}</p><p>${escape(p.detail)}</p><p><a class="text-link" href="${url('/assets/solutions/'+p.asset+'-ui.svg')}">Inspect the interface study ${arrow}</a></p><h3>Scope</h3><ul class="plain-list">${p.scope.map(s=>`<li>${escape(s)}</li>`).join('')}</ul><p class="quiet-note">${escape(p.image_note)}</p></div></section>${closing('What is your\nnext chapter?')}`;
 }
 function studio() {
   const s = content.studio;

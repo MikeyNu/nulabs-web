@@ -161,7 +161,7 @@ a:hover .arrow,button:hover .arrow {
   position:sticky;
   top:0;
   z-index:40;
-  background:#f7f7f2ee
+  background:#f7f7f2
 }
 .brand {
   display:flex;

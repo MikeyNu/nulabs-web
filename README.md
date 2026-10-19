@@ -1,8 +1,8 @@
 # Nu Labs
 
-Software showcase revision: the software-focused copy and six exact interface concepts are prepared. The planned Higgsfield device photographs are awaiting a spending allocation. This branch is a review draft, not the completed photographic asset replacement. See [the revision direction](docs/software-showcase-direction.md).
+Software showcase revision: six website-specific Higgsfield device photographs now present ERP, CRM, POS, native mobile, AI and cybersecurity concepts with exact authored interfaces. Copy reflects Nu Labs software capabilities, and CI-only mockups have been removed. See [the revision direction](docs/software-showcase-direction.md) and [QA record](docs/software-showcase-qa.md).
 
-A monochrome design and software studio website with a Higgsfield camera journey, live HTML overlays, a bounded horizontal work gallery and a bright editorial studio section.
+A monochrome software engineering website with a Higgsfield camera journey, live HTML overlays, a bounded horizontal work gallery and a bright editorial studio section.
 
 ## Build and preview
 
@@ -20,7 +20,7 @@ npm test
 npm run check
 ~~~
 
-All assets required by the build, including the Higgsfield video, eight chapter posters, fonts and logos, are tracked in this repository. A clean checkout does not depend on a temporary preview folder. The generated dist directory is excluded from Git.
+All assets required by the build, including the Higgsfield video, eight chapter posters, six staged software scenes, exact UI studies, fonts and logos, are tracked in this repository. A clean checkout does not depend on a temporary preview folder. The generated dist directory is excluded from Git.
 
 ## Current experience
 
@@ -48,6 +48,9 @@ The active background is the reviewed 1080p Seedance 2.5 output generated throug
 | src/scripts/journey-v2.mjs | Presented-frame coordination and horizontal travel |
 | public/assets/video/journey-higgsfield.mp4 | Browser-ready H.264 video |
 | public/assets/manifest.json | Active asset metadata |
+| public/assets/solutions/ | Responsive device photographs and exact SVG UI studies |
+| art/product-ui/ | Generation recipes, original plates, composition tools and native-size masters |
+| art/product-ui/production.json | Actual dimensions, hashes and delivered web variants |
 | art/higgsfield/journey-master.mp4 | Original provider master |
 | art/higgsfield/media-verification.json | Source and delivery hashes and measurements |
 | docs/higgsfield-integration.md | Current verification and known limits |

@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-19",
+  "provider": "Higgsfield",
+  "model": "gpt_image_2_5",
+  "variant": "sunburst",
+  "quality": "max",
+  "requested_resolution": "4k",
+  "aspect_ratio": "3:2",
+  "delivered_resolution_note": "All six original provider PNG files are 3504 x 2336 pixels. No resampling is used to claim a 3840- or 4096-pixel native source.",
+  "generation_count": 6,
+  "repair_generations": 0,
+  "ui": "Exact authored SVG, rendered at 3x in Edge and fitted to the inspected screen quadrilateral",
+  "records": [
+    {
+      "id": "erp",
+      "plate": "art/product-ui/plates/erp.png",
+      "plate_sha256": "82822d4141298424ca2bb461b71c805479ac28d4f4730f78adde177f61bf1eb6",
+      "master": "art/product-ui/masters/erp-3504x2336.webp",
+      "master_sha256": "a933d8edea3dfbe622d4b5be8447caae668feb3f210c9bc10f2200d274e41e32",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/erp-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 40390
+        },
+        {
+          "src": "/assets/solutions/erp-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 116938
+        },
+        {
+          "src": "/assets/solutions/erp-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 214168
+        }
+      ]
+    },
+    {
+      "id": "crm",
+      "plate": "art/product-ui/plates/crm.png",
+      "plate_sha256": "6f88243d069649e4109eaa03c91c135a07435868a3c48a3086ea92a21aefb8a4",
+      "master": "art/product-ui/masters/crm-3504x2336.webp",
+      "master_sha256": "50fe58f546b018bc5ac78b91f9b6b9c89e10e530f1b0941c403f1d147a7b1eb6",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/crm-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 41640
+        },
+        {
+          "src": "/assets/solutions/crm-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 112982
+        },
+        {
+          "src": "/assets/solutions/crm-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 203914
+        }
+      ]
+    },
+    {
+      "id": "pos",
+      "plate": "art/product-ui/plates/pos.png",
+      "plate_sha256": "a3fc99b385aa488ec9bbd8c0ba4a34f5db70e2549bcca50279bd4d4ba0dce668",
+      "master": "art/product-ui/masters/pos-3504x2336.webp",
+      "master_sha256": "00c0805763e1b2effcc2f33d84a2af7cfa866c6c505da93528a90eedc35744e0",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/pos-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 72714
+        },
+        {
+          "src": "/assets/solutions/pos-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 208234
+        },
+        {
+          "src": "/assets/solutions/pos-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 358208
+        }
+      ]
+    },
+    {
+      "id": "mobile",
+      "plate": "art/product-ui/plates/mobile.png",
+      "plate_sha256": "bf1786afef2f6d13472806259b7668c25b6502b39d0eebdcff786ae4935bbedc",
+      "master": "art/product-ui/masters/mobile-3504x2336.webp",
+      "master_sha256": "2285e6f239ae28d507da7de1d5fcaff37ed896b3f25a8520e3c9e162e0bc3999",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/mobile-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 52516
+        },
+        {
+          "src": "/assets/solutions/mobile-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 153218
+        },
+        {
+          "src": "/assets/solutions/mobile-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 252402
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "plate": "art/product-ui/plates/ai.png",
+      "plate_sha256": "cd0469d5d6ba9e4280a56483a476b2448755ee91e5ace946263564bc9ae27872",
+      "master": "art/product-ui/masters/ai-3504x2336.webp",
+      "master_sha256": "33695fcd6bcdc011c04e0e9434b595cad4055aadcd488643d1dac234f41c2242",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/ai-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 53418
+        },
+        {
+          "src": "/assets/solutions/ai-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 140374
+        },
+        {
+          "src": "/assets/solutions/ai-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 246280
+        }
+      ]
+    },
+    {
+      "id": "cyber",
+      "plate": "art/product-ui/plates/cyber.png",
+      "plate_sha256": "c42ffa791d11dee11a9c2f0ff9651ac3f1a060c3aaea5f859eebfebbc47dc631",
+      "master": "art/product-ui/masters/cyber-3504x2336.webp",
+      "master_sha256": "e83c01d2f328b546cc66f8b40d3dd369ab6fdfdbb2dff8d4e08441bdb4ea0626",
+      "native_dimensions": [
+        3504,
+        2336
+      ],
+      "variants": [
+        {
+          "src": "/assets/solutions/cyber-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 64784
+        },
+        {
+          "src": "/assets/solutions/cyber-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 181004
+        },
+        {
+          "src": "/assets/solutions/cyber-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 330626
+        }
+      ]
+    }
+  ]
+}

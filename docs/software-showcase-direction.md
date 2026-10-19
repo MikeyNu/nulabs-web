@@ -1,6 +1,6 @@
 # Nu Labs software showcase revision
 
-Status: local implementation draft. Exact UI masters and copy are prepared. Higgsfield device photographs have not been generated. This revision must not be called visually complete or published as the final asset replacement yet.
+Status: six website-specific Higgsfield photographs have been generated, fitted with exact interface artwork and integrated. Final browser and placement review is recorded separately in software-showcase-qa.md.
 
 ## Positioning and evidence
 
@@ -23,9 +23,13 @@ The user has selected cinematic device photography. Develop within that directio
 
 `art/product-ui/build-ui.mjs` creates the exact SVG UI masters and an HTML review board. `art/product-ui/shot-requests.json` contains six complete GPT Image 2.5 Sunburst requests: 4K, max quality, 3:2, one output each. No reference images are needed for the blank device plates. Every device screen is deliberately neutral so the authored UI can be placed with exact lettering and icons. Inspect the generated device geometry before fitting the UI to its actual screen quadrilateral. Preserve a flat full-resolution screen as well as the staged scene. If the perspective becomes too strong for readable text, repair the shot rather than accepting illegibility.
 
-## Generation allocation proposal
+## Production record
 
-The live Higgsfield estimator returned 15 credits for each of the six exact requests on 19 October 2026: 90 credits for the initial set. Propose a task ceiling of 120 credits, at most eight single-image submissions, covering six images and at most two diagnosed repairs. No automatic batches, upgrades, paid upscaling or video work. Generate the ERP plate first and inspect geometry and compositing suitability before the other five. Quotes must be refreshed before actual submission, and the skill's consent, preflight and reservation requirements still apply. No spending allocation has been recorded for this task and no generation has been submitted.
+Six single-image submissions completed in Higgsfield using GPT Image 2.5 Sunburst, max quality and the 4K setting, with no repair generation, paid upscaling or video regeneration. The ERP plate was inspected and composited before the remaining five submissions. All six provider PNGs are 3504 x 2336 pixels at the requested 3:2 ratio. These are the actual native dimensions; the sources have not been enlarged to claim a 3840- or 4096-pixel width.
+
+Original photographic plates, exact SVGs, measured screen quadrilaterals, native-size composites and the generation recipes are tracked under `art/product-ui/` and `public/assets/solutions/`. `production.json` records source hashes and dimensions. Account identifiers, provider delivery URLs and the spending audit remain private. The website serves 800-, 1600- and 2400-pixel WebP variants. Flat SVG links retain fully inspectable text and icon detail.
+
+To edit the screen artwork, run `node art/product-ui/build-ui.mjs`, render it using `render-screens.mjs` with the existing Playwright and browser environment variables, then run `compose-scenes.py` and `register-assets.py` with Python and Pillow. These are optional authoring tools, not site runtime or build dependencies. The normal build consumes the already tracked exports and calls no image provider.
 
 ## Website structure and motion
 

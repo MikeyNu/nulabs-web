@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Nu Labs: an editorial, cinematic studio website.",
+  "description": "Nu Labs: software engineering, business systems and native applications.",
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",

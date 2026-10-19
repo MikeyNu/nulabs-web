@@ -90,88 +90,196 @@
       ]
     },
     "solution-erp": {
-      "src": "/assets/solutions/erp-ui.svg",
+      "src": "/assets/solutions/erp-1600.webp",
       "width": 1600,
-      "height": 1000,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/erp-ui.svg",
+          "src": "/assets/solutions/erp-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 40390
+        },
+        {
+          "src": "/assets/solutions/erp-1600.webp",
           "width": 1600,
-          "height": 1000
+          "height": 1067,
+          "bytes": 116938
+        },
+        {
+          "src": "/assets/solutions/erp-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 214168
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative ERP interface with demo data on a graphite laptop.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     },
     "solution-crm": {
-      "src": "/assets/solutions/crm-ui.svg",
+      "src": "/assets/solutions/crm-1600.webp",
       "width": 1600,
-      "height": 1000,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/crm-ui.svg",
+          "src": "/assets/solutions/crm-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 41640
+        },
+        {
+          "src": "/assets/solutions/crm-1600.webp",
           "width": 1600,
-          "height": 1000
+          "height": 1067,
+          "bytes": 112982
+        },
+        {
+          "src": "/assets/solutions/crm-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 203914
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative CRM interface with demo data on a desktop monitor.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     },
     "solution-pos": {
-      "src": "/assets/solutions/pos-ui.svg",
+      "src": "/assets/solutions/pos-1600.webp",
       "width": 1600,
-      "height": 1000,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/pos-ui.svg",
+          "src": "/assets/solutions/pos-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 72714
+        },
+        {
+          "src": "/assets/solutions/pos-1600.webp",
           "width": 1600,
-          "height": 1000
+          "height": 1067,
+          "bytes": 208234
+        },
+        {
+          "src": "/assets/solutions/pos-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 358208
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative POS interface with demo data on a point-of-sale terminal beside a receipt printer.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     },
     "solution-mobile": {
-      "src": "/assets/solutions/mobile-ui.svg",
-      "width": 768,
-      "height": 1536,
+      "src": "/assets/solutions/mobile-1600.webp",
+      "width": 1600,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/mobile-ui.svg",
-          "width": 768,
-          "height": 1536
+          "src": "/assets/solutions/mobile-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 52516
+        },
+        {
+          "src": "/assets/solutions/mobile-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 153218
+        },
+        {
+          "src": "/assets/solutions/mobile-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 252402
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative MOBILE interface with demo data on an upright smartphone.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     },
     "solution-ai": {
-      "src": "/assets/solutions/ai-ui.svg",
+      "src": "/assets/solutions/ai-1600.webp",
       "width": 1600,
-      "height": 1000,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/ai-ui.svg",
+          "src": "/assets/solutions/ai-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 53418
+        },
+        {
+          "src": "/assets/solutions/ai-1600.webp",
           "width": 1600,
-          "height": 1000
+          "height": 1067,
+          "bytes": 140374
+        },
+        {
+          "src": "/assets/solutions/ai-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 246280
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative AI interface with demo data on a silver laptop.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     },
     "solution-cyber": {
-      "src": "/assets/solutions/cyber-ui.svg",
+      "src": "/assets/solutions/cyber-1600.webp",
       "width": 1600,
-      "height": 1000,
+      "height": 1067,
       "variants": [
         {
-          "src": "/assets/solutions/cyber-ui.svg",
+          "src": "/assets/solutions/cyber-800.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 64784
+        },
+        {
+          "src": "/assets/solutions/cyber-1600.webp",
           "width": 1600,
-          "height": 1000
+          "height": 1067,
+          "bytes": 181004
+        },
+        {
+          "src": "/assets/solutions/cyber-2400.webp",
+          "width": 2400,
+          "height": 1600,
+          "bytes": 330626
         }
       ],
-      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
-      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+      "alt": "Illustrative CYBER interface with demo data on a desktop monitor on a charcoal desk.",
+      "status": "reviewed website-specific concept",
+      "provenance": "Higgsfield GPT Image 2.5 Sunburst photographic plate with exact authored SVG interface; illustrative concept, not a live product screenshot",
+      "sourceDimensions": [
+        3504,
+        2336
+      ]
     }
   },
   "logos": {
