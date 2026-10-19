@@ -1,5 +1,9 @@
 document.documentElement.classList.add('js');
 
+const aboutPage = document.querySelector('[data-about]');
+if (aboutPage) import('./about.mjs').then(({initAbout}) => initAbout(aboutPage))
+  .catch(() => { /* Complete static layout remains readable. */ });
+
 const cinema = document.querySelector('[data-cinema]');
 const horizontal = document.querySelector('[data-horizontal]');
 // Interior routes do not download the cinema runtime. The homepage preloads its

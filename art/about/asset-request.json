@@ -1,0 +1,35 @@
+{
+  "status": "One approved generation completed. Native RGBA delivered at 2880 × 2880. See production.json for hashes and actual files.",
+  "quote": {
+    "model": "gpt_image_2_5",
+    "credits": 15,
+    "attempts": 1,
+    "outputs": 1,
+    "source": "Higgsfield estimate_image_cost, refreshed before submission on 19 October 2026. User approved 15 credits for one output."
+  },
+  "params": {
+    "model": "gpt_image_2_5",
+    "variant": "sunburst",
+    "quality": "max",
+    "resolution": "4k",
+    "aspect_ratio": "1:1",
+    "background": "transparent",
+    "count": 1,
+    "prompt": "Create ONE isolated full-object asset for a monochrome design-led software studio website. A floating, unbranded, white vintage all-in-one desktop computer from the late 1980s, with a compact boxy CRT monitor, thick softly bevelled casing, subtle side ventilation slots, a single floppy drive slot below the screen and a matching compact keyboard hovering slightly below and in front of it. These are two parts of one coherent computer composition. No mouse, cables, stand, desk, props, floor or cast shadow outside the objects.\n\nComposition: a three-quarter front view with the right side of the enclosure visible. The glass screen faces slightly toward the viewer's left. Slightly elevated viewpoint showing the top and keyboard keys. The complete computer and keyboard float as a unified diagonal arrangement with a gentle 7-degree counterclockwise roll, not an exploded product diagram. Keep the whole silhouette including keyboard comfortably inside the canvas, with about 10 percent transparent margin on every side. The object should fill the central canvas, not be tiny. Physically coherent rectangular geometry, consistent keyboard rows and key sizes, clean perspective and plausible seams.\n\nMaterial and light: cool neutral white satin ABS plastic, softly rounded moulded edges, charcoal recessed CRT glass with a faint neutral reflection. A large softbox above left and restrained reflected fill from the right give enough shading to read the white surfaces on both white and black web backgrounds. Refined commercial product rendering, grounded material response, a very slight variation in the plastic surface, no artificial distressing, no yellowed beige, no over-sharpening. Keep the monitor screen completely blank and dark; typography and binary graphics will be live HTML layers outside the asset. No logos, no brand names, no lettering, no labels or watermarks. Keycaps are blank with mechanically coherent rows.\n\nOutput: true transparent background with clean antialiased alpha edges, not a white background or a painted checkerboard. Preserve solid opaque white plastic and dark glass; only the space around and between the computer and keyboard is transparent. No glow, fog, neon, particles or background texture."
+  },
+  "delivery": {
+    "master": "Original RGBA image, inspect actual dimensions",
+    "web": [
+      "800px transparent WebP",
+      "1400px transparent WebP",
+      "2200px transparent WebP"
+    ],
+    "acceptance": [
+      "True alpha, no checkerboard baked into pixels",
+      "White solid casing and dark screen remain opaque",
+      "Coherent geometry and key rows",
+      "No cut-off hardware, stray logos or writing",
+      "Inspect on white, near-black and checkerboard before integration"
+    ]
+  }
+}

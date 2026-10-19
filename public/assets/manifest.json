@@ -280,6 +280,30 @@
         3504,
         2336
       ]
+    },
+    "about-computer": {
+      "src": "/assets/about/computer-1400.webp",
+      "width": 1400,
+      "height": 1400,
+      "alt": "A floating white vintage computer and keyboard",
+      "variants": [
+        {
+          "src": "/assets/about/computer-800.webp",
+          "width": 800,
+          "height": 800
+        },
+        {
+          "src": "/assets/about/computer-1400.webp",
+          "width": 1400,
+          "height": 1400
+        },
+        {
+          "src": "/assets/about/computer-2200.webp",
+          "width": 2200,
+          "height": 2200
+        }
+      ],
+      "provenance": "Original Higgsfield GPT Image 2.5 Sunburst artwork, generated for the About page. Not a photograph of company equipment."
     }
   },
   "logos": {

@@ -12,7 +12,7 @@
         "href": "/work"
       },
       {
-        "label": "Studio",
+        "label": "About",
         "href": "/studio"
       },
       {
@@ -335,41 +335,46 @@
     "meta_description": "Explore the software Nu Labs develops: ERP, CRM, POS, native mobile apps, AI and cybersecurity. View illustrative interfaces and potential project scope."
   },
   "studio": {
-    "meta_title": "About Nu Labs | Software Engineering & UI/UX Design",
-    "label": "Nu Labs / How we work",
-    "headline": "Understand the work.\nBuild the right system.",
-    "intro": "We are software engineers and UI/UX designers. We develop in-house solutions and custom software that connects business needs with a considered user experience.",
-    "statement": "The interface matters.\nSo does everything behind it.",
-    "body": "We work through the process, information and technical decisions together. The goal is software that makes sense to the people using it and can be maintained as the business changes.",
+    "meta_title": "About Nu Labs | A Creative Software Development House",
+    "meta_description": "Meet Nu Labs, a youthful software and design team founded in 2023. Registered as Mikey Nu (Pty) Ltd, based in Fourways, South Africa, and working remotely.",
+    "label": "About Nu Labs",
+    "hero": {
+      "title": "Human behind the code.",
+      "intro": "A youthful dev house with a shared love for software, design and the possibilities between them.",
+      "note": "Independent thinking. Shared ambition."
+    },
+    "origin": {
+      "title": "A dev house.\nA different mindset.",
+      "body": "We are developers and designers who like asking, “What if?” We bring youthful energy, a common purpose and a love of making things work beautifully.",
+      "detail": "Nu Labs was founded in 2023. We develop in-house software and custom solutions, bringing engineering and design into the same conversation."
+    },
     "values": [
       {
-        "title": "Start with the operation.",
-        "body": "Understand the existing workflow, constraints and people before deciding what to build."
+        "title": "Stay curious.",
+        "body": "Look past the obvious answer. Ask better questions, explore different angles and make room for ideas that move the work forward.",
+        "word": "What if?"
       },
       {
-        "title": "Design and engineer together.",
-        "body": "Make interface choices alongside data, integration and application decisions."
+        "title": "Think together.",
+        "body": "Software and design belong in the same conversation. We share ideas, challenge assumptions and build toward a common goal.",
+        "word": "&"
       },
       {
-        "title": "Verify the whole journey.",
-        "body": "Test the useful path and the difficult cases, including failures, access boundaries and recovery."
+        "title": "Make it work.",
+        "body": "Turn creative thinking into something people can use. Care about the interface, the system behind it and the details that connect them.",
+        "word": "Make."
       }
     ],
-    "perspective": {
-      "headline": "Make room\nfor more.",
-      "body": "We believe Black creative and technical excellence deserves to be seen, valued and given room to lead. That ambition shapes how we approach software engineering and design.",
-      "status": "Proposed brand belief grounded in the user’s stated goal; not an ownership or certification claim."
+    "remote": {
+      "title": "Different desks.\nOne direction.",
+      "body": "We are an online business with a remote team, based in Fourways, South Africa. Our work connects us: shared goals, open thinking and the ambition to create useful software.",
+      "belief": "We believe Black creative and technical excellence deserves room to lead."
     },
-    "image_caption": "Website-specific ERP interface study. Demo data, not a live deployment.",
     "closing": {
-      "headline": "A good place\nto start.",
-      "body": "Tell us what you are thinking. We will start with the right questions.",
-      "link": {
-        "label": "Start a conversation",
-        "href": "/contact"
-      }
-    },
-    "meta_description": "Learn how Nu Labs combines software engineering and UI/UX design, from understanding your operation to building, testing and refining useful applications."
+      "title": "Got a good\n“What if?”",
+      "body": "Bring it to a team that loves working out what comes next.",
+      "link": "Let’s build on it"
+    }
   },
   "services": {
     "meta_title": "Custom Software, App Development & UI/UX Services | Nu Labs",
@@ -639,6 +644,12 @@
       "status": "not provided",
       "source": "none",
       "treatment": "No invented email/domain/phone/address. Keep contact preview honest until an actual endpoint and policy exist."
+    },
+    {
+      "claim": "Registered as Mikey Nu (Pty) Ltd; founded in 2023; youthful remote team; online business based in Fourways, South Africa",
+      "status": "Founder supplied",
+      "source": "About page brief, 19 October 2026",
+      "treatment": "Use these facts without inventing staff identities, a street address, ownership percentages, registration numbers or certifications."
     }
   ],
   "implementation_rules": [
@@ -648,5 +659,11 @@
     "Do not display live_success copy without confirmed server receipt. A local preview or clipboard action must remain explicit.",
     "Keep optional budget values as client enquiry ranges, never pricing claims.",
     "Service offers are a proposed scope from the approved positioning. Do not add regulated specialist services or unsupported certifications."
-  ]
+  ],
+  "company": {
+    "legal_name": "Mikey Nu (Pty) Ltd",
+    "founded": "2023",
+    "base": "Fourways, South Africa",
+    "work_model": "Online business with a remote team"
+  }
 }

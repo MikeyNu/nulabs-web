@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+<title>Layout blockout only. The final asset will be generated through Higgsfield.</title>
+<g transform="rotate(-7 500 500)" stroke="#666" stroke-width="2" stroke-linejoin="round">
+<path d="M280 200 620 170 775 270 430 310Z" fill="#fff"/>
+<path d="M620 170 775 270 775 660 620 580Z" fill="#ccc"/>
+<path d="M280 200 620 170 620 580 280 610Z" fill="#eee"/>
+<path d="M315 240 585 216 585 450 315 475Z" fill="#c7c7c7"/>
+<path d="M332 260 568 239 568 430 332 450Z" fill="#151515"/>
+<path d="M435 514 580 501 580 515 435 528Z" fill="#151515"/>
+<path d="M655 305 736 354 M655 321 736 370 M655 337 736 386 M655 353 736 402 M655 369 736 418 M655 385 736 434" fill="none" stroke="#777" stroke-width="5"/>
+<path d="M210 690 570 654 727 739 356 795Z" fill="#fafafa"/>
+<path d="M210 690 356 795 356 827 210 720Z" fill="#ccc"/>
+<path d="M356 795 727 739 727 769 356 827Z" fill="#bbb"/>
+<g fill="none" stroke="#888" stroke-width="2"><path d="M240 700 575 668 691 736 358 782Z M270 719 603 685 M301 740 637 704 M330 761 670 722 M275 697 390 777 M309 693 424 772 M343 690 458 767 M377 686 492 761 M411 683 526 756 M445 679 560 751 M479 676 594 746 M513 673 628 740 M547 669 662 735"/></g>
+</g></svg>

@@ -34,7 +34,7 @@ export function pageDefinitions(content) {
   const pages = [
     {route:'', key:'home', label:'Home', type:'WebPage'},
     {route:'work', key:'work', label:'Solutions', type:'CollectionPage'},
-    {route:'studio', key:'studio', label:'Studio', type:'AboutPage'},
+    {route:'studio', key:'studio', label:'About', type:'AboutPage'},
     {route:'services', key:'services', label:'Services', type:'CollectionPage'},
     {route:'contact', key:'contact', label:'Contact', type:'ContactPage'},
   ].map(p => ({...p, title:content[p.key].meta_title, description:content[p.key].meta_description}));
@@ -63,6 +63,8 @@ export function structuredData(page, content, seo) {
   const canonical = absolute(routePath(page.route));
   const organization = {'@type':'Organization','@id':home+'#organization',name:content.brand,
     url:home,description:content.site.description,
+    ...(content.company ? {legalName:content.company.legal_name,foundingDate:content.company.founded,
+      location:{'@type':'Place',name:content.company.base}} : {}),
     logo:{'@type':'ImageObject',url:absolute('/assets/social/logo.png'),width:512,height:512}};
   const website = {'@type':'WebSite','@id':home+'#website',url:home,name:content.brand,
     inLanguage:content.locale,publisher:{'@id':organization['@id']}};

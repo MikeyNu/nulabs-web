@@ -1,0 +1,52 @@
+{
+  "generator": "Higgsfield GPT Image 2.5 Sunburst",
+  "requested": {
+    "resolution": "4k",
+    "quality": "max",
+    "background": "transparent"
+  },
+  "master": {
+    "file": "art/about/computer-master.png",
+    "width": 2880,
+    "height": 2880,
+    "mode": "RGBA",
+    "bytes": 7312377,
+    "sha256": "8d45eeb871fc087e31b6a4ed370beaec42bb966305ec596d2e1ce45fbcef7e6a"
+  },
+  "alpha": {
+    "extrema": [
+      0,
+      254
+    ],
+    "note": "Native soft alpha retained. Core object alpha is 251–254; no background replacement or artificial upscaling."
+  },
+  "exports": [
+    {
+      "file": "public/assets/about/computer-800.webp",
+      "width": 800,
+      "height": 800,
+      "bytes": 72410,
+      "sha256": "0f3123a93918c9c27ccc44042eaf101b1c2d220c56de9fc555897a44e0572d78",
+      "alpha": true
+    },
+    {
+      "file": "public/assets/about/computer-1400.webp",
+      "width": 1400,
+      "height": 1400,
+      "bytes": 152138,
+      "sha256": "b4fc60d8e7559720d098601b8e6d05c64e06ee5082ad18d6ade4ccbdd7c7659b",
+      "alpha": true
+    },
+    {
+      "file": "public/assets/about/computer-2200.webp",
+      "width": 2200,
+      "height": 2200,
+      "bytes": 318496,
+      "sha256": "b425b47f2e57da6f323c6b513daaa95651cc70127cd69766408132868d3b299f",
+      "alpha": true
+    }
+  ],
+  "quoted_credits": 15,
+  "attempts": 1,
+  "actual_charge": "Not separately exposed by the generation response; 15 credits remain reserved in the private ledger."
+}
