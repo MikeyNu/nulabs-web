@@ -1,14 +1,14 @@
 {
-  "version": "1.0",
-  "status": "Implementation-ready copy draft; factual limitations recorded below",
+  "version": "2.0",
+  "status": "Software positioning supplied by founder; showcase interfaces are illustrative concepts, not live product screenshots.",
   "brand": "Nu Labs",
   "locale": "en-ZA",
   "site": {
-    "title": "Nu Labs | Ideas made real.",
-    "description": "Nu Labs brings design and software together to turn ideas into clear identities, considered websites and useful digital products.",
+    "title": "Nu Labs | Software built around your business.",
+    "description": "Nu Labs develops ERP, CRM, POS, AI and cybersecurity solutions, alongside custom web software and native Android and iOS applications.",
     "nav": [
       {
-        "label": "Work",
+        "label": "Solutions",
         "href": "/work"
       },
       {
@@ -32,65 +32,77 @@
     "skip_link": "Skip to content",
     "footer": {
       "statement": "Keep it clear.\nMake it useful.\nMake it Nu.",
-      "descriptor": "Design and software, thoughtfully made.",
+      "descriptor": "Software engineering. Considered design.",
       "copyright": "© 2026 Nu Labs",
       "back_to_top": "Back to top",
       "image_credit": "Selected imagery is generated. Concept projects are labelled."
     }
   },
   "home": {
-    "meta_title": "Nu Labs | Ideas made real.",
+    "meta_title": "Nu Labs | Software built around your business.",
     "hero": {
       "headline": "Ideas made real.",
       "headline_segments": [
         "Ideas",
         "made real."
       ],
-      "descriptor": "Strategy / Design / Development",
+      "descriptor": "Software / Systems / Native apps",
       "scroll_hint": "Scroll to explore",
       "chapter": "01 / 02"
     },
     "journey": [
       {
         "id": "arrival",
-        "chapter": "01 / 02",
-        "label": "An idea",
+        "chapter": "01 / 04",
+        "label": "Software built for business",
         "headline": "Ideas made real.",
-        "body": "",
-        "placement": "Split headline across upper-left and lower-right clear zones; exact approved concept relationship."
+        "body": "Software systems and native apps, built around your business."
       },
       {
-        "id": "shape",
-        "chapter": "02 / 02",
-        "label": "A clear direction",
-        "headline": "Clear thought.\nWorking form.",
-        "body": "We bring design and software together to turn a business need into a clear, useful experience.",
-        "placement": "Right reading zone; sculpture shifts left. Exact placement follows inspected video."
+        "id": "clarity",
+        "chapter": "02 / 04",
+        "label": "Understand the operation",
+        "headline": "Clarity before code.",
+        "body": "Map the process, the people and the decisions before designing the system."
+      },
+      {
+        "id": "craft",
+        "chapter": "03 / 04",
+        "label": "Design and engineering",
+        "headline": "Built to work.",
+        "body": "From a useful interface to the software behind it. ERP, CRM, POS and native apps."
+      },
+      {
+        "id": "possibility",
+        "chapter": "04 / 04",
+        "label": "Extend the capability",
+        "headline": "Make room for more.",
+        "body": "Connect your workflows with AI assistants, integrations and cybersecurity tools."
       }
     ],
     "work": {
-      "label": "Selected explorations",
-      "headline": "Form. Function.\nRoom to go further.",
-      "body": "Our own identity and a collection of self-initiated concepts. A look at how we think, design and build.",
+      "label": "Software solutions",
+      "headline": "Real work.\nBetter systems.",
+      "body": "Explore the systems we build around business operations, customers and the people using them.",
       "link": {
-        "label": "Explore the work",
+        "label": "Explore our solutions",
         "href": "/work"
       },
       "project_ids": [
-        "nu-labs-identity",
-        "studio-index",
-        "open-house"
+        "erp",
+        "mobile",
+        "cybersecurity"
       ]
     },
     "studio": {
-      "label": "The studio",
-      "headline": "Good questions.\nConsidered answers.",
-      "body": "We care about the space between a promising idea and a useful result. That is where clear thinking, close collaboration and careful making belong.",
+      "label": "How we build",
+      "headline": "Engineering depth.\nHuman understanding.",
+      "body": "We design the interface and develop the system behind it, keeping the day-to-day work in view.",
       "link": {
-        "label": "Meet the studio",
+        "label": "How we work",
         "href": "/studio"
       },
-      "image_caption": "Creative studio concept. Generated imagery."
+      "image_caption": "Illustrative software interface. Demo data."
     },
     "contact": {
       "headline": "What could we\nmake together?",
@@ -102,118 +114,197 @@
     }
   },
   "work": {
-    "meta_title": "Work and concepts | Nu Labs",
-    "label": "Work / Selected explorations",
-    "headline": "A point of view,\nput to work.",
-    "intro": "An internal identity system and two self-initiated concepts, each exploring a different relationship between design and use.",
+    "meta_title": "Software solutions | Nu Labs",
+    "label": "Solutions / What we build",
+    "headline": "Software for\nthe work ahead.",
+    "intro": "We develop in-house software solutions and custom applications for business. Explore ERP, CRM, POS, AI, cybersecurity and native mobile development.",
     "filters": [
       "All",
-      "Identity",
-      "Digital product",
-      "Web experience"
+      "Business systems",
+      "Mobile",
+      "AI",
+      "Security"
     ],
-    "concept_notice": "Self-initiated concepts demonstrate a direction. They are not presented as commissioned client work or launched products.",
+    "concept_notice": "The interfaces shown are illustrative concepts created for this website, using demo data. They show solution directions, not customer deployments.",
     "projects": [
       {
-        "id": "nu-labs-identity",
-        "title": "Nu Labs",
-        "subtitle": "One identity. A useful range.",
-        "discipline": "Brand identity / Art direction",
-        "status": "Internal brand study",
-        "year": "2026",
-        "summary": "A black-and-white identity that moves from quiet clarity to expressive form.",
-        "challenge": "Build a recognisable system around the supplied three-part symbol, with enough range for digital, print and physical applications.",
-        "direction": "Keep the signature fixed. Let scale, material, typography and shaped panels create the variation.",
+        "id": "erp",
+        "title": "ERP systems",
+        "subtitle": "One operation. A connected view.",
+        "category": "Business systems",
+        "discipline": "Operations / ERP",
+        "asset": "erp",
+        "summary": "Bring the moving parts of your business into one working system.",
+        "challenge": "Purchasing, stock and orders often depend on separate records. The work slows down when teams cannot see the same information.",
+        "direction": "Start with the workflow. Connect the records people use and bring exceptions, approvals and next actions into focus.",
         "scope": [
-          "Identity guidelines",
-          "Typography and composition",
-          "Digital applications",
-          "Apparel and stationery concepts"
+          "Workflow and requirements mapping",
+          "Inventory and purchasing interfaces",
+          "Order and approval workflows",
+          "Integrations and operational reporting"
         ],
-        "detail": "The system combines Instrument Sans, an exact logo lockup and a restrained neutral palette. A straight cut meeting a soft curve becomes a recurring way to frame content.",
-        "outcome": "An identity system and a set of concept applications.",
-        "image_note": "Application renders are visual concepts, not production samples.",
-        "cta": "Explore the identity",
-        "claim_status": "existing internal work"
+        "detail": "This interface study explores an exception-led operations workspace. The final modules, permissions and integrations are scoped to your organisation.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
       },
       {
-        "id": "studio-index",
-        "title": "Studio Index",
-        "subtitle": "Less searching. More making.",
-        "discipline": "Product design / Interface concept",
-        "status": "Self-initiated concept",
-        "year": "2026",
-        "summary": "A proposed workspace for bringing briefs, decisions and project files into one clear view.",
-        "challenge": "Explore how a small creative team could see what matters today without losing the context behind a decision.",
-        "direction": "Give the active project a clear centre. Keep tasks, references and decisions within reach, with quiet visual hierarchy.",
+        "id": "crm",
+        "title": "CRM systems",
+        "subtitle": "Every relationship. A clear next step.",
+        "category": "Business systems",
+        "discipline": "Customer relationships / CRM",
+        "asset": "crm",
+        "summary": "Give your team a clearer way to manage relationships and follow-through.",
+        "challenge": "Customer context can disappear between conversations, spreadsheets and individual inboxes.",
+        "direction": "Bring the relationship, recent activity and next action into a shared workspace. Keep the follow-up visible.",
         "scope": [
-          "Workspace information architecture",
-          "Project overview concept",
-          "Task and decision interface",
-          "Responsive layout study"
+          "Contact and account management",
+          "Sales pipelines and follow-ups",
+          "Activity and conversation history",
+          "Workflow and system integrations"
         ],
-        "detail": "The concept uses a compact project index and focused detail panels. It is a design exploration that can be developed into a tested product.",
-        "outcome": "A fictional product direction presented to demonstrate interface thinking.",
-        "image_note": "Concept interface. No client, launch or user results are implied.",
-        "cta": "View the concept",
-        "claim_status": "placeholder concept"
+        "detail": "The illustrative sales board keeps the next action visible on each opportunity. Pipeline stages and workflows are shaped around how your team actually sells and supports customers.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
       },
       {
-        "id": "open-house",
-        "title": "Open House",
-        "subtitle": "Find a place. Make a plan.",
-        "discipline": "Web experience / Service concept",
-        "status": "Self-initiated concept",
-        "year": "2026",
-        "summary": "A proposed digital experience for discovering creative spaces and planning a visit.",
-        "challenge": "Make place, availability and practical details easy to understand while preserving the character of each space.",
-        "direction": "Pair generous photography with a compact, readable information layer. Let people explore first and make practical decisions with confidence.",
+        "id": "pos",
+        "title": "Point of sale",
+        "subtitle": "A smoother path from basket to sale.",
+        "category": "Business systems",
+        "discipline": "Retail operations / POS",
+        "asset": "pos",
+        "summary": "Connect the checkout experience to the operation behind the counter.",
+        "challenge": "A busy counter needs clear product selection and transaction context, while the business needs dependable records.",
+        "direction": "Design around the person making the sale: quick item discovery, an understandable basket and a deliberate checkout sequence.",
         "scope": [
-          "Discovery experience",
-          "Space detail concept",
-          "Enquiry flow",
-          "Editorial image direction"
+          "Product and basket interfaces",
+          "Checkout and transaction workflows",
+          "Stock and reporting integration",
+          "Device and payment-provider integration scoping"
         ],
-        "detail": "The study connects a visual directory to a useful detail view, bringing location context, amenities and next steps into one reading flow.",
-        "outcome": "A fictional service concept, available for further design and development.",
-        "image_note": "Concept imagery and interface. Spaces and availability are illustrative.",
-        "cta": "View the concept",
-        "claim_status": "placeholder concept"
+        "detail": "This concept uses a compact catalogue and a readable current-sale panel. Hardware, payment providers and offline requirements are evaluated during discovery; the screen shown does not process payments.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+      },
+      {
+        "id": "mobile",
+        "title": "Native mobile apps",
+        "subtitle": "Useful software, wherever work happens.",
+        "category": "Mobile",
+        "discipline": "Android / iOS",
+        "asset": "mobile",
+        "summary": "Build for the way people use a phone, not just a smaller browser window.",
+        "challenge": "Work continues away from a desk. A useful mobile experience must respect the device, the context and the person holding it.",
+        "direction": "Keep the next action obvious. Design for touch, platform conventions and the real conditions in which the app will be used.",
+        "scope": [
+          "Native Android applications",
+          "Native iOS applications",
+          "Mobile UX and interface design",
+          "API integration and release preparation"
+        ],
+        "detail": "The field-work concept demonstrates a focused daily schedule and job handoff. Offline behaviour, notifications and device capabilities are agreed per project.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+      },
+      {
+        "id": "ai",
+        "title": "AI solutions",
+        "subtitle": "Useful intelligence, inside the workflow.",
+        "category": "AI",
+        "discipline": "AI assistants / Automation",
+        "asset": "ai",
+        "summary": "Put AI to work on specific business tasks with clear boundaries.",
+        "challenge": "A fluent answer is not enough. Businesses need the right information, useful actions and a path to human review.",
+        "direction": "Define the task, connect the appropriate knowledge and make uncertainty visible. Keep people involved where judgement matters.",
+        "scope": [
+          "Business chatbots and assistants",
+          "Knowledge and retrieval experiences",
+          "Workflow automation",
+          "Evaluation and human handoff design"
+        ],
+        "detail": "This illustrative assistant shows a sourced answer and a defined handoff. Model choice, data access and evaluation criteria are established around the intended use, rather than promising perfect answers.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
+      },
+      {
+        "id": "cybersecurity",
+        "title": "Cybersecurity software",
+        "subtitle": "See the signal. Know the next step.",
+        "category": "Security",
+        "discipline": "Cybersecurity / Investigation",
+        "asset": "cyber",
+        "summary": "Make security information easier to investigate and act on.",
+        "challenge": "An alert only becomes useful when the person reviewing it can understand the context, priority and available next action.",
+        "direction": "Bring the queue, affected context and investigation steps together. Make status and ownership clear without hiding uncertainty.",
+        "scope": [
+          "Security application interfaces",
+          "Incident and investigation workflows",
+          "Access and activity visibility",
+          "Integration and reporting scoping"
+        ],
+        "detail": "The interface study uses simulated incidents to demonstrate a triage workflow. It does not claim a detection rate, certification, compliance status or guaranteed protection.",
+        "status": "Illustrative interface",
+        "year": "2026",
+        "image_note": "Website-specific interface concept with demo data. This is an illustration of the solution area, not a screenshot of a live customer system.",
+        "cta": "Explore the solution",
+        "claim_status": "Service and in-house solution capability confirmed by founder; depicted UI newly authored for this website.",
+        "outcome": "A tailored solution scope, agreed against the actual business requirements."
       }
     ],
-    "closing_headline": "Your next chapter\ncould start here.",
+    "closing_headline": "What does your\nbusiness need next?",
     "closing_link": {
       "label": "Talk about a project",
       "href": "/contact"
     }
   },
   "studio": {
-    "meta_title": "Studio | Nu Labs",
-    "label": "Studio / Our perspective",
-    "headline": "Clear thinking.\nHuman perspective.",
-    "intro": "Nu Labs is a meeting point for design and software. We connect the shape of an idea with the way it needs to work.",
-    "statement": "The detail matters.\nSo does the bigger picture.",
-    "body": "A good experience should hold together, from the words that introduce it to the last interaction. We look for a strong central idea, then carry it carefully through the work.",
+    "meta_title": "Software engineering and design | Nu Labs",
+    "label": "Nu Labs / How we work",
+    "headline": "Understand the work.\nBuild the right system.",
+    "intro": "We are software engineers and UI/UX designers. We develop in-house solutions and custom software that connects business needs with a considered user experience.",
+    "statement": "The interface matters.\nSo does everything behind it.",
+    "body": "We work through the process, information and technical decisions together. The goal is software that makes sense to the people using it and can be maintained as the business changes.",
     "values": [
       {
-        "title": "Ask better questions.",
-        "body": "Understand the people, the purpose and the practical limits before choosing a direction."
+        "title": "Start with the operation.",
+        "body": "Understand the existing workflow, constraints and people before deciding what to build."
       },
       {
-        "title": "Make decisions visible.",
-        "body": "Use sketches, prototypes and clear conversations to make progress tangible."
+        "title": "Design and engineer together.",
+        "body": "Make interface choices alongside data, integration and application decisions."
       },
       {
-        "title": "Care about the ordinary.",
-        "body": "A useful form, a clear label and a well-timed transition deserve as much thought as the first impression."
+        "title": "Verify the whole journey.",
+        "body": "Test the useful path and the difficult cases, including failures, access boundaries and recovery."
       }
     ],
     "perspective": {
       "headline": "Make room\nfor more.",
-      "body": "We believe Black creative and technical excellence deserves to be seen, valued and given room to lead. Our ambition is to make thoughtful work with a perspective of our own.",
+      "body": "We believe Black creative and technical excellence deserves to be seen, valued and given room to lead. That ambition shapes how we approach software engineering and design.",
       "status": "Proposed brand belief grounded in the user’s stated goal; not an ownership or certification claim."
     },
-    "image_caption": "A generated creative studio scene. People and premises are illustrative.",
+    "image_caption": "Website-specific ERP interface study. Demo data, not a live deployment.",
     "closing": {
       "headline": "A good place\nto start.",
       "body": "Tell us what you are thinking. We will start with the right questions.",
@@ -224,52 +315,94 @@
     }
   },
   "services": {
-    "meta_title": "Services | Nu Labs",
-    "label": "Services / From thought to working form",
-    "headline": "Think it through.\nMake it happen.",
-    "intro": "Start with one focused challenge or bring the whole picture. Strategy, design and development work best when the decisions connect.",
+    "meta_title": "Software development services | Nu Labs",
+    "label": "Services / Design, engineering and integration",
+    "headline": "From business need\nto working software.",
+    "intro": "Custom development and in-house solutions, shaped around your operation. We connect software engineering, UI/UX and the systems your team depends on.",
     "services": [
       {
         "number": "01",
-        "id": "strategy",
-        "title": "Find the right idea.",
-        "name": "Strategy",
-        "body": "Before making more, get clear on what matters. We shape the brief, the structure and the decisions that give the work direction.",
+        "id": "business-systems",
+        "name": "Business\nsystems",
+        "title": "Make the operation work together.",
+        "body": "ERP, CRM and POS solutions that connect business records, workflows and the people responsible for them.",
         "deliverables": [
-          "Discovery and workshops",
-          "Brand positioning",
-          "Experience planning",
-          "Content and information architecture"
+          "ERP and operational systems",
+          "CRM and customer workflows",
+          "Point-of-sale applications",
+          "System integration and reporting"
         ],
-        "outcome": "A clear direction for what comes next."
+        "outcome": "A scope shaped around your processes and existing systems."
       },
       {
         "number": "02",
-        "id": "design",
-        "title": "Give it a distinct form.",
-        "name": "Design",
-        "body": "Turn that direction into something people can recognise, understand and enjoy using. Every element has a part to play.",
+        "id": "mobile",
+        "name": "Native\nmobile",
+        "title": "Build for the device in their hand.",
+        "body": "Android and iOS applications designed for the context in which people actually use them.",
         "deliverables": [
-          "Visual identity systems",
-          "Website and interface design",
-          "Digital product design",
-          "Motion and art direction"
+          "Native Android development",
+          "Native iOS development",
+          "Mobile UI/UX design",
+          "API integration and release preparation"
         ],
-        "outcome": "A coherent experience, from first impression to fine detail."
+        "outcome": "A mobile experience with clear actions and considered platform behaviour."
       },
       {
         "number": "03",
-        "id": "development",
-        "title": "Make it work in the world.",
-        "name": "Development",
-        "body": "Bring the design into a working experience, with care for the details people notice and the foundations they rely on.",
+        "id": "ai",
+        "name": "AI\nsolutions",
+        "title": "Give intelligence a useful job.",
+        "body": "Chatbots, assistants and automation built around defined business tasks, appropriate data access and clear handoff points.",
         "deliverables": [
-          "Responsive websites",
-          "Web applications",
-          "Interactive experiences",
-          "Integration and ongoing refinement"
+          "Business assistants and chatbots",
+          "Knowledge and retrieval workflows",
+          "Process automation",
+          "Evaluation and human review"
         ],
-        "outcome": "A working product that can keep moving forward."
+        "outcome": "A defined use case with explicit boundaries and measurable acceptance criteria."
+      },
+      {
+        "number": "04",
+        "id": "security",
+        "name": "Security\nsoftware",
+        "title": "Turn information into investigation.",
+        "body": "Security applications and interfaces that organise signals, context and response workflows.",
+        "deliverables": [
+          "Security application development",
+          "Incident and investigation workflows",
+          "Access and activity views",
+          "Security tooling integrations"
+        ],
+        "outcome": "A practical workflow whose capabilities and limits are agreed during scoping."
+      },
+      {
+        "number": "05",
+        "id": "design",
+        "name": "UI/UX\ndesign",
+        "title": "Make complex work understandable.",
+        "body": "Information architecture, interaction design and interfaces developed around real tasks and the people doing them.",
+        "deliverables": [
+          "Workflow and experience design",
+          "Prototypes and interface systems",
+          "Responsive and native application design",
+          "Usability and accessibility reviews"
+        ],
+        "outcome": "A clear product direction that can be tested before and during development."
+      },
+      {
+        "number": "06",
+        "id": "development",
+        "name": "Custom\nsoftware",
+        "title": "Build the system your brief needs.",
+        "body": "Web applications, business platforms and integrations with a considered interface and maintainable foundations.",
+        "deliverables": [
+          "Web applications and business platforms",
+          "Backend and API development",
+          "Existing-system integration",
+          "Testing, maintenance and refinement"
+        ],
+        "outcome": "Software shaped around the agreed requirements, delivery stages and support needs."
       }
     ],
     "process": {
@@ -278,37 +411,41 @@
         {
           "number": "01",
           "title": "Understand",
-          "body": "Define the problem, the people and what a useful result would look like."
+          "body": "Map the workflow, people, existing systems and acceptance criteria."
         },
         {
           "number": "02",
-          "title": "Explore",
-          "body": "Make the options tangible through concepts, prototypes and early decisions."
+          "title": "Design",
+          "body": "Test the structure and key journeys with prototypes and technical decisions."
         },
         {
           "number": "03",
           "title": "Build",
-          "body": "Bring the chosen direction into a working experience and refine it through use."
+          "body": "Implement the application and integrations in reviewable stages."
         },
         {
           "number": "04",
-          "title": "Refine",
-          "body": "Review what is working, address what is not and plan the next improvement."
+          "title": "Verify",
+          "body": "Test expected behaviour, difficult cases and handover requirements."
         }
       ]
     },
     "faq": [
       {
-        "question": "Where should we start?",
-        "answer": "With the problem you want to solve. A short description of the business, the people using the work and the result you want is enough to begin."
+        "question": "Do you build custom software as well as in-house solutions?",
+        "answer": "Yes. We develop in-house software solutions and build custom applications. Discovery establishes whether an existing solution, a tailored integration or a new build best fits the requirement."
       },
       {
-        "question": "Can we start with a focused piece of work?",
-        "answer": "Yes. A clear identity, a single website or a product prototype can be a useful first step. The scope should fit the need."
+        "question": "Can you build for both Android and iOS?",
+        "answer": "Yes. We develop native Android and iOS applications. The platform scope, integrations and release requirements are agreed at the start of the project."
       },
       {
-        "question": "What information should a brief include?",
-        "answer": "Share the goal, the audience, any existing material, a preferred timeline and a budget range if you have one. It is fine if some of that is still taking shape."
+        "question": "Are the interfaces on this site live product screenshots?",
+        "answer": "They are website-specific interface concepts with demo data, illustrating the types of solutions we develop. A project discussion can establish the relevant solution, available demonstration and scope."
+      },
+      {
+        "question": "What should we include in an initial brief?",
+        "answer": "Tell us what your business does, what is difficult today, who will use the software and which systems it needs to connect to. A timeline and budget range also help define a practical starting point."
       }
     ],
     "closing": {
@@ -323,7 +460,7 @@
     "meta_title": "Contact | Nu Labs",
     "label": "Contact / Start a conversation",
     "headline": "Tell us what\nyou have in mind.",
-    "intro": "A new identity, a useful product, a website with a different point of view. Start wherever you are.",
+    "intro": "A business system, an AI workflow or a native application. Tell us what needs to work better.",
     "form": {
       "name": {
         "label": "Your name",
@@ -343,10 +480,11 @@
       "interest": {
         "label": "What are you thinking about?",
         "options": [
-          "Brand and identity",
-          "Website",
-          "Digital product",
-          "Something else"
+          "ERP / CRM / POS",
+          "Native mobile app",
+          "AI solution",
+          "Cybersecurity software",
+          "Custom software / UI/UX"
         ]
       },
       "budget": {
@@ -386,40 +524,28 @@
   },
   "claims_register": [
     {
+      "claim": "ERP, CRM, POS, AI, chatbots, cybersecurity software, native Android/iOS and in-house solutions",
+      "status": "Founder supplied",
+      "source": "User brief, 19 October 2026",
+      "treatment": "State services and capabilities without inventing product names, client deployments, certifications, metrics or release histories."
+    },
+    {
+      "claim": "Displayed software interfaces",
+      "status": "New illustrative concepts",
+      "source": "art/product-ui/build-ui.mjs",
+      "treatment": "Label clearly as illustrative interfaces with demo data. Do not describe as live product screenshots."
+    },
+    {
       "claim": "Nu Labs name and supplied logo",
       "status": "confirmed",
       "source": "brief + logo",
       "treatment": "Use exact assets."
     },
     {
-      "claim": "Design and software studio offering",
-      "status": "approved working positioning, not independent company fact",
-      "source": "brand_content and current brief",
-      "treatment": "Use as proposed public-facing offer; avoid historical scale or expertise claims."
-    },
-    {
       "claim": "Black excellence and South African creative representation",
       "status": "user-directed brand aspiration",
       "source": "brief",
       "treatment": "Use as perspective or belief. Do not infer company registration, Black ownership, BBBEE status, team composition or certifications."
-    },
-    {
-      "claim": "Nu Labs brand system project",
-      "status": "existing internal work",
-      "source": "brand_guide",
-      "treatment": "Label Internal brand study. Generated applications are concepts."
-    },
-    {
-      "claim": "Studio Index and Open House projects",
-      "status": "fictional placeholder concepts",
-      "source": "new copy draft",
-      "treatment": "Label Self-initiated concept on cards and detail pages; no client outcomes."
-    },
-    {
-      "claim": "People, office and reception imagery",
-      "status": "generated concepts",
-      "source": "brand_guide + new image generation brief",
-      "treatment": "Do not call them our team or our office. Add a small visible caption where used on Studio."
     },
     {
       "claim": "Client logos, reviews, project metrics, years of experience, team names, awards",
@@ -432,12 +558,6 @@
       "status": "not provided",
       "source": "none",
       "treatment": "No invented email/domain/phone/address. Keep contact preview honest until an actual endpoint and policy exist."
-    },
-    {
-      "claim": "Budget ranges",
-      "status": "draft enquiry options, not quoted prices",
-      "source": "new copy draft",
-      "treatment": "Optional and clearly client budget ranges; can remove if not needed."
     }
   ],
   "implementation_rules": [

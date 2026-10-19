@@ -224,3 +224,20 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
  .cinema-arrival .cinema-title span:last-child {margin-top:390px}
  .cinema-arrival {min-height:800px}
 }
+
+/* Software showcase: exact interface studies remain uncropped. */
+.solution-visual {display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:5%;background:#e8e9e2}
+.solution-visual img {display:block;width:100%;height:100%;object-fit:contain}
+.solution-mobile {background:#dedfd7;padding:4%}
+.solution-mobile img {width:auto;max-width:100%;height:100%;filter:drop-shadow(0 16px 25px #19211618)}
+.work-grid .project-card:last-child {grid-column:auto;width:100%;margin-left:0}
+.work-grid .project-card:last-child .project-art {aspect-ratio:1.42}
+.studio-v2-visual img {aspect-ratio:1.3;object-fit:contain;clip-path:none;background:#e8e9e2;padding:5%}
+.studio-wide img {object-fit:contain;background:#e8e9e2;padding:4%}
+.service-name h2 {font-size:clamp(38px,4.2vw,66px)}
+@media(max-width:767px){
+  .work-grid .project-card:last-child .project-art {aspect-ratio:1.42}
+  .solution-visual {padding:3%}
+  .solution-mobile {padding:5%}
+  .studio-v2-visual img {aspect-ratio:1.3}
+}

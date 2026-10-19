@@ -28,5 +28,22 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/work/nu-labs-identity/:path*",
+      "destination": "/work/",
+      "permanent": true
+    },
+    {
+      "source": "/work/studio-index/:path*",
+      "destination": "/work/",
+      "permanent": true
+    },
+    {
+      "source": "/work/open-house/:path*",
+      "destination": "/work/",
+      "permanent": true
+    }
   ]
 }

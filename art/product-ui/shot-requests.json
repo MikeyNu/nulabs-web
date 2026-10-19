@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "brief": "Six software-specific device photographs with exact authored UI layers",
+  "generationSubmitted": false,
+  "requests": [
+    {
+      "id": "erp",
+      "title": "ERP / the operational centre",
+      "ui": "erp-ui.svg",
+      "scene": "One open, slim graphite laptop on the near edge of a broad warm-white solid surface. Camera almost at screen height, slightly above keyboard level, with a moderate telephoto perspective and only a gentle view of the laptop's right edge. The laptop occupies about 74 percent of image width and is centred slightly to the right. Its display is 16:10. Keep the full laptop visible, including its plausible keyboard and single centred trackpad. An oblique shaft of late morning window light crosses the table behind the laptop, never the display. The pale background transitions into a soft wall shadow at the far left. A tactile but clean finish and grounded contact shadow. No desk clutter.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne open, slim graphite laptop on the near edge of a broad warm-white solid surface. Camera almost at screen height, slightly above keyboard level, with a moderate telephoto perspective and only a gentle view of the laptop's right edge. The laptop occupies about 74 percent of image width and is centred slightly to the right. Its display is 16:10. Keep the full laptop visible, including its plausible keyboard and single centred trackpad. An oblique shaft of late morning window light crosses the table behind the laptop, never the display. The pale background transitions into a soft wall shadow at the far left. A tactile but clean finish and grounded contact shadow. No desk clutter.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    },
+    {
+      "id": "crm",
+      "title": "CRM / a considered follow-through",
+      "ui": "crm-ui.svg",
+      "scene": "One finely proportioned desktop monitor with a matte black frame and a stable aluminium pedestal on an off-white desk. Display is 16:10, close to front-facing, occupying 75 percent of the composition's width. A low view puts the lower screen edge slightly above the image midpoint; the full screen is visible. One closed plain notebook rests diagonally at the lower left, away from the display and without lettering. Soft light comes from a large window on camera left; a faint shelving shadow falls on the pale distant wall. The monitor base, notebook and tabletop have consistent contact and cast shadows. Controlled warm-neutral tones.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne finely proportioned desktop monitor with a matte black frame and a stable aluminium pedestal on an off-white desk. Display is 16:10, close to front-facing, occupying 75 percent of the composition's width. A low view puts the lower screen edge slightly above the image midpoint; the full screen is visible. One closed plain notebook rests diagonally at the lower left, away from the display and without lettering. Soft light comes from a large window on camera left; a faint shelving shadow falls on the pale distant wall. The monitor base, notebook and tabletop have consistent contact and cast shadows. Controlled warm-neutral tones.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    },
+    {
+      "id": "pos",
+      "title": "POS / where the sale happens",
+      "ui": "pos-ui.svg",
+      "scene": "One professional dark graphite point-of-sale touchscreen on a short, solid countertop stand in a carefully staged modern shop setting. The screen is a 16:10 landscape rectangle and fills roughly 70 percent of the frame width; camera is almost front-on at the display centre. All screen edges and the screen's mounting geometry are clear. A compact, plausible receipt printer sits separately at the far lower right with no paper emerging. The pale honed stone counter runs diagonally into the scene; softly blurred plain retail shelving occupies the distant background. Gentle daylight from the left, subtle warmer fill from the right, no neon. Credible cable routing behind the stand, no tangled or floating cords.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne professional dark graphite point-of-sale touchscreen on a short, solid countertop stand in a carefully staged modern shop setting. The screen is a 16:10 landscape rectangle and fills roughly 70 percent of the frame width; camera is almost front-on at the display centre. All screen edges and the screen's mounting geometry are clear. A compact, plausible receipt printer sits separately at the far lower right with no paper emerging. The pale honed stone counter runs diagonally into the scene; softly blurred plain retail shelving occupies the distant background. Gentle daylight from the left, subtle warmer fill from the right, no neon. Credible cable routing behind the stand, no tangled or floating cords.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    },
+    {
+      "id": "mobile",
+      "title": "Native mobile / work beyond the desk",
+      "ui": "mobile-ui.svg",
+      "scene": "One unbranded contemporary premium smartphone upright in portrait orientation on a very low dark stone support. The complete phone is visible, its face almost parallel to the image plane, centred slightly right and occupying 80 percent of image height. The screen has a 1:2 aspect ratio with rounded display corners, an even thin bezel and a tiny coherent top earpiece. The active screen remains entirely uniform neutral grey. The scene is a white architectural alcove with one low charcoal plane behind the phone at left, making a deliberate diagonal shadow. Soft directional daylight reveals satin metal edges and the glass perimeter, without reflections over the active display. The support physically holds the phone; it does not levitate. No second device, no hands, no cables.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne unbranded contemporary premium smartphone upright in portrait orientation on a very low dark stone support. The complete phone is visible, its face almost parallel to the image plane, centred slightly right and occupying 80 percent of image height. The screen has a 1:2 aspect ratio with rounded display corners, an even thin bezel and a tiny coherent top earpiece. The active screen remains entirely uniform neutral grey. The scene is a white architectural alcove with one low charcoal plane behind the phone at left, making a deliberate diagonal shadow. Soft directional daylight reveals satin metal edges and the glass perimeter, without reflections over the active display. The support physically holds the phone; it does not levitate. No second device, no hands, no cables.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    },
+    {
+      "id": "ai",
+      "title": "AI / useful intelligence at work",
+      "ui": "ai-ui.svg",
+      "scene": "One restrained light-silver laptop, open and fully visible, on a pale desk with a single open blank notebook lying well to the left. Camera close to front-on, at display centre and slightly to the right, with a normal-to-telephoto perspective. The 16:10 screen occupies at least 67 percent of image width. A translucent textured-glass partition is softly out of focus in the background, catching a broad cool daylight reflection. A gentle warm bounce on the tabletop gives believable material separation. The laptop keyboard has consistent rows, the hinge is credible and the trackpad is centred. Quiet afternoon concentration without people, robots, brains, sparkles or glowing circuitry.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne restrained light-silver laptop, open and fully visible, on a pale desk with a single open blank notebook lying well to the left. Camera close to front-on, at display centre and slightly to the right, with a normal-to-telephoto perspective. The 16:10 screen occupies at least 67 percent of image width. A translucent textured-glass partition is softly out of focus in the background, catching a broad cool daylight reflection. A gentle warm bounce on the tabletop gives believable material separation. The laptop keyboard has consistent rows, the hinge is credible and the trackpad is centred. Quiet afternoon concentration without people, robots, brains, sparkles or glowing circuitry.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    },
+    {
+      "id": "cyber",
+      "title": "Cybersecurity / clarity under pressure",
+      "ui": "cyber-ui.svg",
+      "scene": "One substantial dark graphite desktop monitor with a 16:10 screen, almost front-facing and fully visible, occupying about 78 percent of the frame width. It stands on a charcoal desk against a textured off-white wall. Unlike a hacker-movie scene, the room is calm, bright and organised. A narrow daylight source from upper left produces a crisp-edged wall shadow and a softer desk reflection, while a restrained fill preserves frame and stand detail. A plain low mechanical keyboard sits symmetrically beneath it, with believable repeated key geometry. Screen area remains matte uniform grey for exact UI replacement. No hooded people, padlock props, binary code, neon colours or glowing shields.",
+      "status": "prepared-awaiting-spending-allocation",
+      "params": {
+        "model": "gpt_image_2_5",
+        "variant": "sunburst",
+        "quality": "max",
+        "resolution": "4k",
+        "background": "opaque",
+        "aspect_ratio": "3:2",
+        "count": 1,
+        "use_unlim": false,
+        "prompt": "Create one landscape commercial product-photography plate for a South African software engineering company's website. The art direction is an editorial study of useful technology: ivory, graphite, brushed aluminium and restrained warm daylight. Photographic material response, natural shadow gradation and credible device proportions. The supplied scene is an illustrative campaign concept, not a real office or evidence of a manufactured product. No people, logos, badges, slogans or watermarks. The single device's complete active display must be a uniform neutral grey rectangle with a clearly defined bezel and all four display corners visible. Do not render interface content, text, icons, gradients or reflections inside the active display: exact authored software UI will be placed there in post-production. Keep the screen plane almost parallel to the camera sensor, with no more than a slight lateral angle. Keep the entire screen and device in clear focus, with restrained falloff in the distant environment. No flare, bloom, artificial edge sharpening, melted keys, warped seams, extra ports or impossible shadows. The final image must feel like a precisely lit product shoot, not a glossy toy render. Do not add floating objects or ornamental holograms.\n\nSHOT DIRECTION\nOne substantial dark graphite desktop monitor with a 16:10 screen, almost front-facing and fully visible, occupying about 78 percent of the frame width. It stands on a charcoal desk against a textured off-white wall. Unlike a hacker-movie scene, the room is calm, bright and organised. A narrow daylight source from upper left produces a crisp-edged wall shadow and a softer desk reflection, while a restrained fill preserves frame and stand detail. A plain low mechanical keyboard sits symmetrically beneath it, with believable repeated key geometry. Screen area remains matte uniform grey for exact UI replacement. No hooded people, padlock props, binary code, neon colours or glowing shields.\n\nFINISH\nCompose for a 3:2 crop, with at least 5 percent clear margin around the device. Preserve clean cuttable screen geometry and physically believable material details. Render a single coherent scene."
+      }
+    }
+  ]
+}

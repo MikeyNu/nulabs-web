@@ -1,94 +1,6 @@
 {
   "version": 1,
   "images": {
-    "cards": {
-      "src": "/assets/images/cards-1600.webp",
-      "width": 1536,
-      "height": 1024,
-      "srcSet": "/assets/images/cards-800.webp 800w, /assets/images/cards-1600.webp 1536w",
-      "alt": "Nu Labs black and white business card concept on textured stone blocks.",
-      "focalPosition": "50% 50%",
-      "variants": [
-        {
-          "src": "/assets/images/cards-800.webp",
-          "width": 800,
-          "height": 533,
-          "bytes": 56498
-        },
-        {
-          "src": "/assets/images/cards-1600.webp",
-          "width": 1536,
-          "height": 1024,
-          "bytes": 193056
-        }
-      ]
-    },
-    "studio": {
-      "src": "/assets/images/studio-1600.webp",
-      "width": 1600,
-      "height": 900,
-      "srcSet": "/assets/images/studio-800.webp 800w, /assets/images/studio-1600.webp 1600w",
-      "alt": "Illustrative Black creative professionals reviewing a visual system together.",
-      "focalPosition": "100% 50%",
-      "variants": [
-        {
-          "src": "/assets/images/studio-800.webp",
-          "width": 800,
-          "height": 450,
-          "bytes": 58344
-        },
-        {
-          "src": "/assets/images/studio-1600.webp",
-          "width": 1600,
-          "height": 900,
-          "bytes": 149804
-        }
-      ]
-    },
-    "apparel": {
-      "src": "/assets/images/apparel-1600.webp",
-      "width": 1536,
-      "height": 1024,
-      "srcSet": "/assets/images/apparel-800.webp 800w, /assets/images/apparel-1600.webp 1536w",
-      "alt": "Nu Labs black T-shirt and white polo concept worn by two illustrative models.",
-      "focalPosition": "63% 45%",
-      "variants": [
-        {
-          "src": "/assets/images/apparel-800.webp",
-          "width": 800,
-          "height": 533,
-          "bytes": 42964
-        },
-        {
-          "src": "/assets/images/apparel-1600.webp",
-          "width": 1536,
-          "height": 1024,
-          "bytes": 101250
-        }
-      ]
-    },
-    "reception": {
-      "src": "/assets/images/reception-1600.webp",
-      "width": 1536,
-      "height": 1024,
-      "srcSet": "/assets/images/reception-800.webp 800w, /assets/images/reception-1600.webp 1536w",
-      "alt": "Nu Labs reception concept with a black wall identity and natural stone desk.",
-      "focalPosition": "53% 46%",
-      "variants": [
-        {
-          "src": "/assets/images/reception-800.webp",
-          "width": 800,
-          "height": 533,
-          "bytes": 65010
-        },
-        {
-          "src": "/assets/images/reception-1600.webp",
-          "width": 1536,
-          "height": 1024,
-          "bytes": 232264
-        }
-      ]
-    },
     "journey-poster": {
       "src": "/assets/images/journey-higgsfield-arrival.webp",
       "width": 1920,
@@ -176,6 +88,90 @@
           "bytes": 80280
         }
       ]
+    },
+    "solution-erp": {
+      "src": "/assets/solutions/erp-ui.svg",
+      "width": 1600,
+      "height": 1000,
+      "variants": [
+        {
+          "src": "/assets/solutions/erp-ui.svg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+    },
+    "solution-crm": {
+      "src": "/assets/solutions/crm-ui.svg",
+      "width": 1600,
+      "height": 1000,
+      "variants": [
+        {
+          "src": "/assets/solutions/crm-ui.svg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+    },
+    "solution-pos": {
+      "src": "/assets/solutions/pos-ui.svg",
+      "width": 1600,
+      "height": 1000,
+      "variants": [
+        {
+          "src": "/assets/solutions/pos-ui.svg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+    },
+    "solution-mobile": {
+      "src": "/assets/solutions/mobile-ui.svg",
+      "width": 768,
+      "height": 1536,
+      "variants": [
+        {
+          "src": "/assets/solutions/mobile-ui.svg",
+          "width": 768,
+          "height": 1536
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+    },
+    "solution-ai": {
+      "src": "/assets/solutions/ai-ui.svg",
+      "width": 1600,
+      "height": 1000,
+      "variants": [
+        {
+          "src": "/assets/solutions/ai-ui.svg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
+    },
+    "solution-cyber": {
+      "src": "/assets/solutions/cyber-ui.svg",
+      "width": 1600,
+      "height": 1000,
+      "variants": [
+        {
+          "src": "/assets/solutions/cyber-ui.svg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "status": "UI master ready; staged Higgsfield imagery pending budget approval",
+      "provenance": "Original SVG interface concept with demo data, art/product-ui/build-ui.mjs"
     }
   },
   "logos": {

@@ -194,7 +194,7 @@ try{
   }
   await page.locator('.desktop-nav a[href$="/work/"]').click();await page.waitForURL('**/work/');
   const total=await page.locator('[data-project-category]').count();assert(total>=3,'Project collection missing');
-  await page.locator('[data-filter="Identity"]').click();
+  await page.locator('[data-filter="Mobile"]').click();
   const visible=page.locator('[data-project-category]:visible');
   assert.equal(await visible.count(),1);assert.match(await page.locator('.filter-announcement').textContent(),/1 project shown/);
   await page.locator('[data-filter="All"]').click();assert.equal(await visible.count(),total);

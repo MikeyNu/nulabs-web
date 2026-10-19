@@ -1,5 +1,7 @@
 # Nu Labs
 
+Software showcase revision: the software-focused copy and six exact interface concepts are prepared. The planned Higgsfield device photographs are awaiting a spending allocation. This branch is a review draft, not the completed photographic asset replacement. See [the revision direction](docs/software-showcase-direction.md).
+
 A monochrome design and software studio website with a Higgsfield camera journey, live HTML overlays, a bounded horizontal work gallery and a bright editorial studio section.
 
 ## Build and preview
@@ -28,7 +30,7 @@ All assets required by the build, including the Higgsfield video, eight chapter 
 - The work gallery carries an introductory panel and three project panels horizontally, then returns to normal vertical flow.
 - Native scrolling is the sole scroll owner. No wheel interception or smooth-scroll engine.
 - Narrow, portrait, short and reduced-motion layouts use complete normal-flow chapters.
-- Work, Studio, Services, Contact and three project-detail routes remain available.
+- Solutions, Studio, Services, Contact and six solution-detail routes are available.
 - The contact form prepares an enquiry locally. Live delivery is not configured.
 
 The active background is the reviewed 1080p Seedance 2.5 output generated through Higgsfield from the original approved starting plate. The clip delivers three distinct viewpoint families and a return toward the opening view. Its final camera angle does not match the proposed reverse-side shot. This limitation is retained in the media review status; repository publication does not certify full storyboard compliance.
@@ -73,11 +75,11 @@ node scripts/check.mjs --release
 
 The strict release gate remains blocked by the documented media review status and the unconfigured enquiry destination. A repository push is not a hosted deployment or evidence that those requirements have been completed.
 
-For a repository subpath, set BASE_PATH consistently for build and check. Eight routes plus a 404 document are generated.
+For a repository subpath, set BASE_PATH consistently for build and check. Eleven routes plus a 404 document are generated.
 
 ## Attribution
 
-Instrument Sans uses the SIL Open Font License included in public/assets/OFL-InstrumentSans.txt. Nu Labs identity and supplied brand assets remain the company's material. Generated people and project imagery are labelled as illustrative concepts. The original MIT licence remains unchanged.
+Instrument Sans uses the SIL Open Font License included in public/assets/OFL-InstrumentSans.txt. Nu Labs identity and supplied brand assets remain the company's material. The six website-specific interface studies use demo data and are labelled as illustrative. CI-only apparel, stationery, reception and office imagery is excluded from the website. The original MIT licence remains unchanged.
 
 ## Vercel
 
