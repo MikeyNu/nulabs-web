@@ -9,7 +9,7 @@ Mobile visitors should get the scroll-controlled Higgsfield camera journey. The 
 - Separate the cinema policy from the work rail's compact layout policy. Native touch scrolling now controls the video on phone and tablet viewports.
 - Keep the original inspected camera times: 0, 4.5, 8.25 and 11.75 seconds. Coalesce seeks and show copy only at its decoded reading frame.
 - Prefer video-frame callbacks. When that API is absent, wait for loadeddata/completed seeking and two animation frames before revealing the decoded image. Metadata alone never enables the effect.
-- Keep the complete video composition above mobile reading panels. Short landscape screens use media and copy side by side. The navigation remains transparent until the pinned video stage releases.
+- On mobile, crop the video to cover the full dynamic viewport and place a 68-percent translucent white layer behind the HTML UI. Short desktop screens retain the previous side-by-side layout. The navigation remains transparent until the pinned video stage releases.
 - Preserve relative chapter progress on a width change such as rotation. Stable viewport units avoid remapping the timeline whenever mobile browser chrome changes height.
 - Select one video before loading and retain it through rotation. The 960 × 540 mobile derivative is 2,327,794 bytes, compared with the original browser clip's 7,492,871 bytes. All 289 timestamps match the source master; no audio, H.264, faststart and a maximum six-frame GOP.
 - Preserve complete normal-flow content for reduced motion, unavailable media and no JavaScript. The mobile work gallery remains stacked.
@@ -50,3 +50,7 @@ node scripts/mobile-scrub-qa.mjs
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
 - https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari
+
+## Mobile full-height refinement
+
+The requested mobile-only crop and white overlay passed the existing 10-scenario Chromium suite. Computed video bounds exactly match the viewport in portrait and landscape; the overlay has no pointer handling. Four desktop chapter screenshots are byte-identical to the preceding revision, and desktop has no overlay. The mobile stage uses 100dvh while its wrapper adds the same dynamic height, keeping the scroll travel based on stable viewport units.

@@ -250,9 +250,8 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
   .case-title h1.case-title-long {font-size:clamp(42px,13.5vw,82px)}
 }
 
-/* The camera journey also belongs on touch screens. Keep the full composition
-   above the reading area instead of cropping a landscape scene to phone width.
-   svh keeps the timeline stable as mobile browser controls expand/collapse. */
+/* Responsive text and controls for the touch-screen camera journey.
+   The mobile background treatment is defined below the short-screen layout. */
 @media(max-width:999px),(max-aspect-ratio:5/4) {
   .cinema-enhanced {height:600svh}
   .cinema-enhanced .cinema-chapter {padding:0;min-height:0}
@@ -316,4 +315,24 @@ html:not(.js) body[data-page="home"] .site-header {position:absolute}
   .cinema-enhanced .cinema-side-note {display:none}
   .cinema-enhanced .cinema-controls {bottom:4px;left:22px;right:22px;font-size:11px}
   .cinema-enhanced .cinema-possibility .cinema-cut {background:var(--ink);color:var(--paper)}
+}
+
+/* Mobile only: crop the shared film to the full visible viewport, with a
+   translucent white scrim below every HTML chapter and navigation control. */
+@media(max-width:999px) {
+  .cinema-enhanced {height:calc(500svh + 100dvh)}
+  .cinema-enhanced .cinema-stage {height:100dvh}
+  .cinema-enhanced .cinema-media {z-index:0}
+  .cinema-enhanced .cinema-media img,
+  .cinema-enhanced .cinema-media video {
+    inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
+  }
+  .cinema-enhanced .cinema-media::after {
+    content:"";position:absolute;inset:0;z-index:1;
+    background:rgb(255 255 255 / 68%);pointer-events:none;
+  }
+  .cinema-enhanced .cinema-count>span:last-child {color:#333}
+}
+@media(max-width:999px) and (max-height:649px) and (min-aspect-ratio:5/4) {
+  .cinema-enhanced {height:calc(600svh + 100dvh)}
 }

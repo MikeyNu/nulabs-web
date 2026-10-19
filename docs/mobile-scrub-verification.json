@@ -255,5 +255,67 @@
         "warnings": []
       }
     ]
+  },
+  "mobileFullHeightRefinement": {
+    "baseCommit": "c2de23b3e578293862149919895727c8aaa036d2",
+    "passed": 10,
+    "failed": 0,
+    "checks": [
+      {
+        "width": 390,
+        "height": 844,
+        "video": {
+          "top": 0,
+          "left": 0,
+          "width": 390,
+          "height": 844,
+          "fit": "cover"
+        },
+        "stageHeight": 844,
+        "overlay": {
+          "content": "\"\"",
+          "background": "rgba(255, 255, 255, 0.68)",
+          "pointerEvents": "none"
+        },
+        "header": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "video": {
+          "top": 0,
+          "left": 0,
+          "width": 844,
+          "height": 390,
+          "fit": "cover"
+        },
+        "stageHeight": 390,
+        "overlay": {
+          "content": "\"\"",
+          "background": "rgba(255, 255, 255, 0.68)",
+          "pointerEvents": "none"
+        },
+        "header": "rgba(0, 0, 0, 0)"
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "video": {
+          "top": 0,
+          "left": 0,
+          "width": 1440,
+          "height": 900,
+          "fit": "cover"
+        },
+        "stageHeight": 900,
+        "overlay": {
+          "content": "none",
+          "background": "rgba(0, 0, 0, 0)",
+          "pointerEvents": "none"
+        },
+        "header": "rgba(0, 0, 0, 0)"
+      }
+    ],
+    "desktopReadingCapturesByteIdentical": true
   }
 }
