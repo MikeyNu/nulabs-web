@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { CINEMA_TIMELINE, cinemaTimes, cinemaVideoTime, cinemaChapterProgress, cinemaChapterPresentation, horizontalPresentation, initCinema, initHorizontal } from '../src/scripts/journey-v2.mjs';
+import { CINEMA_TIMELINE, validateCinemaTimeline, cinemaTimes, cinemaVideoTime, cinemaChapterProgress, cinemaChapterPresentation, horizontalPresentation, initCinema, initHorizontal } from '../src/scripts/journey-v2.mjs';
 
 const DURATION = 12.041667;
 
@@ -63,7 +63,7 @@ test('incomplete markup returns safe disposable handles', () => {
 
 // Minimal event/DOM doubles check lifecycle behavior. Actual presentation and
 // visual readability are separately checked in the real Windows browser.
-function harness({ reduced = false, compact = false, api = true, media = true, horizontal = false, hash = '', navigationType = 'navigate', historyState = null } = {}) {
+function harness({ reduced = false, compact = false, api = true, media = true, horizontal = false, hash = '', navigationType = 'navigate', historyState = null, timeline = CINEMA_TIMELINE, readyState = 2, duration = DURATION } = {}) {
   const raf = new Map(), timers = new Map(), videoCallbacks = new Map();
   let serial = 0;
   class Element extends EventTarget {
@@ -116,12 +116,12 @@ function harness({ reduced = false, compact = false, api = true, media = true, h
   win.clearTimeout = id => timers.delete(id);
   video.pause = () => { video.paused = true; };
   video.load = () => { video.loads = (video.loads || 0) + 1; };
-  video.readyState = 2; video.duration = DURATION; video.currentTime = 0; video.seeking = false; video.muted = false;
+  video.readyState = readyState; video.duration = duration; video.currentTime = 0; video.seeking = false; video.muted = false;
   if (media) video.setAttribute('data-src', '/assets/video/journey-v2.mp4');
   Object.defineProperty(video, 'src', { get: () => video.getAttribute('src') || '', set: value => video.setAttribute('src', value) });
   if (api) video.requestVideoFrameCallback = fn => { const id = ++serial; videoCallbacks.set(id, fn); return id; };
   video.cancelVideoFrameCallback = id => videoCallbacks.delete(id);
-  const instance = horizontal ? initHorizontal(root) : initCinema(root);
+  const instance = horizontal ? initHorizontal(root) : initCinema(root, { timeline });
   return {
     root, stage, video, track, chapters, toggle, index, progress, doc, win, instance, raf, timers, videoCallbacks,
     flush() { const pending = [...raf.values()]; raf.clear(); pending.forEach(fn => fn()); },
@@ -257,4 +257,61 @@ test('intentional chapter navigation retains motion and focuses the destination 
   assert.equal(h.instance.getState().state, 'enhanced');
   h.instance.destroy();
   assert.equal(h.chapters[1].getAttribute('tabindex'), null);
+});
+
+test('nonuniform inspected camera times are preserved exactly and interpolate between those shots', () => {
+  const timeline = { ...CINEMA_TIMELINE, landings: [0, 2.875, 6.125, 10.75], fps: 24 };
+  assert.equal(validateCinemaTimeline(timeline, 11), null);
+  assert.deepEqual(cinemaTimes(11, timeline), timeline.landings);
+  assert.deepEqual(cinemaTimes(18, timeline), timeline.landings);
+  assert.ok(Math.abs(cinemaVideoTime(.21, 11, timeline) - 1.4375) < 1e-12);
+  assert.ok(Math.abs(cinemaVideoTime(.47, 11, timeline) - 4.5) < 1e-12);
+  assert.ok(Math.abs(cinemaVideoTime(.73, 11, timeline) - 8.4375) < 1e-12);
+  assert.equal(cinemaChapterPresentation(.6, 2, 6.125, 11, timeline).interactive, true);
+  assert.equal(cinemaChapterPresentation(.6, 2, 8, 11, timeline).interactive, false);
+});
+
+test('invalid timelines and unavailable camera landings are rejected instead of silently rescaled', () => {
+  for (const landings of [null, [0, 4, 8], [0, 4, 4, 10], [-1, 3, 6, 9], [0, 4, NaN, 10], [0, 7, 3, 10]]) {
+    assert.equal(validateCinemaTimeline({ ...CINEMA_TIMELINE, landings }), 'invalid-timeline');
+  }
+  for (const fps of [0, -24, NaN]) assert.equal(validateCinemaTimeline({ ...CINEMA_TIMELINE, fps }), 'invalid-timeline');
+  assert.equal(validateCinemaTimeline(CINEMA_TIMELINE, 8), 'media-timeline-mismatch');
+  assert.deepEqual(cinemaTimes(8), [0, 0, 0, 0]);
+  const endNearBoundary = { ...CINEMA_TIMELINE, landings: [0, 3, 7, 11.96], fps: 30 };
+  assert.equal(validateCinemaTimeline(endNearBoundary, 12), null);
+  assert.equal(validateCinemaTimeline({ ...endNearBoundary, fps: 24 }, 12), 'media-timeline-mismatch');
+});
+
+test('malformed configured timing prevents the video request and leaves all chapters readable', () => {
+  const h = harness({ timeline: { ...CINEMA_TIMELINE, landings: null } });
+  assert.equal(h.instance.getState().state, 'static');
+  assert.equal(h.instance.getState().reason, 'invalid-timeline');
+  assert.equal(h.video.getAttribute('src'), null);
+  assert.ok(h.chapters.every(chapter => !chapter.hasAttribute('inert')));
+  h.instance.destroy();
+});
+
+test('actual media metadata that cannot contain inspected timings forces complete static flow', () => {
+  const h = harness({ readyState: 0, duration: NaN });
+  assert.equal(h.instance.getState().state, 'loading');
+  h.video.readyState = 1; h.video.duration = 8;
+  h.emit('loadedmetadata', h.video);
+  assert.equal(h.instance.getState().state, 'static');
+  assert.equal(h.instance.getState().reason, 'media-timeline-mismatch');
+  assert.ok(h.chapters.every(chapter => !chapter.hasAttribute('inert')));
+  assert.equal(h.root.classList.contains('cinema-enhanced'), false);
+  h.instance.destroy();
+});
+
+test('nonuniform configuration drives the real lifecycle seek and waits for the inspected frame', () => {
+  const timeline = { ...CINEMA_TIMELINE, landings: [0, 2.875, 6.125, 10.75], fps: 24 };
+  const h = harness({ timeline, duration: 11 });
+  h.present(0); h.flush();
+  h.win.scrollY = 2700; h.emit('scroll'); h.flush(); h.flush();
+  assert.equal(h.instance.getState().targetTime, 6.125);
+  assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'true');
+  h.present(6.125); h.flush();
+  assert.equal(h.chapters[2].getAttribute('aria-hidden'), 'false');
+  h.instance.destroy();
 });

@@ -6,8 +6,12 @@ export function renderHomeV2({ url, escape, link, image, projectArt, content, co
     {id:'craft', name:'Thought into form', title:'Built to move you.', image:'craft'},
     {id:'possibility', name:'A wider perspective', title:'Make room for more.', image:'possibility'}
   ];
-  const still = (c) => `<img class="cinema-still" src="${url('/assets/images/journey-v2-' + c.image + '.webp')}" srcset="${url('/assets/images/journey-v2-' + c.image + '-960.webp')} 960w, ${url('/assets/images/journey-v2-' + c.image + '.webp')} 1920w" sizes="100vw" width="1920" height="1080" alt="" ${c.id === 'arrival' ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
-  const cinema = `<div class="cinema" data-cinema>
+  const still = (c) => {
+    const poster = m.chapterPosters?.find(p => p.id === c.id);
+    if (!poster?.src || !poster?.mobileSrc || !poster.width || !poster.height) throw new Error('Missing chapter poster: ' + c.id);
+    return `<img class="cinema-still" src="${url(poster.src)}" srcset="${url(poster.mobileSrc)} 960w, ${url(poster.src)} ${poster.width}w" sizes="100vw" width="${poster.width}" height="${poster.height}" alt="" ${c.id === 'arrival' ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  };
+  const cinema = `<div class="cinema" data-cinema data-cinema-landings="${escape(JSON.stringify(m.chapterTimes))}" data-cinema-fps="${escape(m.fps)}">
     <div class="cinema-stage" data-cinema-stage>
       <div class="cinema-media" aria-hidden="true">
         <img data-cinema-poster src="${url(m.poster)}" width="1920" height="1080" alt="" fetchpriority="high">

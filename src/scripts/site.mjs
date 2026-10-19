@@ -1,9 +1,17 @@
-import { initCinema, initHorizontal } from './journey-v2.mjs';
+import { CINEMA_TIMELINE, initCinema, initHorizontal } from './journey-v2.mjs';
 
 document.documentElement.classList.add('js');
 
 const cinema = document.querySelector('[data-cinema]');
-if (cinema) initCinema(cinema);
+if (cinema) {
+  // Media configuration is emitted into the static HTML by the build. Invalid
+  // configuration deliberately reaches the runtime's complete static fallback.
+  let landings = null;
+  try { landings = JSON.parse(cinema.dataset.cinemaLandings || 'null'); } catch { /* Static fallback. */ }
+  initCinema(cinema, {
+    timeline: { ...CINEMA_TIMELINE, landings, fps: Number(cinema.dataset.cinemaFps) },
+  });
+}
 const horizontal = document.querySelector('[data-horizontal]');
 if (horizontal) initHorizontal(horizontal);
 const header = document.querySelector('.site-header');

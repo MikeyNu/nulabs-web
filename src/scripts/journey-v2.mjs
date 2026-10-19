@@ -8,6 +8,7 @@ import { clamp, getScrollProgress, createLatestSeekController } from './journey.
 export const CINEMA_TIMELINE = Object.freeze({
   holds: Object.freeze([[0, .14], [.28, .40], [.54, .66], [.80, 1]].map(Object.freeze)),
   landings: Object.freeze([0, 4, 8, 12]),
+  fps: 24,
   frameTolerance: 1 / 12,
   entrance: .04,
   exit: .04,
@@ -16,14 +17,33 @@ const HISTORY_KEY = '__nuLabsCinemaV2';
 const empty = reason => ({ refresh() {}, destroy() {}, getState: () => ({ state: 'static', reason }) });
 const smooth = value => { const x = clamp(value); return x * x * (3 - 2 * x); };
 
+/** Inspected camera timings are a contract, never a stretch-to-fit suggestion. */
+export function validateCinemaTimeline(timeline, duration = null) {
+  if (!timeline || !Array.isArray(timeline.landings) || timeline.landings.length !== 4
+    || !timeline.landings.every((time, index, all) => Number.isFinite(time) && time >= 0 && (!index || time > all[index - 1]))
+    || !Number.isFinite(timeline.fps) || timeline.fps <= 0
+    || !Number.isFinite(timeline.frameTolerance) || timeline.frameTolerance <= 0
+    || !Number.isFinite(timeline.entrance) || timeline.entrance <= 0
+    || !Number.isFinite(timeline.exit) || timeline.exit <= 0
+    || !Array.isArray(timeline.holds) || timeline.holds.length !== 4
+    || !timeline.holds.every((hold, index, all) => Array.isArray(hold) && hold.length === 2
+      && hold.every(Number.isFinite) && hold[0] >= 0 && hold[1] <= 1 && hold[0] < hold[1]
+      && (!index || hold[0] > all[index - 1][1]))
+    || timeline.holds[0][0] !== 0 || timeline.holds.at(-1)[1] !== 1) return 'invalid-timeline';
+  if (duration !== null && (!Number.isFinite(duration) || duration <= 0
+    || timeline.landings.at(-1) > duration - 1 / timeline.fps + .00001)) return 'media-timeline-mismatch';
+  return null;
+}
+
 export function cinemaTimes(duration, timeline = CINEMA_TIMELINE) {
-  if (!Number.isFinite(duration) || duration <= 0) return timeline.landings.map(() => 0);
-  const last = Math.max(0, duration - 1 / 24);
-  const scale = Math.min(1, last / timeline.landings.at(-1));
-  return timeline.landings.map(time => Math.min(last, time * scale));
+  if (validateCinemaTimeline(timeline, duration)) return [0, 0, 0, 0];
+  // Preserve exact inspected timestamps. If the asset does not contain them,
+  // initCinema remains in normal flow instead of showing an unreviewed shot.
+  return [...timeline.landings];
 }
 
 export function cinemaVideoTime(progress, duration, timeline = CINEMA_TIMELINE) {
+  if (validateCinemaTimeline(timeline, duration)) return 0;
   const p = clamp(progress);
   const times = cinemaTimes(duration, timeline);
   for (let i = 0; i < timeline.holds.length; i += 1) {
@@ -38,15 +58,16 @@ export function cinemaVideoTime(progress, duration, timeline = CINEMA_TIMELINE) 
 }
 
 export function cinemaChapterProgress(index, timeline = CINEMA_TIMELINE) {
+  if (validateCinemaTimeline(timeline)) return 0;
   const hold = timeline.holds[index];
   if (!hold) return 0;
   return index === 0 ? 0 : (hold[0] + hold[1]) / 2;
 }
 
 export function cinemaChapterPresentation(progress, index, displayedTime, duration, timeline = CINEMA_TIMELINE) {
-  const hold = timeline.holds[index];
+  const hold = timeline?.holds?.[index];
   const hidden = { opacity: 0, x: 0, y: 30, blur: 8, interactive: false };
-  if (!hold || !Number.isFinite(displayedTime) || !Number.isFinite(duration) || duration <= 0) return hidden;
+  if (validateCinemaTimeline(timeline, duration) || !hold || !Number.isFinite(displayedTime)) return hidden;
   const p = clamp(progress);
   const safeTime = cinemaTimes(duration, timeline)[index];
   if (p < hold[0] || p > hold[1] || Math.abs(displayedTime - safeTime) > timeline.frameTolerance) return hidden;
@@ -115,6 +136,7 @@ export function initCinema(root, options = {}) {
   const doc = root.ownerDocument, win = doc.defaultView;
   const events = lifecycle(win);
   const timeline = options.timeline || CINEMA_TIMELINE;
+  let timelineError = validateCinemaTimeline(timeline);
   const source = options.src || video.getAttribute('data-src') || video.getAttribute('src') || '';
   const controls = [...doc.querySelectorAll('[data-cinema-toggle]')];
   const indicators = [...root.querySelectorAll('[data-cinema-index]')];
@@ -161,9 +183,9 @@ export function initCinema(root, options = {}) {
     return target ? chapters.findIndex(chapter => chapter === target || chapter.contains(target)) : -1;
   }
   function staticReason() {
-    return !source ? 'missing-video' : mediaStatus === 'error' ? 'media-error'
+    return timelineError || (!source ? 'missing-video' : mediaStatus === 'error' ? 'media-error'
       : typeof video.requestVideoFrameCallback !== 'function' ? 'unsupported-video'
-        : policyReason() || (userPaused ? 'paused' : focusHeld ? 'keyboard-focus' : null);
+        : policyReason() || (userPaused ? 'paused' : focusHeld ? 'keyboard-focus' : null));
   }
   function clearTimer(kind) {
     const id = kind === 'readiness' ? timer : seekTimer;
@@ -172,7 +194,7 @@ export function initCinema(root, options = {}) {
   }
   function publish() {
     root.dataset.cinemaState = state; root.dataset.cinemaReason = reason; root.dataset.mediaStatus = mediaStatus;
-    const unavailable = Boolean(policyReason() || !source || mediaStatus === 'error' || typeof video.requestVideoFrameCallback !== 'function');
+    const unavailable = Boolean(timelineError || policyReason() || !source || mediaStatus === 'error' || typeof video.requestVideoFrameCallback !== 'function');
     for (const control of controls) {
       const focused = doc.activeElement === control;
       control.hidden = unavailable && !focused;
@@ -340,6 +362,7 @@ export function initCinema(root, options = {}) {
   function reconcile() {
     if (disposed) return;
     measure();
+    if (!timelineError && video.readyState >= 1) timelineError = validateCinemaTimeline(timeline, video.duration);
     const why = staticReason();
     if (why) { normal(why); restorePosition(); return; }
     if (!sourceAttached && (visible || restoration || targetIndex() >= 0) && !doc.hidden) {
@@ -399,7 +422,12 @@ export function initCinema(root, options = {}) {
   });
   events.listen(video, 'error', fail);
   events.listen(video, 'loadedmetadata', () => {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) fail(); else seeker.wake();
+    if (!Number.isFinite(video.duration) || video.duration <= 0) fail();
+    else {
+      timelineError = validateCinemaTimeline(timeline, video.duration);
+      if (timelineError) { normal(timelineError); restorePosition(); }
+      else seeker.wake();
+    }
   });
   for (const name of ['loadeddata', 'canplay']) events.listen(video, name, () => { if (!staticReason()) armFrame(); seeker.wake(); });
   events.listen(video, 'seeked', () => { seeker.onSeeked(); if (pendingTime !== null) armFrame(); syncActivity(); });

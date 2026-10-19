@@ -18,7 +18,37 @@
       12
     ],
     "sha256": "1af24841f475f27336d9016f8904415a59fa3e6b318cab0cf69849145d8f846e",
-    "verification": "docs/v2-verification.md"
+    "verification": "docs/v2-verification.md",
+    "chapterPosters": [
+      {
+        "id": "arrival",
+        "src": "/assets/images/journey-v2-arrival.webp",
+        "mobileSrc": "/assets/images/journey-v2-arrival-960.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "id": "clarity",
+        "src": "/assets/images/journey-v2-clarity.webp",
+        "mobileSrc": "/assets/images/journey-v2-clarity-960.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "id": "craft",
+        "src": "/assets/images/journey-v2-craft.webp",
+        "mobileSrc": "/assets/images/journey-v2-craft-960.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "id": "possibility",
+        "src": "/assets/images/journey-v2-possibility.webp",
+        "mobileSrc": "/assets/images/journey-v2-possibility-960.webp",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
   },
   "contact": {
     "email": null,

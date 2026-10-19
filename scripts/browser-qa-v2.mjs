@@ -3,10 +3,17 @@
  * Uses existing Edge and Playwright Core. No app mutation or browser download.
  * A successful script means capture completed, not that the visual brief passed.
  */
-import {pathToFileURL} from 'node:url';
+import {pathToFileURL, fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+const projectRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const mediaConfig=JSON.parse(await fs.readFile(path.join(projectRoot,'src/content/media.json'),'utf8')).journey;
+const landingTimes=mediaConfig.chapterTimes;
+assert(Array.isArray(landingTimes)&&landingTimes.length===4&&landingTimes.every((time,i,all)=>Number.isFinite(time)&&time>=0&&(!i||time>all[i-1])),'Four inspected increasing chapterTimes are required.');
+assert(Number.isFinite(mediaConfig.fps)&&mediaConfig.fps>0,'Measured video fps is required.');
+assert(landingTimes.at(-1)<=mediaConfig.durationSeconds-1/mediaConfig.fps+.00001,'Configured landing must exist within the measured video.');
+const frameTolerance=Math.max(2/mediaConfig.fps,1/60);
 const modulePath=process.env.NU_QA_PLAYWRIGHT;
 assert(modulePath,'NU_QA_PLAYWRIGHT must point to an existing Playwright module. This runner installs nothing.');
 const {chromium}=await import(pathToFileURL(path.resolve(modulePath)).href);
@@ -15,7 +22,7 @@ assert(browserPath,'NU_QA_BROWSER_PATH must identify an existing browser.');
 const output=path.resolve(process.env.NU_QA_OUTPUT||'qa-output/v2');
 const base=(process.env.NU_QA_URL||'http://localhost:3000').replace(/\/$/,'');
 await fs.mkdir(output,{recursive:true});
-const report={started:new Date().toISOString(),url:base,visualReview:'NOT RUN',browser:null,scenarios:[]};
+const report={started:new Date().toISOString(),url:base,visualReview:'NOT RUN',browser:null,media:{video:mediaConfig.video,chapterTimes:landingTimes,fps:mediaConfig.fps,durationSeconds:mediaConfig.durationSeconds},scenarios:[]};
 const browser=await chromium.launch({headless:true,executablePath:browserPath,args:['--no-first-run','--no-default-browser-check']});
 report.browser=browser.version();
 const selected=(process.env.NU_QA_CASES||'desktop,mobile,tablet,short,reduced,live-reduced,blocked-video,no-js-desktop,no-js-mobile,routes-and-filter,mobile-menu,local-enquiry,anchors-history,horizontal-focus').split(',');
@@ -57,18 +64,19 @@ async function scrollToProgress(page,selector,p){
  },{selector,p});
 }
 function expectedTime(p){
- if(p<=.14)return 0;if(p<.28)return (p-.14)/.14*4;
- if(p<=.40)return 4;if(p<.54)return 4+(p-.40)/.14*4;
- if(p<=.66)return 8;if(p<.80)return 8+(p-.66)/.14*3.95;
- return 11.95;
+ const [opening,clarity,craft,possibility]=landingTimes;
+ if(p<=.14)return opening;if(p<.28)return opening+(p-.14)/.14*(clarity-opening);
+ if(p<=.40)return clarity;if(p<.54)return clarity+(p-.40)/.14*(craft-clarity);
+ if(p<=.66)return craft;if(p<.80)return craft+(p-.66)/.14*(possibility-craft);
+ return possibility;
 }
 async function settleVideo(page,item,p){
  const expected=expectedTime(p);
  try{
-  await page.waitForFunction(time=>{
+  await page.waitForFunction(({time,tolerance})=>{
    const v=document.querySelector('[data-cinema-video]');const presented=window.__v2Frames?.at(-1);
-   return v&&v.readyState>=2&&!v.seeking&&Math.abs(v.currentTime-time)<.3&&presented&&Math.abs(presented.mediaTime-time)<.3;
-  },expected,{timeout:5000});
+   return v&&v.readyState>=2&&!v.seeking&&Math.abs(v.currentTime-time)<=tolerance&&presented&&Math.abs(presented.mediaTime-time)<=tolerance;
+  },{time:expected,tolerance:frameTolerance},{timeout:5000});
  }catch(error){item.warnings.push({phase:'video settle',progress:p,expected,message:error.message,...await inspect(page)});throw new Error('Actual presented video did not settle near '+expected+'s at progress '+p);}
 }
 async function scenario(name,options,run){
@@ -117,6 +125,10 @@ try{
   await page.waitForFunction(()=>document.querySelector('[data-cinema-video]')?.readyState>=2,null,{timeout:25000});
   await page.evaluate(()=>scrollTo(0,0));await settleVideo(page,item,0);await capture(page,item,'opening');
   const opening=await inspect(page);
+  const renderedTimes=JSON.parse(await page.locator('[data-cinema]').getAttribute('data-cinema-landings'));
+  assert.deepEqual(renderedTimes,landingTimes,'Built timeline must match inspected media configuration.');
+  assert.equal(Number(await page.locator('[data-cinema]').getAttribute('data-cinema-fps')),mediaConfig.fps,'Built fps must match media configuration.');
+  assert(new URL(opening.video.src).pathname.endsWith(mediaConfig.video),'Active video must match configured media.');
   assert(opening.header.rect.y===0&&opening.header.rect.x===0,'Header must meet the viewport edges');
   assert(Math.abs(opening.stage.y)<2,'Hero stage must begin behind the header');
   assert(/rgba\([^)]*,\s*0\)/.test(opening.header.background),'Opening navigation must be transparent');
